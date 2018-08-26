@@ -36,13 +36,29 @@ keywords = {
     'QUEUE'     :   'QUEUE',
     'LIST'      :   'LIST',
     'GRAPH'     :   'GRAPH',
+    'ADD'       :   'ADD',
+    'REMOVE'    :   'REMOVE',
+    'SIZE'      :   'SIZE',
+    'GET'       :   'GET',
+    'ENQUEUE'   :   'ENQUEUE',
+    'DEQUEUE'   :   'DEQUEUE',
+    'GET_Q'     :   'GET_Q',
+    'SIZE_QUEUE':   'SIZE_QUEUE',
+    'PUSH'      :   'PUSH',
+    'POP'       :   'POP',
+    'GET_P'     :   'GET_P',
+    'SIZES_TACK':   'SIZE_STACK',
+    'ADD_NODE'  :   'ADD_NODE',
+    'ADD_TRANS' :   'ADD_TRANS',
+    'REMOVE_NODE'   :   'REMOVE_NODE',
+    'REMOVE_TRANS'  :   'REMOVE_TRANS',
+    'WIDTH'     :   'WIDTH',
+    'DEEP'      :   'DEEP',
     'TO'        :   'TO',
     'DO'        :   'DO',
     'WRITELN'   :   'WRITELN',
     'THEN'      :   'THEN',
-    'UNTIL'     :   'UNTIL',
-    'STR'       :   'STR',
-    'RETURN'    :   'RETURN'
+    'UNTIL'     :   'UNTIL'
     }
 
 tokens  = [
@@ -98,10 +114,8 @@ def t_INTEGERVAL(t):
     return t
 
 def t_STRINGVAL(t):
-    r'\"(\s*\w*\_*\+*\-*\.*\,*\€*\!*\@*\#*\$*\%*\^*\**\(*\)*\;*\:*\\*\/*\|*\<*\>*\!*\¡*\?*\¿*\}*\{*\[*\]*\~*)*\"'
+    r'\"(.*)\"'
     t.value = str(t.value)
-    #t.value = t.value.replace("\"","") # quitamos las comillas
-
     return t
 
 
@@ -130,7 +144,7 @@ t_COMA = r'\,'
     
 def t_newline(t):
     r'\n+' #Regex salto de linea una o mas veces
-    t.lexer.lineno += len(t.value)
+    t.lexer.lineno = len(t.value)
     
 #Un string que contiene los caracteres que ingnoraremos en este caso los espacios y tabulaciones
 t_ignore = ' \t'
@@ -145,7 +159,7 @@ lexer = lex.lex()
 
 data = '''
     VAR
-        x : INT [5];
+        x : [5];
         y : STACK;
         m : QUEUE;
         a : LIST;
@@ -161,7 +175,7 @@ data = '''
         f <-- 5.0;
         FOR i <-- 5 TO 10 DO
         BEGIN
-            WHILE( e != F )DO
+            WHILE e != F DO
             BEGIN
                 REPEAT
                 b <-- CEIL(b DIV 5);
@@ -169,7 +183,7 @@ data = '''
                 UNTIL (f >= 10)
             END
         END
-        IF( b = 15 )THEN
+        IF b = 15 THEN
             BEGIN
                 WRITELN("FUNCIONOOOO GRACIAS A DIOS , DIOS LO BENDIGA " + LENGHT(x));
                 ADD(a, 5.023);
@@ -184,33 +198,17 @@ data = '''
     END
     
     '''
+    
+lexer.input(data)
 
-data2 = '''
-     VAR \n
-        x : INTEGER [5]; \n
-        y : STACK; \n
-        m : QUEUE; \n
-        a : LIST; \n
-        d : GRAPH; \n
-        b : INTEGER; \n
-        c : STRING; \n
-        e : BOOLEAN; \n
-        f : DOUBLE; \n
-    BEGIN \n
-        e <-- STR("HOLA"); \n
-        x <-- 5; \n
-    END \n
 '''
-
-lexer.input(data2)
 while True:
     tok = lexer.token()
-
+        
     if not tok:
         break
     print(tok.type, tok.value, tok.lineno, tok.lexpos)
-
-
+    '''
     
     
     

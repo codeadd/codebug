@@ -1,0 +1,2365 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    ADD
+    ADD_NODE
+    ADD_TRANS
+    AND
+    ARRAY
+    ASIGNACION
+    BEGIN
+    BOOLEAN
+    COMENTARIO
+    DIFERENTE
+    DO
+    DOSPUNTOS
+    DOUBLE
+    ELSE
+    END
+    ENQUEUE
+    FOR
+    FUNCTION
+    GRAPH
+    IF
+    IGUAL
+    INTEGER
+    LIST
+    MAYOR
+    MAYORIGUAL
+    MENOR
+    MENORIGUAL
+    MODOREFERENCIA
+    MODOVALOR
+    NOT
+    NULL
+    OR
+    PROCEDURE
+    PUNTO
+    PUNTOCOMA
+    PUSH
+    QUEUE
+    RECORD
+    REMOVE
+    REMOVE_NODE
+    REMOVE_TRANS
+    REPEAT
+    STACK
+    STRING
+    THEN
+    TO
+    UNTIL
+    VAR
+    WHILE
+    WRITELN
+
+Grammar
+
+Rule 0     S' -> operacion
+Rule 1     operacion -> par
+Rule 2     operacion -> SUBARRAY
+Rule 3     par -> opmath
+Rule 4     par -> PA par PC parAux
+Rule 5     parAux -> mathsymbol par
+Rule 6     parAux -> empty
+Rule 7     opmath -> valor
+Rule 8     opmath -> valor mathsymbol par
+Rule 9     mathsymbol -> MAS
+Rule 10    mathsymbol -> MENOS
+Rule 11    mathsymbol -> POR
+Rule 12    mathsymbol -> DIVIDIR
+Rule 13    mathsymbol -> DIV
+Rule 14    mathsymbol -> MOD
+Rule 15    techo -> CEIL PA opmath PC
+Rule 16    piso -> FLOOR PA opmath PC
+Rule 17    valor -> ID
+Rule 18    valor -> INTEGERVAL
+Rule 19    valor -> DOUBLEVAL
+Rule 20    valor -> STRINGVAL
+Rule 21    valor -> TRUE
+Rule 22    valor -> FALSE
+Rule 23    valor -> techo
+Rule 24    valor -> piso
+Rule 25    valor -> longitud
+Rule 26    valor -> dequeue
+Rule 27    valor -> pop
+Rule 28    valor -> get
+Rule 29    valor -> getq
+Rule 30    valor -> getp
+Rule 31    valor -> size
+Rule 32    valor -> sizequeue
+Rule 33    valor -> sizestack
+Rule 34    valor -> deep
+Rule 35    valor -> width
+Rule 36    valor -> llamar
+Rule 37    longitud -> LENGTH PA STRINGVAL PC
+Rule 38    dequeue -> DEQUEUE PA ID PC
+Rule 39    pop -> POP PA ID PC
+Rule 40    get -> GET PA ID COMA INTEGERVAL PC
+Rule 41    getq -> GET_P PA ID PC
+Rule 42    getp -> GET_Q PA ID PC
+Rule 43    size -> SIZE PA ID PC
+Rule 44    sizequeue -> SIZE_QUEUE PA ID PC
+Rule 45    sizestack -> SIZE_STACK PA ID PC
+Rule 46    deep -> DEEP PA ID PC
+Rule 47    width -> WIDTH PA ID PC
+Rule 48    llamar -> CALL ID PA valoresCall PC
+Rule 49    llamar -> CALL ID PA PC
+Rule 50    valoresCall -> valor
+Rule 51    valoresCall -> valor COMA valoresCall
+Rule 52    empty -> <empty>
+Rule 53    longitud -> LENGTH PA error PC
+Rule 54    dequeue -> DEQUEUE PA error PC
+Rule 55    pop -> POP PA error PC
+Rule 56    get -> GET PA ID COMA error PC
+Rule 57    getq -> GET_P PA error PC
+Rule 58    getp -> GET_Q PA error PC
+Rule 59    size -> SIZE PA error PC
+Rule 60    sizequeue -> SIZE_QUEUE PA error PC
+Rule 61    sizestack -> SIZE_STACK PA error PC
+Rule 62    deep -> DEEP PA error PC
+Rule 63    width -> WIDTH PA error PC
+
+Terminals, with rules where they appear
+
+ADD                  : 
+ADD_NODE             : 
+ADD_TRANS            : 
+AND                  : 
+ARRAY                : 
+ASIGNACION           : 
+BEGIN                : 
+BOOLEAN              : 
+CALL                 : 48 49
+CEIL                 : 15
+COMA                 : 40 51 56
+COMENTARIO           : 
+DEEP                 : 46 62
+DEQUEUE              : 38 54
+DIFERENTE            : 
+DIV                  : 13
+DIVIDIR              : 12
+DO                   : 
+DOSPUNTOS            : 
+DOUBLE               : 
+DOUBLEVAL            : 19
+ELSE                 : 
+END                  : 
+ENQUEUE              : 
+FALSE                : 22
+FLOOR                : 16
+FOR                  : 
+FUNCTION             : 
+GET                  : 40 56
+GET_P                : 41 57
+GET_Q                : 42 58
+GRAPH                : 
+ID                   : 17 38 39 40 41 42 43 44 45 46 47 48 49 56
+IF                   : 
+IGUAL                : 
+INTEGER              : 
+INTEGERVAL           : 18 40
+LENGTH               : 37 53
+LIST                 : 
+MAS                  : 9
+MAYOR                : 
+MAYORIGUAL           : 
+MENOR                : 
+MENORIGUAL           : 
+MENOS                : 10
+MOD                  : 14
+MODOREFERENCIA       : 
+MODOVALOR            : 
+NOT                  : 
+NULL                 : 
+OR                   : 
+PA                   : 4 15 16 37 38 39 40 41 42 43 44 45 46 47 48 49 53 54 55 56 57 58 59 60 61 62 63
+PC                   : 4 15 16 37 38 39 40 41 42 43 44 45 46 47 48 49 53 54 55 56 57 58 59 60 61 62 63
+POP                  : 39 55
+POR                  : 11
+PROCEDURE            : 
+PUNTO                : 
+PUNTOCOMA            : 
+PUSH                 : 
+QUEUE                : 
+RECORD               : 
+REMOVE               : 
+REMOVE_NODE          : 
+REMOVE_TRANS         : 
+REPEAT               : 
+SIZE                 : 43 59
+SIZE_QUEUE           : 44 60
+SIZE_STACK           : 45 61
+STACK                : 
+STRING               : 
+STRINGVAL            : 20 37
+SUBARRAY             : 2
+THEN                 : 
+TO                   : 
+TRUE                 : 21
+UNTIL                : 
+VAR                  : 
+WHILE                : 
+WIDTH                : 47 63
+WRITELN              : 
+error                : 53 54 55 56 57 58 59 60 61 62 63
+
+Nonterminals, with rules where they appear
+
+deep                 : 34
+dequeue              : 26
+empty                : 6
+get                  : 28
+getp                 : 30
+getq                 : 29
+llamar               : 36
+longitud             : 25
+mathsymbol           : 5 8
+operacion            : 0
+opmath               : 3 15 16
+par                  : 1 4 5 8
+parAux               : 4
+piso                 : 24
+pop                  : 27
+size                 : 31
+sizequeue            : 32
+sizestack            : 33
+techo                : 23
+valor                : 7 8 50 51
+valoresCall          : 48 51
+width                : 35
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . operacion
+    (1) operacion -> . par
+    (2) operacion -> . SUBARRAY
+    (3) par -> . opmath
+    (4) par -> . PA par PC parAux
+    (7) opmath -> . valor
+    (8) opmath -> . valor mathsymbol par
+    (17) valor -> . ID
+    (18) valor -> . INTEGERVAL
+    (19) valor -> . DOUBLEVAL
+    (20) valor -> . STRINGVAL
+    (21) valor -> . TRUE
+    (22) valor -> . FALSE
+    (23) valor -> . techo
+    (24) valor -> . piso
+    (25) valor -> . longitud
+    (26) valor -> . dequeue
+    (27) valor -> . pop
+    (28) valor -> . get
+    (29) valor -> . getq
+    (30) valor -> . getp
+    (31) valor -> . size
+    (32) valor -> . sizequeue
+    (33) valor -> . sizestack
+    (34) valor -> . deep
+    (35) valor -> . width
+    (36) valor -> . llamar
+    (15) techo -> . CEIL PA opmath PC
+    (16) piso -> . FLOOR PA opmath PC
+    (37) longitud -> . LENGTH PA STRINGVAL PC
+    (53) longitud -> . LENGTH PA error PC
+    (38) dequeue -> . DEQUEUE PA ID PC
+    (54) dequeue -> . DEQUEUE PA error PC
+    (39) pop -> . POP PA ID PC
+    (55) pop -> . POP PA error PC
+    (40) get -> . GET PA ID COMA INTEGERVAL PC
+    (56) get -> . GET PA ID COMA error PC
+    (41) getq -> . GET_P PA ID PC
+    (57) getq -> . GET_P PA error PC
+    (42) getp -> . GET_Q PA ID PC
+    (58) getp -> . GET_Q PA error PC
+    (43) size -> . SIZE PA ID PC
+    (59) size -> . SIZE PA error PC
+    (44) sizequeue -> . SIZE_QUEUE PA ID PC
+    (60) sizequeue -> . SIZE_QUEUE PA error PC
+    (45) sizestack -> . SIZE_STACK PA ID PC
+    (61) sizestack -> . SIZE_STACK PA error PC
+    (46) deep -> . DEEP PA ID PC
+    (62) deep -> . DEEP PA error PC
+    (47) width -> . WIDTH PA ID PC
+    (63) width -> . WIDTH PA error PC
+    (48) llamar -> . CALL ID PA valoresCall PC
+    (49) llamar -> . CALL ID PA PC
+
+    SUBARRAY        shift and go to state 3
+    PA              shift and go to state 5
+    ID              shift and go to state 7
+    INTEGERVAL      shift and go to state 8
+    DOUBLEVAL       shift and go to state 9
+    STRINGVAL       shift and go to state 10
+    TRUE            shift and go to state 11
+    FALSE           shift and go to state 12
+    CEIL            shift and go to state 27
+    FLOOR           shift and go to state 28
+    LENGTH          shift and go to state 29
+    DEQUEUE         shift and go to state 30
+    POP             shift and go to state 31
+    GET             shift and go to state 32
+    GET_P           shift and go to state 33
+    GET_Q           shift and go to state 34
+    SIZE            shift and go to state 35
+    SIZE_QUEUE      shift and go to state 36
+    SIZE_STACK      shift and go to state 37
+    DEEP            shift and go to state 38
+    WIDTH           shift and go to state 39
+    CALL            shift and go to state 40
+
+    operacion                      shift and go to state 1
+    par                            shift and go to state 2
+    opmath                         shift and go to state 4
+    valor                          shift and go to state 6
+    techo                          shift and go to state 13
+    piso                           shift and go to state 14
+    longitud                       shift and go to state 15
+    dequeue                        shift and go to state 16
+    pop                            shift and go to state 17
+    get                            shift and go to state 18
+    getq                           shift and go to state 19
+    getp                           shift and go to state 20
+    size                           shift and go to state 21
+    sizequeue                      shift and go to state 22
+    sizestack                      shift and go to state 23
+    deep                           shift and go to state 24
+    width                          shift and go to state 25
+    llamar                         shift and go to state 26
+
+state 1
+
+    (0) S' -> operacion .
+
+
+
+state 2
+
+    (1) operacion -> par .
+
+    $end            reduce using rule 1 (operacion -> par .)
+
+
+state 3
+
+    (2) operacion -> SUBARRAY .
+
+    $end            reduce using rule 2 (operacion -> SUBARRAY .)
+
+
+state 4
+
+    (3) par -> opmath .
+
+    $end            reduce using rule 3 (par -> opmath .)
+    PC              reduce using rule 3 (par -> opmath .)
+
+
+state 5
+
+    (4) par -> PA . par PC parAux
+    (3) par -> . opmath
+    (4) par -> . PA par PC parAux
+    (7) opmath -> . valor
+    (8) opmath -> . valor mathsymbol par
+    (17) valor -> . ID
+    (18) valor -> . INTEGERVAL
+    (19) valor -> . DOUBLEVAL
+    (20) valor -> . STRINGVAL
+    (21) valor -> . TRUE
+    (22) valor -> . FALSE
+    (23) valor -> . techo
+    (24) valor -> . piso
+    (25) valor -> . longitud
+    (26) valor -> . dequeue
+    (27) valor -> . pop
+    (28) valor -> . get
+    (29) valor -> . getq
+    (30) valor -> . getp
+    (31) valor -> . size
+    (32) valor -> . sizequeue
+    (33) valor -> . sizestack
+    (34) valor -> . deep
+    (35) valor -> . width
+    (36) valor -> . llamar
+    (15) techo -> . CEIL PA opmath PC
+    (16) piso -> . FLOOR PA opmath PC
+    (37) longitud -> . LENGTH PA STRINGVAL PC
+    (53) longitud -> . LENGTH PA error PC
+    (38) dequeue -> . DEQUEUE PA ID PC
+    (54) dequeue -> . DEQUEUE PA error PC
+    (39) pop -> . POP PA ID PC
+    (55) pop -> . POP PA error PC
+    (40) get -> . GET PA ID COMA INTEGERVAL PC
+    (56) get -> . GET PA ID COMA error PC
+    (41) getq -> . GET_P PA ID PC
+    (57) getq -> . GET_P PA error PC
+    (42) getp -> . GET_Q PA ID PC
+    (58) getp -> . GET_Q PA error PC
+    (43) size -> . SIZE PA ID PC
+    (59) size -> . SIZE PA error PC
+    (44) sizequeue -> . SIZE_QUEUE PA ID PC
+    (60) sizequeue -> . SIZE_QUEUE PA error PC
+    (45) sizestack -> . SIZE_STACK PA ID PC
+    (61) sizestack -> . SIZE_STACK PA error PC
+    (46) deep -> . DEEP PA ID PC
+    (62) deep -> . DEEP PA error PC
+    (47) width -> . WIDTH PA ID PC
+    (63) width -> . WIDTH PA error PC
+    (48) llamar -> . CALL ID PA valoresCall PC
+    (49) llamar -> . CALL ID PA PC
+
+    PA              shift and go to state 5
+    ID              shift and go to state 7
+    INTEGERVAL      shift and go to state 8
+    DOUBLEVAL       shift and go to state 9
+    STRINGVAL       shift and go to state 10
+    TRUE            shift and go to state 11
+    FALSE           shift and go to state 12
+    CEIL            shift and go to state 27
+    FLOOR           shift and go to state 28
+    LENGTH          shift and go to state 29
+    DEQUEUE         shift and go to state 30
+    POP             shift and go to state 31
+    GET             shift and go to state 32
+    GET_P           shift and go to state 33
+    GET_Q           shift and go to state 34
+    SIZE            shift and go to state 35
+    SIZE_QUEUE      shift and go to state 36
+    SIZE_STACK      shift and go to state 37
+    DEEP            shift and go to state 38
+    WIDTH           shift and go to state 39
+    CALL            shift and go to state 40
+
+    par                            shift and go to state 41
+    opmath                         shift and go to state 4
+    valor                          shift and go to state 6
+    techo                          shift and go to state 13
+    piso                           shift and go to state 14
+    longitud                       shift and go to state 15
+    dequeue                        shift and go to state 16
+    pop                            shift and go to state 17
+    get                            shift and go to state 18
+    getq                           shift and go to state 19
+    getp                           shift and go to state 20
+    size                           shift and go to state 21
+    sizequeue                      shift and go to state 22
+    sizestack                      shift and go to state 23
+    deep                           shift and go to state 24
+    width                          shift and go to state 25
+    llamar                         shift and go to state 26
+
+state 6
+
+    (7) opmath -> valor .
+    (8) opmath -> valor . mathsymbol par
+    (9) mathsymbol -> . MAS
+    (10) mathsymbol -> . MENOS
+    (11) mathsymbol -> . POR
+    (12) mathsymbol -> . DIVIDIR
+    (13) mathsymbol -> . DIV
+    (14) mathsymbol -> . MOD
+
+    $end            reduce using rule 7 (opmath -> valor .)
+    PC              reduce using rule 7 (opmath -> valor .)
+    MAS             shift and go to state 43
+    MENOS           shift and go to state 44
+    POR             shift and go to state 45
+    DIVIDIR         shift and go to state 46
+    DIV             shift and go to state 47
+    MOD             shift and go to state 48
+
+    mathsymbol                     shift and go to state 42
+
+state 7
+
+    (17) valor -> ID .
+
+    MAS             reduce using rule 17 (valor -> ID .)
+    MENOS           reduce using rule 17 (valor -> ID .)
+    POR             reduce using rule 17 (valor -> ID .)
+    DIVIDIR         reduce using rule 17 (valor -> ID .)
+    DIV             reduce using rule 17 (valor -> ID .)
+    MOD             reduce using rule 17 (valor -> ID .)
+    $end            reduce using rule 17 (valor -> ID .)
+    PC              reduce using rule 17 (valor -> ID .)
+    COMA            reduce using rule 17 (valor -> ID .)
+
+
+state 8
+
+    (18) valor -> INTEGERVAL .
+
+    MAS             reduce using rule 18 (valor -> INTEGERVAL .)
+    MENOS           reduce using rule 18 (valor -> INTEGERVAL .)
+    POR             reduce using rule 18 (valor -> INTEGERVAL .)
+    DIVIDIR         reduce using rule 18 (valor -> INTEGERVAL .)
+    DIV             reduce using rule 18 (valor -> INTEGERVAL .)
+    MOD             reduce using rule 18 (valor -> INTEGERVAL .)
+    $end            reduce using rule 18 (valor -> INTEGERVAL .)
+    PC              reduce using rule 18 (valor -> INTEGERVAL .)
+    COMA            reduce using rule 18 (valor -> INTEGERVAL .)
+
+
+state 9
+
+    (19) valor -> DOUBLEVAL .
+
+    MAS             reduce using rule 19 (valor -> DOUBLEVAL .)
+    MENOS           reduce using rule 19 (valor -> DOUBLEVAL .)
+    POR             reduce using rule 19 (valor -> DOUBLEVAL .)
+    DIVIDIR         reduce using rule 19 (valor -> DOUBLEVAL .)
+    DIV             reduce using rule 19 (valor -> DOUBLEVAL .)
+    MOD             reduce using rule 19 (valor -> DOUBLEVAL .)
+    $end            reduce using rule 19 (valor -> DOUBLEVAL .)
+    PC              reduce using rule 19 (valor -> DOUBLEVAL .)
+    COMA            reduce using rule 19 (valor -> DOUBLEVAL .)
+
+
+state 10
+
+    (20) valor -> STRINGVAL .
+
+    MAS             reduce using rule 20 (valor -> STRINGVAL .)
+    MENOS           reduce using rule 20 (valor -> STRINGVAL .)
+    POR             reduce using rule 20 (valor -> STRINGVAL .)
+    DIVIDIR         reduce using rule 20 (valor -> STRINGVAL .)
+    DIV             reduce using rule 20 (valor -> STRINGVAL .)
+    MOD             reduce using rule 20 (valor -> STRINGVAL .)
+    $end            reduce using rule 20 (valor -> STRINGVAL .)
+    PC              reduce using rule 20 (valor -> STRINGVAL .)
+    COMA            reduce using rule 20 (valor -> STRINGVAL .)
+
+
+state 11
+
+    (21) valor -> TRUE .
+
+    MAS             reduce using rule 21 (valor -> TRUE .)
+    MENOS           reduce using rule 21 (valor -> TRUE .)
+    POR             reduce using rule 21 (valor -> TRUE .)
+    DIVIDIR         reduce using rule 21 (valor -> TRUE .)
+    DIV             reduce using rule 21 (valor -> TRUE .)
+    MOD             reduce using rule 21 (valor -> TRUE .)
+    $end            reduce using rule 21 (valor -> TRUE .)
+    PC              reduce using rule 21 (valor -> TRUE .)
+    COMA            reduce using rule 21 (valor -> TRUE .)
+
+
+state 12
+
+    (22) valor -> FALSE .
+
+    MAS             reduce using rule 22 (valor -> FALSE .)
+    MENOS           reduce using rule 22 (valor -> FALSE .)
+    POR             reduce using rule 22 (valor -> FALSE .)
+    DIVIDIR         reduce using rule 22 (valor -> FALSE .)
+    DIV             reduce using rule 22 (valor -> FALSE .)
+    MOD             reduce using rule 22 (valor -> FALSE .)
+    $end            reduce using rule 22 (valor -> FALSE .)
+    PC              reduce using rule 22 (valor -> FALSE .)
+    COMA            reduce using rule 22 (valor -> FALSE .)
+
+
+state 13
+
+    (23) valor -> techo .
+
+    MAS             reduce using rule 23 (valor -> techo .)
+    MENOS           reduce using rule 23 (valor -> techo .)
+    POR             reduce using rule 23 (valor -> techo .)
+    DIVIDIR         reduce using rule 23 (valor -> techo .)
+    DIV             reduce using rule 23 (valor -> techo .)
+    MOD             reduce using rule 23 (valor -> techo .)
+    $end            reduce using rule 23 (valor -> techo .)
+    PC              reduce using rule 23 (valor -> techo .)
+    COMA            reduce using rule 23 (valor -> techo .)
+
+
+state 14
+
+    (24) valor -> piso .
+
+    MAS             reduce using rule 24 (valor -> piso .)
+    MENOS           reduce using rule 24 (valor -> piso .)
+    POR             reduce using rule 24 (valor -> piso .)
+    DIVIDIR         reduce using rule 24 (valor -> piso .)
+    DIV             reduce using rule 24 (valor -> piso .)
+    MOD             reduce using rule 24 (valor -> piso .)
+    $end            reduce using rule 24 (valor -> piso .)
+    PC              reduce using rule 24 (valor -> piso .)
+    COMA            reduce using rule 24 (valor -> piso .)
+
+
+state 15
+
+    (25) valor -> longitud .
+
+    MAS             reduce using rule 25 (valor -> longitud .)
+    MENOS           reduce using rule 25 (valor -> longitud .)
+    POR             reduce using rule 25 (valor -> longitud .)
+    DIVIDIR         reduce using rule 25 (valor -> longitud .)
+    DIV             reduce using rule 25 (valor -> longitud .)
+    MOD             reduce using rule 25 (valor -> longitud .)
+    $end            reduce using rule 25 (valor -> longitud .)
+    PC              reduce using rule 25 (valor -> longitud .)
+    COMA            reduce using rule 25 (valor -> longitud .)
+
+
+state 16
+
+    (26) valor -> dequeue .
+
+    MAS             reduce using rule 26 (valor -> dequeue .)
+    MENOS           reduce using rule 26 (valor -> dequeue .)
+    POR             reduce using rule 26 (valor -> dequeue .)
+    DIVIDIR         reduce using rule 26 (valor -> dequeue .)
+    DIV             reduce using rule 26 (valor -> dequeue .)
+    MOD             reduce using rule 26 (valor -> dequeue .)
+    $end            reduce using rule 26 (valor -> dequeue .)
+    PC              reduce using rule 26 (valor -> dequeue .)
+    COMA            reduce using rule 26 (valor -> dequeue .)
+
+
+state 17
+
+    (27) valor -> pop .
+
+    MAS             reduce using rule 27 (valor -> pop .)
+    MENOS           reduce using rule 27 (valor -> pop .)
+    POR             reduce using rule 27 (valor -> pop .)
+    DIVIDIR         reduce using rule 27 (valor -> pop .)
+    DIV             reduce using rule 27 (valor -> pop .)
+    MOD             reduce using rule 27 (valor -> pop .)
+    $end            reduce using rule 27 (valor -> pop .)
+    PC              reduce using rule 27 (valor -> pop .)
+    COMA            reduce using rule 27 (valor -> pop .)
+
+
+state 18
+
+    (28) valor -> get .
+
+    MAS             reduce using rule 28 (valor -> get .)
+    MENOS           reduce using rule 28 (valor -> get .)
+    POR             reduce using rule 28 (valor -> get .)
+    DIVIDIR         reduce using rule 28 (valor -> get .)
+    DIV             reduce using rule 28 (valor -> get .)
+    MOD             reduce using rule 28 (valor -> get .)
+    $end            reduce using rule 28 (valor -> get .)
+    PC              reduce using rule 28 (valor -> get .)
+    COMA            reduce using rule 28 (valor -> get .)
+
+
+state 19
+
+    (29) valor -> getq .
+
+    MAS             reduce using rule 29 (valor -> getq .)
+    MENOS           reduce using rule 29 (valor -> getq .)
+    POR             reduce using rule 29 (valor -> getq .)
+    DIVIDIR         reduce using rule 29 (valor -> getq .)
+    DIV             reduce using rule 29 (valor -> getq .)
+    MOD             reduce using rule 29 (valor -> getq .)
+    $end            reduce using rule 29 (valor -> getq .)
+    PC              reduce using rule 29 (valor -> getq .)
+    COMA            reduce using rule 29 (valor -> getq .)
+
+
+state 20
+
+    (30) valor -> getp .
+
+    MAS             reduce using rule 30 (valor -> getp .)
+    MENOS           reduce using rule 30 (valor -> getp .)
+    POR             reduce using rule 30 (valor -> getp .)
+    DIVIDIR         reduce using rule 30 (valor -> getp .)
+    DIV             reduce using rule 30 (valor -> getp .)
+    MOD             reduce using rule 30 (valor -> getp .)
+    $end            reduce using rule 30 (valor -> getp .)
+    PC              reduce using rule 30 (valor -> getp .)
+    COMA            reduce using rule 30 (valor -> getp .)
+
+
+state 21
+
+    (31) valor -> size .
+
+    MAS             reduce using rule 31 (valor -> size .)
+    MENOS           reduce using rule 31 (valor -> size .)
+    POR             reduce using rule 31 (valor -> size .)
+    DIVIDIR         reduce using rule 31 (valor -> size .)
+    DIV             reduce using rule 31 (valor -> size .)
+    MOD             reduce using rule 31 (valor -> size .)
+    $end            reduce using rule 31 (valor -> size .)
+    PC              reduce using rule 31 (valor -> size .)
+    COMA            reduce using rule 31 (valor -> size .)
+
+
+state 22
+
+    (32) valor -> sizequeue .
+
+    MAS             reduce using rule 32 (valor -> sizequeue .)
+    MENOS           reduce using rule 32 (valor -> sizequeue .)
+    POR             reduce using rule 32 (valor -> sizequeue .)
+    DIVIDIR         reduce using rule 32 (valor -> sizequeue .)
+    DIV             reduce using rule 32 (valor -> sizequeue .)
+    MOD             reduce using rule 32 (valor -> sizequeue .)
+    $end            reduce using rule 32 (valor -> sizequeue .)
+    PC              reduce using rule 32 (valor -> sizequeue .)
+    COMA            reduce using rule 32 (valor -> sizequeue .)
+
+
+state 23
+
+    (33) valor -> sizestack .
+
+    MAS             reduce using rule 33 (valor -> sizestack .)
+    MENOS           reduce using rule 33 (valor -> sizestack .)
+    POR             reduce using rule 33 (valor -> sizestack .)
+    DIVIDIR         reduce using rule 33 (valor -> sizestack .)
+    DIV             reduce using rule 33 (valor -> sizestack .)
+    MOD             reduce using rule 33 (valor -> sizestack .)
+    $end            reduce using rule 33 (valor -> sizestack .)
+    PC              reduce using rule 33 (valor -> sizestack .)
+    COMA            reduce using rule 33 (valor -> sizestack .)
+
+
+state 24
+
+    (34) valor -> deep .
+
+    MAS             reduce using rule 34 (valor -> deep .)
+    MENOS           reduce using rule 34 (valor -> deep .)
+    POR             reduce using rule 34 (valor -> deep .)
+    DIVIDIR         reduce using rule 34 (valor -> deep .)
+    DIV             reduce using rule 34 (valor -> deep .)
+    MOD             reduce using rule 34 (valor -> deep .)
+    $end            reduce using rule 34 (valor -> deep .)
+    PC              reduce using rule 34 (valor -> deep .)
+    COMA            reduce using rule 34 (valor -> deep .)
+
+
+state 25
+
+    (35) valor -> width .
+
+    MAS             reduce using rule 35 (valor -> width .)
+    MENOS           reduce using rule 35 (valor -> width .)
+    POR             reduce using rule 35 (valor -> width .)
+    DIVIDIR         reduce using rule 35 (valor -> width .)
+    DIV             reduce using rule 35 (valor -> width .)
+    MOD             reduce using rule 35 (valor -> width .)
+    $end            reduce using rule 35 (valor -> width .)
+    PC              reduce using rule 35 (valor -> width .)
+    COMA            reduce using rule 35 (valor -> width .)
+
+
+state 26
+
+    (36) valor -> llamar .
+
+    MAS             reduce using rule 36 (valor -> llamar .)
+    MENOS           reduce using rule 36 (valor -> llamar .)
+    POR             reduce using rule 36 (valor -> llamar .)
+    DIVIDIR         reduce using rule 36 (valor -> llamar .)
+    DIV             reduce using rule 36 (valor -> llamar .)
+    MOD             reduce using rule 36 (valor -> llamar .)
+    $end            reduce using rule 36 (valor -> llamar .)
+    PC              reduce using rule 36 (valor -> llamar .)
+    COMA            reduce using rule 36 (valor -> llamar .)
+
+
+state 27
+
+    (15) techo -> CEIL . PA opmath PC
+
+    PA              shift and go to state 49
+
+
+state 28
+
+    (16) piso -> FLOOR . PA opmath PC
+
+    PA              shift and go to state 50
+
+
+state 29
+
+    (37) longitud -> LENGTH . PA STRINGVAL PC
+    (53) longitud -> LENGTH . PA error PC
+
+    PA              shift and go to state 51
+
+
+state 30
+
+    (38) dequeue -> DEQUEUE . PA ID PC
+    (54) dequeue -> DEQUEUE . PA error PC
+
+    PA              shift and go to state 52
+
+
+state 31
+
+    (39) pop -> POP . PA ID PC
+    (55) pop -> POP . PA error PC
+
+    PA              shift and go to state 53
+
+
+state 32
+
+    (40) get -> GET . PA ID COMA INTEGERVAL PC
+    (56) get -> GET . PA ID COMA error PC
+
+    PA              shift and go to state 54
+
+
+state 33
+
+    (41) getq -> GET_P . PA ID PC
+    (57) getq -> GET_P . PA error PC
+
+    PA              shift and go to state 55
+
+
+state 34
+
+    (42) getp -> GET_Q . PA ID PC
+    (58) getp -> GET_Q . PA error PC
+
+    PA              shift and go to state 56
+
+
+state 35
+
+    (43) size -> SIZE . PA ID PC
+    (59) size -> SIZE . PA error PC
+
+    PA              shift and go to state 57
+
+
+state 36
+
+    (44) sizequeue -> SIZE_QUEUE . PA ID PC
+    (60) sizequeue -> SIZE_QUEUE . PA error PC
+
+    PA              shift and go to state 58
+
+
+state 37
+
+    (45) sizestack -> SIZE_STACK . PA ID PC
+    (61) sizestack -> SIZE_STACK . PA error PC
+
+    PA              shift and go to state 59
+
+
+state 38
+
+    (46) deep -> DEEP . PA ID PC
+    (62) deep -> DEEP . PA error PC
+
+    PA              shift and go to state 60
+
+
+state 39
+
+    (47) width -> WIDTH . PA ID PC
+    (63) width -> WIDTH . PA error PC
+
+    PA              shift and go to state 61
+
+
+state 40
+
+    (48) llamar -> CALL . ID PA valoresCall PC
+    (49) llamar -> CALL . ID PA PC
+
+    ID              shift and go to state 62
+
+
+state 41
+
+    (4) par -> PA par . PC parAux
+
+    PC              shift and go to state 63
+
+
+state 42
+
+    (8) opmath -> valor mathsymbol . par
+    (3) par -> . opmath
+    (4) par -> . PA par PC parAux
+    (7) opmath -> . valor
+    (8) opmath -> . valor mathsymbol par
+    (17) valor -> . ID
+    (18) valor -> . INTEGERVAL
+    (19) valor -> . DOUBLEVAL
+    (20) valor -> . STRINGVAL
+    (21) valor -> . TRUE
+    (22) valor -> . FALSE
+    (23) valor -> . techo
+    (24) valor -> . piso
+    (25) valor -> . longitud
+    (26) valor -> . dequeue
+    (27) valor -> . pop
+    (28) valor -> . get
+    (29) valor -> . getq
+    (30) valor -> . getp
+    (31) valor -> . size
+    (32) valor -> . sizequeue
+    (33) valor -> . sizestack
+    (34) valor -> . deep
+    (35) valor -> . width
+    (36) valor -> . llamar
+    (15) techo -> . CEIL PA opmath PC
+    (16) piso -> . FLOOR PA opmath PC
+    (37) longitud -> . LENGTH PA STRINGVAL PC
+    (53) longitud -> . LENGTH PA error PC
+    (38) dequeue -> . DEQUEUE PA ID PC
+    (54) dequeue -> . DEQUEUE PA error PC
+    (39) pop -> . POP PA ID PC
+    (55) pop -> . POP PA error PC
+    (40) get -> . GET PA ID COMA INTEGERVAL PC
+    (56) get -> . GET PA ID COMA error PC
+    (41) getq -> . GET_P PA ID PC
+    (57) getq -> . GET_P PA error PC
+    (42) getp -> . GET_Q PA ID PC
+    (58) getp -> . GET_Q PA error PC
+    (43) size -> . SIZE PA ID PC
+    (59) size -> . SIZE PA error PC
+    (44) sizequeue -> . SIZE_QUEUE PA ID PC
+    (60) sizequeue -> . SIZE_QUEUE PA error PC
+    (45) sizestack -> . SIZE_STACK PA ID PC
+    (61) sizestack -> . SIZE_STACK PA error PC
+    (46) deep -> . DEEP PA ID PC
+    (62) deep -> . DEEP PA error PC
+    (47) width -> . WIDTH PA ID PC
+    (63) width -> . WIDTH PA error PC
+    (48) llamar -> . CALL ID PA valoresCall PC
+    (49) llamar -> . CALL ID PA PC
+
+    PA              shift and go to state 5
+    ID              shift and go to state 7
+    INTEGERVAL      shift and go to state 8
+    DOUBLEVAL       shift and go to state 9
+    STRINGVAL       shift and go to state 10
+    TRUE            shift and go to state 11
+    FALSE           shift and go to state 12
+    CEIL            shift and go to state 27
+    FLOOR           shift and go to state 28
+    LENGTH          shift and go to state 29
+    DEQUEUE         shift and go to state 30
+    POP             shift and go to state 31
+    GET             shift and go to state 32
+    GET_P           shift and go to state 33
+    GET_Q           shift and go to state 34
+    SIZE            shift and go to state 35
+    SIZE_QUEUE      shift and go to state 36
+    SIZE_STACK      shift and go to state 37
+    DEEP            shift and go to state 38
+    WIDTH           shift and go to state 39
+    CALL            shift and go to state 40
+
+    valor                          shift and go to state 6
+    par                            shift and go to state 64
+    opmath                         shift and go to state 4
+    techo                          shift and go to state 13
+    piso                           shift and go to state 14
+    longitud                       shift and go to state 15
+    dequeue                        shift and go to state 16
+    pop                            shift and go to state 17
+    get                            shift and go to state 18
+    getq                           shift and go to state 19
+    getp                           shift and go to state 20
+    size                           shift and go to state 21
+    sizequeue                      shift and go to state 22
+    sizestack                      shift and go to state 23
+    deep                           shift and go to state 24
+    width                          shift and go to state 25
+    llamar                         shift and go to state 26
+
+state 43
+
+    (9) mathsymbol -> MAS .
+
+    PA              reduce using rule 9 (mathsymbol -> MAS .)
+    ID              reduce using rule 9 (mathsymbol -> MAS .)
+    INTEGERVAL      reduce using rule 9 (mathsymbol -> MAS .)
+    DOUBLEVAL       reduce using rule 9 (mathsymbol -> MAS .)
+    STRINGVAL       reduce using rule 9 (mathsymbol -> MAS .)
+    TRUE            reduce using rule 9 (mathsymbol -> MAS .)
+    FALSE           reduce using rule 9 (mathsymbol -> MAS .)
+    CEIL            reduce using rule 9 (mathsymbol -> MAS .)
+    FLOOR           reduce using rule 9 (mathsymbol -> MAS .)
+    LENGTH          reduce using rule 9 (mathsymbol -> MAS .)
+    DEQUEUE         reduce using rule 9 (mathsymbol -> MAS .)
+    POP             reduce using rule 9 (mathsymbol -> MAS .)
+    GET             reduce using rule 9 (mathsymbol -> MAS .)
+    GET_P           reduce using rule 9 (mathsymbol -> MAS .)
+    GET_Q           reduce using rule 9 (mathsymbol -> MAS .)
+    SIZE            reduce using rule 9 (mathsymbol -> MAS .)
+    SIZE_QUEUE      reduce using rule 9 (mathsymbol -> MAS .)
+    SIZE_STACK      reduce using rule 9 (mathsymbol -> MAS .)
+    DEEP            reduce using rule 9 (mathsymbol -> MAS .)
+    WIDTH           reduce using rule 9 (mathsymbol -> MAS .)
+    CALL            reduce using rule 9 (mathsymbol -> MAS .)
+
+
+state 44
+
+    (10) mathsymbol -> MENOS .
+
+    PA              reduce using rule 10 (mathsymbol -> MENOS .)
+    ID              reduce using rule 10 (mathsymbol -> MENOS .)
+    INTEGERVAL      reduce using rule 10 (mathsymbol -> MENOS .)
+    DOUBLEVAL       reduce using rule 10 (mathsymbol -> MENOS .)
+    STRINGVAL       reduce using rule 10 (mathsymbol -> MENOS .)
+    TRUE            reduce using rule 10 (mathsymbol -> MENOS .)
+    FALSE           reduce using rule 10 (mathsymbol -> MENOS .)
+    CEIL            reduce using rule 10 (mathsymbol -> MENOS .)
+    FLOOR           reduce using rule 10 (mathsymbol -> MENOS .)
+    LENGTH          reduce using rule 10 (mathsymbol -> MENOS .)
+    DEQUEUE         reduce using rule 10 (mathsymbol -> MENOS .)
+    POP             reduce using rule 10 (mathsymbol -> MENOS .)
+    GET             reduce using rule 10 (mathsymbol -> MENOS .)
+    GET_P           reduce using rule 10 (mathsymbol -> MENOS .)
+    GET_Q           reduce using rule 10 (mathsymbol -> MENOS .)
+    SIZE            reduce using rule 10 (mathsymbol -> MENOS .)
+    SIZE_QUEUE      reduce using rule 10 (mathsymbol -> MENOS .)
+    SIZE_STACK      reduce using rule 10 (mathsymbol -> MENOS .)
+    DEEP            reduce using rule 10 (mathsymbol -> MENOS .)
+    WIDTH           reduce using rule 10 (mathsymbol -> MENOS .)
+    CALL            reduce using rule 10 (mathsymbol -> MENOS .)
+
+
+state 45
+
+    (11) mathsymbol -> POR .
+
+    PA              reduce using rule 11 (mathsymbol -> POR .)
+    ID              reduce using rule 11 (mathsymbol -> POR .)
+    INTEGERVAL      reduce using rule 11 (mathsymbol -> POR .)
+    DOUBLEVAL       reduce using rule 11 (mathsymbol -> POR .)
+    STRINGVAL       reduce using rule 11 (mathsymbol -> POR .)
+    TRUE            reduce using rule 11 (mathsymbol -> POR .)
+    FALSE           reduce using rule 11 (mathsymbol -> POR .)
+    CEIL            reduce using rule 11 (mathsymbol -> POR .)
+    FLOOR           reduce using rule 11 (mathsymbol -> POR .)
+    LENGTH          reduce using rule 11 (mathsymbol -> POR .)
+    DEQUEUE         reduce using rule 11 (mathsymbol -> POR .)
+    POP             reduce using rule 11 (mathsymbol -> POR .)
+    GET             reduce using rule 11 (mathsymbol -> POR .)
+    GET_P           reduce using rule 11 (mathsymbol -> POR .)
+    GET_Q           reduce using rule 11 (mathsymbol -> POR .)
+    SIZE            reduce using rule 11 (mathsymbol -> POR .)
+    SIZE_QUEUE      reduce using rule 11 (mathsymbol -> POR .)
+    SIZE_STACK      reduce using rule 11 (mathsymbol -> POR .)
+    DEEP            reduce using rule 11 (mathsymbol -> POR .)
+    WIDTH           reduce using rule 11 (mathsymbol -> POR .)
+    CALL            reduce using rule 11 (mathsymbol -> POR .)
+
+
+state 46
+
+    (12) mathsymbol -> DIVIDIR .
+
+    PA              reduce using rule 12 (mathsymbol -> DIVIDIR .)
+    ID              reduce using rule 12 (mathsymbol -> DIVIDIR .)
+    INTEGERVAL      reduce using rule 12 (mathsymbol -> DIVIDIR .)
+    DOUBLEVAL       reduce using rule 12 (mathsymbol -> DIVIDIR .)
+    STRINGVAL       reduce using rule 12 (mathsymbol -> DIVIDIR .)
+    TRUE            reduce using rule 12 (mathsymbol -> DIVIDIR .)
+    FALSE           reduce using rule 12 (mathsymbol -> DIVIDIR .)
+    CEIL            reduce using rule 12 (mathsymbol -> DIVIDIR .)
+    FLOOR           reduce using rule 12 (mathsymbol -> DIVIDIR .)
+    LENGTH          reduce using rule 12 (mathsymbol -> DIVIDIR .)
+    DEQUEUE         reduce using rule 12 (mathsymbol -> DIVIDIR .)
+    POP             reduce using rule 12 (mathsymbol -> DIVIDIR .)
+    GET             reduce using rule 12 (mathsymbol -> DIVIDIR .)
+    GET_P           reduce using rule 12 (mathsymbol -> DIVIDIR .)
+    GET_Q           reduce using rule 12 (mathsymbol -> DIVIDIR .)
+    SIZE            reduce using rule 12 (mathsymbol -> DIVIDIR .)
+    SIZE_QUEUE      reduce using rule 12 (mathsymbol -> DIVIDIR .)
+    SIZE_STACK      reduce using rule 12 (mathsymbol -> DIVIDIR .)
+    DEEP            reduce using rule 12 (mathsymbol -> DIVIDIR .)
+    WIDTH           reduce using rule 12 (mathsymbol -> DIVIDIR .)
+    CALL            reduce using rule 12 (mathsymbol -> DIVIDIR .)
+
+
+state 47
+
+    (13) mathsymbol -> DIV .
+
+    PA              reduce using rule 13 (mathsymbol -> DIV .)
+    ID              reduce using rule 13 (mathsymbol -> DIV .)
+    INTEGERVAL      reduce using rule 13 (mathsymbol -> DIV .)
+    DOUBLEVAL       reduce using rule 13 (mathsymbol -> DIV .)
+    STRINGVAL       reduce using rule 13 (mathsymbol -> DIV .)
+    TRUE            reduce using rule 13 (mathsymbol -> DIV .)
+    FALSE           reduce using rule 13 (mathsymbol -> DIV .)
+    CEIL            reduce using rule 13 (mathsymbol -> DIV .)
+    FLOOR           reduce using rule 13 (mathsymbol -> DIV .)
+    LENGTH          reduce using rule 13 (mathsymbol -> DIV .)
+    DEQUEUE         reduce using rule 13 (mathsymbol -> DIV .)
+    POP             reduce using rule 13 (mathsymbol -> DIV .)
+    GET             reduce using rule 13 (mathsymbol -> DIV .)
+    GET_P           reduce using rule 13 (mathsymbol -> DIV .)
+    GET_Q           reduce using rule 13 (mathsymbol -> DIV .)
+    SIZE            reduce using rule 13 (mathsymbol -> DIV .)
+    SIZE_QUEUE      reduce using rule 13 (mathsymbol -> DIV .)
+    SIZE_STACK      reduce using rule 13 (mathsymbol -> DIV .)
+    DEEP            reduce using rule 13 (mathsymbol -> DIV .)
+    WIDTH           reduce using rule 13 (mathsymbol -> DIV .)
+    CALL            reduce using rule 13 (mathsymbol -> DIV .)
+
+
+state 48
+
+    (14) mathsymbol -> MOD .
+
+    PA              reduce using rule 14 (mathsymbol -> MOD .)
+    ID              reduce using rule 14 (mathsymbol -> MOD .)
+    INTEGERVAL      reduce using rule 14 (mathsymbol -> MOD .)
+    DOUBLEVAL       reduce using rule 14 (mathsymbol -> MOD .)
+    STRINGVAL       reduce using rule 14 (mathsymbol -> MOD .)
+    TRUE            reduce using rule 14 (mathsymbol -> MOD .)
+    FALSE           reduce using rule 14 (mathsymbol -> MOD .)
+    CEIL            reduce using rule 14 (mathsymbol -> MOD .)
+    FLOOR           reduce using rule 14 (mathsymbol -> MOD .)
+    LENGTH          reduce using rule 14 (mathsymbol -> MOD .)
+    DEQUEUE         reduce using rule 14 (mathsymbol -> MOD .)
+    POP             reduce using rule 14 (mathsymbol -> MOD .)
+    GET             reduce using rule 14 (mathsymbol -> MOD .)
+    GET_P           reduce using rule 14 (mathsymbol -> MOD .)
+    GET_Q           reduce using rule 14 (mathsymbol -> MOD .)
+    SIZE            reduce using rule 14 (mathsymbol -> MOD .)
+    SIZE_QUEUE      reduce using rule 14 (mathsymbol -> MOD .)
+    SIZE_STACK      reduce using rule 14 (mathsymbol -> MOD .)
+    DEEP            reduce using rule 14 (mathsymbol -> MOD .)
+    WIDTH           reduce using rule 14 (mathsymbol -> MOD .)
+    CALL            reduce using rule 14 (mathsymbol -> MOD .)
+
+
+state 49
+
+    (15) techo -> CEIL PA . opmath PC
+    (7) opmath -> . valor
+    (8) opmath -> . valor mathsymbol par
+    (17) valor -> . ID
+    (18) valor -> . INTEGERVAL
+    (19) valor -> . DOUBLEVAL
+    (20) valor -> . STRINGVAL
+    (21) valor -> . TRUE
+    (22) valor -> . FALSE
+    (23) valor -> . techo
+    (24) valor -> . piso
+    (25) valor -> . longitud
+    (26) valor -> . dequeue
+    (27) valor -> . pop
+    (28) valor -> . get
+    (29) valor -> . getq
+    (30) valor -> . getp
+    (31) valor -> . size
+    (32) valor -> . sizequeue
+    (33) valor -> . sizestack
+    (34) valor -> . deep
+    (35) valor -> . width
+    (36) valor -> . llamar
+    (15) techo -> . CEIL PA opmath PC
+    (16) piso -> . FLOOR PA opmath PC
+    (37) longitud -> . LENGTH PA STRINGVAL PC
+    (53) longitud -> . LENGTH PA error PC
+    (38) dequeue -> . DEQUEUE PA ID PC
+    (54) dequeue -> . DEQUEUE PA error PC
+    (39) pop -> . POP PA ID PC
+    (55) pop -> . POP PA error PC
+    (40) get -> . GET PA ID COMA INTEGERVAL PC
+    (56) get -> . GET PA ID COMA error PC
+    (41) getq -> . GET_P PA ID PC
+    (57) getq -> . GET_P PA error PC
+    (42) getp -> . GET_Q PA ID PC
+    (58) getp -> . GET_Q PA error PC
+    (43) size -> . SIZE PA ID PC
+    (59) size -> . SIZE PA error PC
+    (44) sizequeue -> . SIZE_QUEUE PA ID PC
+    (60) sizequeue -> . SIZE_QUEUE PA error PC
+    (45) sizestack -> . SIZE_STACK PA ID PC
+    (61) sizestack -> . SIZE_STACK PA error PC
+    (46) deep -> . DEEP PA ID PC
+    (62) deep -> . DEEP PA error PC
+    (47) width -> . WIDTH PA ID PC
+    (63) width -> . WIDTH PA error PC
+    (48) llamar -> . CALL ID PA valoresCall PC
+    (49) llamar -> . CALL ID PA PC
+
+    ID              shift and go to state 7
+    INTEGERVAL      shift and go to state 8
+    DOUBLEVAL       shift and go to state 9
+    STRINGVAL       shift and go to state 10
+    TRUE            shift and go to state 11
+    FALSE           shift and go to state 12
+    CEIL            shift and go to state 27
+    FLOOR           shift and go to state 28
+    LENGTH          shift and go to state 29
+    DEQUEUE         shift and go to state 30
+    POP             shift and go to state 31
+    GET             shift and go to state 32
+    GET_P           shift and go to state 33
+    GET_Q           shift and go to state 34
+    SIZE            shift and go to state 35
+    SIZE_QUEUE      shift and go to state 36
+    SIZE_STACK      shift and go to state 37
+    DEEP            shift and go to state 38
+    WIDTH           shift and go to state 39
+    CALL            shift and go to state 40
+
+    opmath                         shift and go to state 65
+    valor                          shift and go to state 6
+    techo                          shift and go to state 13
+    piso                           shift and go to state 14
+    longitud                       shift and go to state 15
+    dequeue                        shift and go to state 16
+    pop                            shift and go to state 17
+    get                            shift and go to state 18
+    getq                           shift and go to state 19
+    getp                           shift and go to state 20
+    size                           shift and go to state 21
+    sizequeue                      shift and go to state 22
+    sizestack                      shift and go to state 23
+    deep                           shift and go to state 24
+    width                          shift and go to state 25
+    llamar                         shift and go to state 26
+
+state 50
+
+    (16) piso -> FLOOR PA . opmath PC
+    (7) opmath -> . valor
+    (8) opmath -> . valor mathsymbol par
+    (17) valor -> . ID
+    (18) valor -> . INTEGERVAL
+    (19) valor -> . DOUBLEVAL
+    (20) valor -> . STRINGVAL
+    (21) valor -> . TRUE
+    (22) valor -> . FALSE
+    (23) valor -> . techo
+    (24) valor -> . piso
+    (25) valor -> . longitud
+    (26) valor -> . dequeue
+    (27) valor -> . pop
+    (28) valor -> . get
+    (29) valor -> . getq
+    (30) valor -> . getp
+    (31) valor -> . size
+    (32) valor -> . sizequeue
+    (33) valor -> . sizestack
+    (34) valor -> . deep
+    (35) valor -> . width
+    (36) valor -> . llamar
+    (15) techo -> . CEIL PA opmath PC
+    (16) piso -> . FLOOR PA opmath PC
+    (37) longitud -> . LENGTH PA STRINGVAL PC
+    (53) longitud -> . LENGTH PA error PC
+    (38) dequeue -> . DEQUEUE PA ID PC
+    (54) dequeue -> . DEQUEUE PA error PC
+    (39) pop -> . POP PA ID PC
+    (55) pop -> . POP PA error PC
+    (40) get -> . GET PA ID COMA INTEGERVAL PC
+    (56) get -> . GET PA ID COMA error PC
+    (41) getq -> . GET_P PA ID PC
+    (57) getq -> . GET_P PA error PC
+    (42) getp -> . GET_Q PA ID PC
+    (58) getp -> . GET_Q PA error PC
+    (43) size -> . SIZE PA ID PC
+    (59) size -> . SIZE PA error PC
+    (44) sizequeue -> . SIZE_QUEUE PA ID PC
+    (60) sizequeue -> . SIZE_QUEUE PA error PC
+    (45) sizestack -> . SIZE_STACK PA ID PC
+    (61) sizestack -> . SIZE_STACK PA error PC
+    (46) deep -> . DEEP PA ID PC
+    (62) deep -> . DEEP PA error PC
+    (47) width -> . WIDTH PA ID PC
+    (63) width -> . WIDTH PA error PC
+    (48) llamar -> . CALL ID PA valoresCall PC
+    (49) llamar -> . CALL ID PA PC
+
+    ID              shift and go to state 7
+    INTEGERVAL      shift and go to state 8
+    DOUBLEVAL       shift and go to state 9
+    STRINGVAL       shift and go to state 10
+    TRUE            shift and go to state 11
+    FALSE           shift and go to state 12
+    CEIL            shift and go to state 27
+    FLOOR           shift and go to state 28
+    LENGTH          shift and go to state 29
+    DEQUEUE         shift and go to state 30
+    POP             shift and go to state 31
+    GET             shift and go to state 32
+    GET_P           shift and go to state 33
+    GET_Q           shift and go to state 34
+    SIZE            shift and go to state 35
+    SIZE_QUEUE      shift and go to state 36
+    SIZE_STACK      shift and go to state 37
+    DEEP            shift and go to state 38
+    WIDTH           shift and go to state 39
+    CALL            shift and go to state 40
+
+    opmath                         shift and go to state 66
+    valor                          shift and go to state 6
+    techo                          shift and go to state 13
+    piso                           shift and go to state 14
+    longitud                       shift and go to state 15
+    dequeue                        shift and go to state 16
+    pop                            shift and go to state 17
+    get                            shift and go to state 18
+    getq                           shift and go to state 19
+    getp                           shift and go to state 20
+    size                           shift and go to state 21
+    sizequeue                      shift and go to state 22
+    sizestack                      shift and go to state 23
+    deep                           shift and go to state 24
+    width                          shift and go to state 25
+    llamar                         shift and go to state 26
+
+state 51
+
+    (37) longitud -> LENGTH PA . STRINGVAL PC
+    (53) longitud -> LENGTH PA . error PC
+
+    STRINGVAL       shift and go to state 67
+    error           shift and go to state 68
+
+
+state 52
+
+    (38) dequeue -> DEQUEUE PA . ID PC
+    (54) dequeue -> DEQUEUE PA . error PC
+
+    ID              shift and go to state 69
+    error           shift and go to state 70
+
+
+state 53
+
+    (39) pop -> POP PA . ID PC
+    (55) pop -> POP PA . error PC
+
+    ID              shift and go to state 71
+    error           shift and go to state 72
+
+
+state 54
+
+    (40) get -> GET PA . ID COMA INTEGERVAL PC
+    (56) get -> GET PA . ID COMA error PC
+
+    ID              shift and go to state 73
+
+
+state 55
+
+    (41) getq -> GET_P PA . ID PC
+    (57) getq -> GET_P PA . error PC
+
+    ID              shift and go to state 74
+    error           shift and go to state 75
+
+
+state 56
+
+    (42) getp -> GET_Q PA . ID PC
+    (58) getp -> GET_Q PA . error PC
+
+    ID              shift and go to state 76
+    error           shift and go to state 77
+
+
+state 57
+
+    (43) size -> SIZE PA . ID PC
+    (59) size -> SIZE PA . error PC
+
+    ID              shift and go to state 78
+    error           shift and go to state 79
+
+
+state 58
+
+    (44) sizequeue -> SIZE_QUEUE PA . ID PC
+    (60) sizequeue -> SIZE_QUEUE PA . error PC
+
+    ID              shift and go to state 80
+    error           shift and go to state 81
+
+
+state 59
+
+    (45) sizestack -> SIZE_STACK PA . ID PC
+    (61) sizestack -> SIZE_STACK PA . error PC
+
+    ID              shift and go to state 82
+    error           shift and go to state 83
+
+
+state 60
+
+    (46) deep -> DEEP PA . ID PC
+    (62) deep -> DEEP PA . error PC
+
+    ID              shift and go to state 84
+    error           shift and go to state 85
+
+
+state 61
+
+    (47) width -> WIDTH PA . ID PC
+    (63) width -> WIDTH PA . error PC
+
+    ID              shift and go to state 86
+    error           shift and go to state 87
+
+
+state 62
+
+    (48) llamar -> CALL ID . PA valoresCall PC
+    (49) llamar -> CALL ID . PA PC
+
+    PA              shift and go to state 88
+
+
+state 63
+
+    (4) par -> PA par PC . parAux
+    (5) parAux -> . mathsymbol par
+    (6) parAux -> . empty
+    (9) mathsymbol -> . MAS
+    (10) mathsymbol -> . MENOS
+    (11) mathsymbol -> . POR
+    (12) mathsymbol -> . DIVIDIR
+    (13) mathsymbol -> . DIV
+    (14) mathsymbol -> . MOD
+    (52) empty -> .
+
+    MAS             shift and go to state 43
+    MENOS           shift and go to state 44
+    POR             shift and go to state 45
+    DIVIDIR         shift and go to state 46
+    DIV             shift and go to state 47
+    MOD             shift and go to state 48
+    $end            reduce using rule 52 (empty -> .)
+    PC              reduce using rule 52 (empty -> .)
+
+    parAux                         shift and go to state 89
+    mathsymbol                     shift and go to state 90
+    empty                          shift and go to state 91
+
+state 64
+
+    (8) opmath -> valor mathsymbol par .
+
+    $end            reduce using rule 8 (opmath -> valor mathsymbol par .)
+    PC              reduce using rule 8 (opmath -> valor mathsymbol par .)
+
+
+state 65
+
+    (15) techo -> CEIL PA opmath . PC
+
+    PC              shift and go to state 92
+
+
+state 66
+
+    (16) piso -> FLOOR PA opmath . PC
+
+    PC              shift and go to state 93
+
+
+state 67
+
+    (37) longitud -> LENGTH PA STRINGVAL . PC
+
+    PC              shift and go to state 94
+
+
+state 68
+
+    (53) longitud -> LENGTH PA error . PC
+
+    PC              shift and go to state 95
+
+
+state 69
+
+    (38) dequeue -> DEQUEUE PA ID . PC
+
+    PC              shift and go to state 96
+
+
+state 70
+
+    (54) dequeue -> DEQUEUE PA error . PC
+
+    PC              shift and go to state 97
+
+
+state 71
+
+    (39) pop -> POP PA ID . PC
+
+    PC              shift and go to state 98
+
+
+state 72
+
+    (55) pop -> POP PA error . PC
+
+    PC              shift and go to state 99
+
+
+state 73
+
+    (40) get -> GET PA ID . COMA INTEGERVAL PC
+    (56) get -> GET PA ID . COMA error PC
+
+    COMA            shift and go to state 100
+
+
+state 74
+
+    (41) getq -> GET_P PA ID . PC
+
+    PC              shift and go to state 101
+
+
+state 75
+
+    (57) getq -> GET_P PA error . PC
+
+    PC              shift and go to state 102
+
+
+state 76
+
+    (42) getp -> GET_Q PA ID . PC
+
+    PC              shift and go to state 103
+
+
+state 77
+
+    (58) getp -> GET_Q PA error . PC
+
+    PC              shift and go to state 104
+
+
+state 78
+
+    (43) size -> SIZE PA ID . PC
+
+    PC              shift and go to state 105
+
+
+state 79
+
+    (59) size -> SIZE PA error . PC
+
+    PC              shift and go to state 106
+
+
+state 80
+
+    (44) sizequeue -> SIZE_QUEUE PA ID . PC
+
+    PC              shift and go to state 107
+
+
+state 81
+
+    (60) sizequeue -> SIZE_QUEUE PA error . PC
+
+    PC              shift and go to state 108
+
+
+state 82
+
+    (45) sizestack -> SIZE_STACK PA ID . PC
+
+    PC              shift and go to state 109
+
+
+state 83
+
+    (61) sizestack -> SIZE_STACK PA error . PC
+
+    PC              shift and go to state 110
+
+
+state 84
+
+    (46) deep -> DEEP PA ID . PC
+
+    PC              shift and go to state 111
+
+
+state 85
+
+    (62) deep -> DEEP PA error . PC
+
+    PC              shift and go to state 112
+
+
+state 86
+
+    (47) width -> WIDTH PA ID . PC
+
+    PC              shift and go to state 113
+
+
+state 87
+
+    (63) width -> WIDTH PA error . PC
+
+    PC              shift and go to state 114
+
+
+state 88
+
+    (48) llamar -> CALL ID PA . valoresCall PC
+    (49) llamar -> CALL ID PA . PC
+    (50) valoresCall -> . valor
+    (51) valoresCall -> . valor COMA valoresCall
+    (17) valor -> . ID
+    (18) valor -> . INTEGERVAL
+    (19) valor -> . DOUBLEVAL
+    (20) valor -> . STRINGVAL
+    (21) valor -> . TRUE
+    (22) valor -> . FALSE
+    (23) valor -> . techo
+    (24) valor -> . piso
+    (25) valor -> . longitud
+    (26) valor -> . dequeue
+    (27) valor -> . pop
+    (28) valor -> . get
+    (29) valor -> . getq
+    (30) valor -> . getp
+    (31) valor -> . size
+    (32) valor -> . sizequeue
+    (33) valor -> . sizestack
+    (34) valor -> . deep
+    (35) valor -> . width
+    (36) valor -> . llamar
+    (15) techo -> . CEIL PA opmath PC
+    (16) piso -> . FLOOR PA opmath PC
+    (37) longitud -> . LENGTH PA STRINGVAL PC
+    (53) longitud -> . LENGTH PA error PC
+    (38) dequeue -> . DEQUEUE PA ID PC
+    (54) dequeue -> . DEQUEUE PA error PC
+    (39) pop -> . POP PA ID PC
+    (55) pop -> . POP PA error PC
+    (40) get -> . GET PA ID COMA INTEGERVAL PC
+    (56) get -> . GET PA ID COMA error PC
+    (41) getq -> . GET_P PA ID PC
+    (57) getq -> . GET_P PA error PC
+    (42) getp -> . GET_Q PA ID PC
+    (58) getp -> . GET_Q PA error PC
+    (43) size -> . SIZE PA ID PC
+    (59) size -> . SIZE PA error PC
+    (44) sizequeue -> . SIZE_QUEUE PA ID PC
+    (60) sizequeue -> . SIZE_QUEUE PA error PC
+    (45) sizestack -> . SIZE_STACK PA ID PC
+    (61) sizestack -> . SIZE_STACK PA error PC
+    (46) deep -> . DEEP PA ID PC
+    (62) deep -> . DEEP PA error PC
+    (47) width -> . WIDTH PA ID PC
+    (63) width -> . WIDTH PA error PC
+    (48) llamar -> . CALL ID PA valoresCall PC
+    (49) llamar -> . CALL ID PA PC
+
+    PC              shift and go to state 116
+    ID              shift and go to state 7
+    INTEGERVAL      shift and go to state 8
+    DOUBLEVAL       shift and go to state 9
+    STRINGVAL       shift and go to state 10
+    TRUE            shift and go to state 11
+    FALSE           shift and go to state 12
+    CEIL            shift and go to state 27
+    FLOOR           shift and go to state 28
+    LENGTH          shift and go to state 29
+    DEQUEUE         shift and go to state 30
+    POP             shift and go to state 31
+    GET             shift and go to state 32
+    GET_P           shift and go to state 33
+    GET_Q           shift and go to state 34
+    SIZE            shift and go to state 35
+    SIZE_QUEUE      shift and go to state 36
+    SIZE_STACK      shift and go to state 37
+    DEEP            shift and go to state 38
+    WIDTH           shift and go to state 39
+    CALL            shift and go to state 40
+
+    valoresCall                    shift and go to state 115
+    valor                          shift and go to state 117
+    techo                          shift and go to state 13
+    piso                           shift and go to state 14
+    longitud                       shift and go to state 15
+    dequeue                        shift and go to state 16
+    pop                            shift and go to state 17
+    get                            shift and go to state 18
+    getq                           shift and go to state 19
+    getp                           shift and go to state 20
+    size                           shift and go to state 21
+    sizequeue                      shift and go to state 22
+    sizestack                      shift and go to state 23
+    deep                           shift and go to state 24
+    width                          shift and go to state 25
+    llamar                         shift and go to state 26
+
+state 89
+
+    (4) par -> PA par PC parAux .
+
+    $end            reduce using rule 4 (par -> PA par PC parAux .)
+    PC              reduce using rule 4 (par -> PA par PC parAux .)
+
+
+state 90
+
+    (5) parAux -> mathsymbol . par
+    (3) par -> . opmath
+    (4) par -> . PA par PC parAux
+    (7) opmath -> . valor
+    (8) opmath -> . valor mathsymbol par
+    (17) valor -> . ID
+    (18) valor -> . INTEGERVAL
+    (19) valor -> . DOUBLEVAL
+    (20) valor -> . STRINGVAL
+    (21) valor -> . TRUE
+    (22) valor -> . FALSE
+    (23) valor -> . techo
+    (24) valor -> . piso
+    (25) valor -> . longitud
+    (26) valor -> . dequeue
+    (27) valor -> . pop
+    (28) valor -> . get
+    (29) valor -> . getq
+    (30) valor -> . getp
+    (31) valor -> . size
+    (32) valor -> . sizequeue
+    (33) valor -> . sizestack
+    (34) valor -> . deep
+    (35) valor -> . width
+    (36) valor -> . llamar
+    (15) techo -> . CEIL PA opmath PC
+    (16) piso -> . FLOOR PA opmath PC
+    (37) longitud -> . LENGTH PA STRINGVAL PC
+    (53) longitud -> . LENGTH PA error PC
+    (38) dequeue -> . DEQUEUE PA ID PC
+    (54) dequeue -> . DEQUEUE PA error PC
+    (39) pop -> . POP PA ID PC
+    (55) pop -> . POP PA error PC
+    (40) get -> . GET PA ID COMA INTEGERVAL PC
+    (56) get -> . GET PA ID COMA error PC
+    (41) getq -> . GET_P PA ID PC
+    (57) getq -> . GET_P PA error PC
+    (42) getp -> . GET_Q PA ID PC
+    (58) getp -> . GET_Q PA error PC
+    (43) size -> . SIZE PA ID PC
+    (59) size -> . SIZE PA error PC
+    (44) sizequeue -> . SIZE_QUEUE PA ID PC
+    (60) sizequeue -> . SIZE_QUEUE PA error PC
+    (45) sizestack -> . SIZE_STACK PA ID PC
+    (61) sizestack -> . SIZE_STACK PA error PC
+    (46) deep -> . DEEP PA ID PC
+    (62) deep -> . DEEP PA error PC
+    (47) width -> . WIDTH PA ID PC
+    (63) width -> . WIDTH PA error PC
+    (48) llamar -> . CALL ID PA valoresCall PC
+    (49) llamar -> . CALL ID PA PC
+
+    PA              shift and go to state 5
+    ID              shift and go to state 7
+    INTEGERVAL      shift and go to state 8
+    DOUBLEVAL       shift and go to state 9
+    STRINGVAL       shift and go to state 10
+    TRUE            shift and go to state 11
+    FALSE           shift and go to state 12
+    CEIL            shift and go to state 27
+    FLOOR           shift and go to state 28
+    LENGTH          shift and go to state 29
+    DEQUEUE         shift and go to state 30
+    POP             shift and go to state 31
+    GET             shift and go to state 32
+    GET_P           shift and go to state 33
+    GET_Q           shift and go to state 34
+    SIZE            shift and go to state 35
+    SIZE_QUEUE      shift and go to state 36
+    SIZE_STACK      shift and go to state 37
+    DEEP            shift and go to state 38
+    WIDTH           shift and go to state 39
+    CALL            shift and go to state 40
+
+    par                            shift and go to state 118
+    opmath                         shift and go to state 4
+    valor                          shift and go to state 6
+    techo                          shift and go to state 13
+    piso                           shift and go to state 14
+    longitud                       shift and go to state 15
+    dequeue                        shift and go to state 16
+    pop                            shift and go to state 17
+    get                            shift and go to state 18
+    getq                           shift and go to state 19
+    getp                           shift and go to state 20
+    size                           shift and go to state 21
+    sizequeue                      shift and go to state 22
+    sizestack                      shift and go to state 23
+    deep                           shift and go to state 24
+    width                          shift and go to state 25
+    llamar                         shift and go to state 26
+
+state 91
+
+    (6) parAux -> empty .
+
+    $end            reduce using rule 6 (parAux -> empty .)
+    PC              reduce using rule 6 (parAux -> empty .)
+
+
+state 92
+
+    (15) techo -> CEIL PA opmath PC .
+
+    MAS             reduce using rule 15 (techo -> CEIL PA opmath PC .)
+    MENOS           reduce using rule 15 (techo -> CEIL PA opmath PC .)
+    POR             reduce using rule 15 (techo -> CEIL PA opmath PC .)
+    DIVIDIR         reduce using rule 15 (techo -> CEIL PA opmath PC .)
+    DIV             reduce using rule 15 (techo -> CEIL PA opmath PC .)
+    MOD             reduce using rule 15 (techo -> CEIL PA opmath PC .)
+    $end            reduce using rule 15 (techo -> CEIL PA opmath PC .)
+    PC              reduce using rule 15 (techo -> CEIL PA opmath PC .)
+    COMA            reduce using rule 15 (techo -> CEIL PA opmath PC .)
+
+
+state 93
+
+    (16) piso -> FLOOR PA opmath PC .
+
+    MAS             reduce using rule 16 (piso -> FLOOR PA opmath PC .)
+    MENOS           reduce using rule 16 (piso -> FLOOR PA opmath PC .)
+    POR             reduce using rule 16 (piso -> FLOOR PA opmath PC .)
+    DIVIDIR         reduce using rule 16 (piso -> FLOOR PA opmath PC .)
+    DIV             reduce using rule 16 (piso -> FLOOR PA opmath PC .)
+    MOD             reduce using rule 16 (piso -> FLOOR PA opmath PC .)
+    $end            reduce using rule 16 (piso -> FLOOR PA opmath PC .)
+    PC              reduce using rule 16 (piso -> FLOOR PA opmath PC .)
+    COMA            reduce using rule 16 (piso -> FLOOR PA opmath PC .)
+
+
+state 94
+
+    (37) longitud -> LENGTH PA STRINGVAL PC .
+
+    MAS             reduce using rule 37 (longitud -> LENGTH PA STRINGVAL PC .)
+    MENOS           reduce using rule 37 (longitud -> LENGTH PA STRINGVAL PC .)
+    POR             reduce using rule 37 (longitud -> LENGTH PA STRINGVAL PC .)
+    DIVIDIR         reduce using rule 37 (longitud -> LENGTH PA STRINGVAL PC .)
+    DIV             reduce using rule 37 (longitud -> LENGTH PA STRINGVAL PC .)
+    MOD             reduce using rule 37 (longitud -> LENGTH PA STRINGVAL PC .)
+    $end            reduce using rule 37 (longitud -> LENGTH PA STRINGVAL PC .)
+    PC              reduce using rule 37 (longitud -> LENGTH PA STRINGVAL PC .)
+    COMA            reduce using rule 37 (longitud -> LENGTH PA STRINGVAL PC .)
+
+
+state 95
+
+    (53) longitud -> LENGTH PA error PC .
+
+    MAS             reduce using rule 53 (longitud -> LENGTH PA error PC .)
+    MENOS           reduce using rule 53 (longitud -> LENGTH PA error PC .)
+    POR             reduce using rule 53 (longitud -> LENGTH PA error PC .)
+    DIVIDIR         reduce using rule 53 (longitud -> LENGTH PA error PC .)
+    DIV             reduce using rule 53 (longitud -> LENGTH PA error PC .)
+    MOD             reduce using rule 53 (longitud -> LENGTH PA error PC .)
+    $end            reduce using rule 53 (longitud -> LENGTH PA error PC .)
+    PC              reduce using rule 53 (longitud -> LENGTH PA error PC .)
+    COMA            reduce using rule 53 (longitud -> LENGTH PA error PC .)
+
+
+state 96
+
+    (38) dequeue -> DEQUEUE PA ID PC .
+
+    MAS             reduce using rule 38 (dequeue -> DEQUEUE PA ID PC .)
+    MENOS           reduce using rule 38 (dequeue -> DEQUEUE PA ID PC .)
+    POR             reduce using rule 38 (dequeue -> DEQUEUE PA ID PC .)
+    DIVIDIR         reduce using rule 38 (dequeue -> DEQUEUE PA ID PC .)
+    DIV             reduce using rule 38 (dequeue -> DEQUEUE PA ID PC .)
+    MOD             reduce using rule 38 (dequeue -> DEQUEUE PA ID PC .)
+    $end            reduce using rule 38 (dequeue -> DEQUEUE PA ID PC .)
+    PC              reduce using rule 38 (dequeue -> DEQUEUE PA ID PC .)
+    COMA            reduce using rule 38 (dequeue -> DEQUEUE PA ID PC .)
+
+
+state 97
+
+    (54) dequeue -> DEQUEUE PA error PC .
+
+    MAS             reduce using rule 54 (dequeue -> DEQUEUE PA error PC .)
+    MENOS           reduce using rule 54 (dequeue -> DEQUEUE PA error PC .)
+    POR             reduce using rule 54 (dequeue -> DEQUEUE PA error PC .)
+    DIVIDIR         reduce using rule 54 (dequeue -> DEQUEUE PA error PC .)
+    DIV             reduce using rule 54 (dequeue -> DEQUEUE PA error PC .)
+    MOD             reduce using rule 54 (dequeue -> DEQUEUE PA error PC .)
+    $end            reduce using rule 54 (dequeue -> DEQUEUE PA error PC .)
+    PC              reduce using rule 54 (dequeue -> DEQUEUE PA error PC .)
+    COMA            reduce using rule 54 (dequeue -> DEQUEUE PA error PC .)
+
+
+state 98
+
+    (39) pop -> POP PA ID PC .
+
+    MAS             reduce using rule 39 (pop -> POP PA ID PC .)
+    MENOS           reduce using rule 39 (pop -> POP PA ID PC .)
+    POR             reduce using rule 39 (pop -> POP PA ID PC .)
+    DIVIDIR         reduce using rule 39 (pop -> POP PA ID PC .)
+    DIV             reduce using rule 39 (pop -> POP PA ID PC .)
+    MOD             reduce using rule 39 (pop -> POP PA ID PC .)
+    $end            reduce using rule 39 (pop -> POP PA ID PC .)
+    PC              reduce using rule 39 (pop -> POP PA ID PC .)
+    COMA            reduce using rule 39 (pop -> POP PA ID PC .)
+
+
+state 99
+
+    (55) pop -> POP PA error PC .
+
+    MAS             reduce using rule 55 (pop -> POP PA error PC .)
+    MENOS           reduce using rule 55 (pop -> POP PA error PC .)
+    POR             reduce using rule 55 (pop -> POP PA error PC .)
+    DIVIDIR         reduce using rule 55 (pop -> POP PA error PC .)
+    DIV             reduce using rule 55 (pop -> POP PA error PC .)
+    MOD             reduce using rule 55 (pop -> POP PA error PC .)
+    $end            reduce using rule 55 (pop -> POP PA error PC .)
+    PC              reduce using rule 55 (pop -> POP PA error PC .)
+    COMA            reduce using rule 55 (pop -> POP PA error PC .)
+
+
+state 100
+
+    (40) get -> GET PA ID COMA . INTEGERVAL PC
+    (56) get -> GET PA ID COMA . error PC
+
+    INTEGERVAL      shift and go to state 119
+    error           shift and go to state 120
+
+
+state 101
+
+    (41) getq -> GET_P PA ID PC .
+
+    MAS             reduce using rule 41 (getq -> GET_P PA ID PC .)
+    MENOS           reduce using rule 41 (getq -> GET_P PA ID PC .)
+    POR             reduce using rule 41 (getq -> GET_P PA ID PC .)
+    DIVIDIR         reduce using rule 41 (getq -> GET_P PA ID PC .)
+    DIV             reduce using rule 41 (getq -> GET_P PA ID PC .)
+    MOD             reduce using rule 41 (getq -> GET_P PA ID PC .)
+    $end            reduce using rule 41 (getq -> GET_P PA ID PC .)
+    PC              reduce using rule 41 (getq -> GET_P PA ID PC .)
+    COMA            reduce using rule 41 (getq -> GET_P PA ID PC .)
+
+
+state 102
+
+    (57) getq -> GET_P PA error PC .
+
+    MAS             reduce using rule 57 (getq -> GET_P PA error PC .)
+    MENOS           reduce using rule 57 (getq -> GET_P PA error PC .)
+    POR             reduce using rule 57 (getq -> GET_P PA error PC .)
+    DIVIDIR         reduce using rule 57 (getq -> GET_P PA error PC .)
+    DIV             reduce using rule 57 (getq -> GET_P PA error PC .)
+    MOD             reduce using rule 57 (getq -> GET_P PA error PC .)
+    $end            reduce using rule 57 (getq -> GET_P PA error PC .)
+    PC              reduce using rule 57 (getq -> GET_P PA error PC .)
+    COMA            reduce using rule 57 (getq -> GET_P PA error PC .)
+
+
+state 103
+
+    (42) getp -> GET_Q PA ID PC .
+
+    MAS             reduce using rule 42 (getp -> GET_Q PA ID PC .)
+    MENOS           reduce using rule 42 (getp -> GET_Q PA ID PC .)
+    POR             reduce using rule 42 (getp -> GET_Q PA ID PC .)
+    DIVIDIR         reduce using rule 42 (getp -> GET_Q PA ID PC .)
+    DIV             reduce using rule 42 (getp -> GET_Q PA ID PC .)
+    MOD             reduce using rule 42 (getp -> GET_Q PA ID PC .)
+    $end            reduce using rule 42 (getp -> GET_Q PA ID PC .)
+    PC              reduce using rule 42 (getp -> GET_Q PA ID PC .)
+    COMA            reduce using rule 42 (getp -> GET_Q PA ID PC .)
+
+
+state 104
+
+    (58) getp -> GET_Q PA error PC .
+
+    MAS             reduce using rule 58 (getp -> GET_Q PA error PC .)
+    MENOS           reduce using rule 58 (getp -> GET_Q PA error PC .)
+    POR             reduce using rule 58 (getp -> GET_Q PA error PC .)
+    DIVIDIR         reduce using rule 58 (getp -> GET_Q PA error PC .)
+    DIV             reduce using rule 58 (getp -> GET_Q PA error PC .)
+    MOD             reduce using rule 58 (getp -> GET_Q PA error PC .)
+    $end            reduce using rule 58 (getp -> GET_Q PA error PC .)
+    PC              reduce using rule 58 (getp -> GET_Q PA error PC .)
+    COMA            reduce using rule 58 (getp -> GET_Q PA error PC .)
+
+
+state 105
+
+    (43) size -> SIZE PA ID PC .
+
+    MAS             reduce using rule 43 (size -> SIZE PA ID PC .)
+    MENOS           reduce using rule 43 (size -> SIZE PA ID PC .)
+    POR             reduce using rule 43 (size -> SIZE PA ID PC .)
+    DIVIDIR         reduce using rule 43 (size -> SIZE PA ID PC .)
+    DIV             reduce using rule 43 (size -> SIZE PA ID PC .)
+    MOD             reduce using rule 43 (size -> SIZE PA ID PC .)
+    $end            reduce using rule 43 (size -> SIZE PA ID PC .)
+    PC              reduce using rule 43 (size -> SIZE PA ID PC .)
+    COMA            reduce using rule 43 (size -> SIZE PA ID PC .)
+
+
+state 106
+
+    (59) size -> SIZE PA error PC .
+
+    MAS             reduce using rule 59 (size -> SIZE PA error PC .)
+    MENOS           reduce using rule 59 (size -> SIZE PA error PC .)
+    POR             reduce using rule 59 (size -> SIZE PA error PC .)
+    DIVIDIR         reduce using rule 59 (size -> SIZE PA error PC .)
+    DIV             reduce using rule 59 (size -> SIZE PA error PC .)
+    MOD             reduce using rule 59 (size -> SIZE PA error PC .)
+    $end            reduce using rule 59 (size -> SIZE PA error PC .)
+    PC              reduce using rule 59 (size -> SIZE PA error PC .)
+    COMA            reduce using rule 59 (size -> SIZE PA error PC .)
+
+
+state 107
+
+    (44) sizequeue -> SIZE_QUEUE PA ID PC .
+
+    MAS             reduce using rule 44 (sizequeue -> SIZE_QUEUE PA ID PC .)
+    MENOS           reduce using rule 44 (sizequeue -> SIZE_QUEUE PA ID PC .)
+    POR             reduce using rule 44 (sizequeue -> SIZE_QUEUE PA ID PC .)
+    DIVIDIR         reduce using rule 44 (sizequeue -> SIZE_QUEUE PA ID PC .)
+    DIV             reduce using rule 44 (sizequeue -> SIZE_QUEUE PA ID PC .)
+    MOD             reduce using rule 44 (sizequeue -> SIZE_QUEUE PA ID PC .)
+    $end            reduce using rule 44 (sizequeue -> SIZE_QUEUE PA ID PC .)
+    PC              reduce using rule 44 (sizequeue -> SIZE_QUEUE PA ID PC .)
+    COMA            reduce using rule 44 (sizequeue -> SIZE_QUEUE PA ID PC .)
+
+
+state 108
+
+    (60) sizequeue -> SIZE_QUEUE PA error PC .
+
+    MAS             reduce using rule 60 (sizequeue -> SIZE_QUEUE PA error PC .)
+    MENOS           reduce using rule 60 (sizequeue -> SIZE_QUEUE PA error PC .)
+    POR             reduce using rule 60 (sizequeue -> SIZE_QUEUE PA error PC .)
+    DIVIDIR         reduce using rule 60 (sizequeue -> SIZE_QUEUE PA error PC .)
+    DIV             reduce using rule 60 (sizequeue -> SIZE_QUEUE PA error PC .)
+    MOD             reduce using rule 60 (sizequeue -> SIZE_QUEUE PA error PC .)
+    $end            reduce using rule 60 (sizequeue -> SIZE_QUEUE PA error PC .)
+    PC              reduce using rule 60 (sizequeue -> SIZE_QUEUE PA error PC .)
+    COMA            reduce using rule 60 (sizequeue -> SIZE_QUEUE PA error PC .)
+
+
+state 109
+
+    (45) sizestack -> SIZE_STACK PA ID PC .
+
+    MAS             reduce using rule 45 (sizestack -> SIZE_STACK PA ID PC .)
+    MENOS           reduce using rule 45 (sizestack -> SIZE_STACK PA ID PC .)
+    POR             reduce using rule 45 (sizestack -> SIZE_STACK PA ID PC .)
+    DIVIDIR         reduce using rule 45 (sizestack -> SIZE_STACK PA ID PC .)
+    DIV             reduce using rule 45 (sizestack -> SIZE_STACK PA ID PC .)
+    MOD             reduce using rule 45 (sizestack -> SIZE_STACK PA ID PC .)
+    $end            reduce using rule 45 (sizestack -> SIZE_STACK PA ID PC .)
+    PC              reduce using rule 45 (sizestack -> SIZE_STACK PA ID PC .)
+    COMA            reduce using rule 45 (sizestack -> SIZE_STACK PA ID PC .)
+
+
+state 110
+
+    (61) sizestack -> SIZE_STACK PA error PC .
+
+    MAS             reduce using rule 61 (sizestack -> SIZE_STACK PA error PC .)
+    MENOS           reduce using rule 61 (sizestack -> SIZE_STACK PA error PC .)
+    POR             reduce using rule 61 (sizestack -> SIZE_STACK PA error PC .)
+    DIVIDIR         reduce using rule 61 (sizestack -> SIZE_STACK PA error PC .)
+    DIV             reduce using rule 61 (sizestack -> SIZE_STACK PA error PC .)
+    MOD             reduce using rule 61 (sizestack -> SIZE_STACK PA error PC .)
+    $end            reduce using rule 61 (sizestack -> SIZE_STACK PA error PC .)
+    PC              reduce using rule 61 (sizestack -> SIZE_STACK PA error PC .)
+    COMA            reduce using rule 61 (sizestack -> SIZE_STACK PA error PC .)
+
+
+state 111
+
+    (46) deep -> DEEP PA ID PC .
+
+    MAS             reduce using rule 46 (deep -> DEEP PA ID PC .)
+    MENOS           reduce using rule 46 (deep -> DEEP PA ID PC .)
+    POR             reduce using rule 46 (deep -> DEEP PA ID PC .)
+    DIVIDIR         reduce using rule 46 (deep -> DEEP PA ID PC .)
+    DIV             reduce using rule 46 (deep -> DEEP PA ID PC .)
+    MOD             reduce using rule 46 (deep -> DEEP PA ID PC .)
+    $end            reduce using rule 46 (deep -> DEEP PA ID PC .)
+    PC              reduce using rule 46 (deep -> DEEP PA ID PC .)
+    COMA            reduce using rule 46 (deep -> DEEP PA ID PC .)
+
+
+state 112
+
+    (62) deep -> DEEP PA error PC .
+
+    MAS             reduce using rule 62 (deep -> DEEP PA error PC .)
+    MENOS           reduce using rule 62 (deep -> DEEP PA error PC .)
+    POR             reduce using rule 62 (deep -> DEEP PA error PC .)
+    DIVIDIR         reduce using rule 62 (deep -> DEEP PA error PC .)
+    DIV             reduce using rule 62 (deep -> DEEP PA error PC .)
+    MOD             reduce using rule 62 (deep -> DEEP PA error PC .)
+    $end            reduce using rule 62 (deep -> DEEP PA error PC .)
+    PC              reduce using rule 62 (deep -> DEEP PA error PC .)
+    COMA            reduce using rule 62 (deep -> DEEP PA error PC .)
+
+
+state 113
+
+    (47) width -> WIDTH PA ID PC .
+
+    MAS             reduce using rule 47 (width -> WIDTH PA ID PC .)
+    MENOS           reduce using rule 47 (width -> WIDTH PA ID PC .)
+    POR             reduce using rule 47 (width -> WIDTH PA ID PC .)
+    DIVIDIR         reduce using rule 47 (width -> WIDTH PA ID PC .)
+    DIV             reduce using rule 47 (width -> WIDTH PA ID PC .)
+    MOD             reduce using rule 47 (width -> WIDTH PA ID PC .)
+    $end            reduce using rule 47 (width -> WIDTH PA ID PC .)
+    PC              reduce using rule 47 (width -> WIDTH PA ID PC .)
+    COMA            reduce using rule 47 (width -> WIDTH PA ID PC .)
+
+
+state 114
+
+    (63) width -> WIDTH PA error PC .
+
+    MAS             reduce using rule 63 (width -> WIDTH PA error PC .)
+    MENOS           reduce using rule 63 (width -> WIDTH PA error PC .)
+    POR             reduce using rule 63 (width -> WIDTH PA error PC .)
+    DIVIDIR         reduce using rule 63 (width -> WIDTH PA error PC .)
+    DIV             reduce using rule 63 (width -> WIDTH PA error PC .)
+    MOD             reduce using rule 63 (width -> WIDTH PA error PC .)
+    $end            reduce using rule 63 (width -> WIDTH PA error PC .)
+    PC              reduce using rule 63 (width -> WIDTH PA error PC .)
+    COMA            reduce using rule 63 (width -> WIDTH PA error PC .)
+
+
+state 115
+
+    (48) llamar -> CALL ID PA valoresCall . PC
+
+    PC              shift and go to state 121
+
+
+state 116
+
+    (49) llamar -> CALL ID PA PC .
+
+    MAS             reduce using rule 49 (llamar -> CALL ID PA PC .)
+    MENOS           reduce using rule 49 (llamar -> CALL ID PA PC .)
+    POR             reduce using rule 49 (llamar -> CALL ID PA PC .)
+    DIVIDIR         reduce using rule 49 (llamar -> CALL ID PA PC .)
+    DIV             reduce using rule 49 (llamar -> CALL ID PA PC .)
+    MOD             reduce using rule 49 (llamar -> CALL ID PA PC .)
+    $end            reduce using rule 49 (llamar -> CALL ID PA PC .)
+    PC              reduce using rule 49 (llamar -> CALL ID PA PC .)
+    COMA            reduce using rule 49 (llamar -> CALL ID PA PC .)
+
+
+state 117
+
+    (50) valoresCall -> valor .
+    (51) valoresCall -> valor . COMA valoresCall
+
+    PC              reduce using rule 50 (valoresCall -> valor .)
+    COMA            shift and go to state 122
+
+
+state 118
+
+    (5) parAux -> mathsymbol par .
+
+    $end            reduce using rule 5 (parAux -> mathsymbol par .)
+    PC              reduce using rule 5 (parAux -> mathsymbol par .)
+
+
+state 119
+
+    (40) get -> GET PA ID COMA INTEGERVAL . PC
+
+    PC              shift and go to state 123
+
+
+state 120
+
+    (56) get -> GET PA ID COMA error . PC
+
+    PC              shift and go to state 124
+
+
+state 121
+
+    (48) llamar -> CALL ID PA valoresCall PC .
+
+    MAS             reduce using rule 48 (llamar -> CALL ID PA valoresCall PC .)
+    MENOS           reduce using rule 48 (llamar -> CALL ID PA valoresCall PC .)
+    POR             reduce using rule 48 (llamar -> CALL ID PA valoresCall PC .)
+    DIVIDIR         reduce using rule 48 (llamar -> CALL ID PA valoresCall PC .)
+    DIV             reduce using rule 48 (llamar -> CALL ID PA valoresCall PC .)
+    MOD             reduce using rule 48 (llamar -> CALL ID PA valoresCall PC .)
+    $end            reduce using rule 48 (llamar -> CALL ID PA valoresCall PC .)
+    PC              reduce using rule 48 (llamar -> CALL ID PA valoresCall PC .)
+    COMA            reduce using rule 48 (llamar -> CALL ID PA valoresCall PC .)
+
+
+state 122
+
+    (51) valoresCall -> valor COMA . valoresCall
+    (50) valoresCall -> . valor
+    (51) valoresCall -> . valor COMA valoresCall
+    (17) valor -> . ID
+    (18) valor -> . INTEGERVAL
+    (19) valor -> . DOUBLEVAL
+    (20) valor -> . STRINGVAL
+    (21) valor -> . TRUE
+    (22) valor -> . FALSE
+    (23) valor -> . techo
+    (24) valor -> . piso
+    (25) valor -> . longitud
+    (26) valor -> . dequeue
+    (27) valor -> . pop
+    (28) valor -> . get
+    (29) valor -> . getq
+    (30) valor -> . getp
+    (31) valor -> . size
+    (32) valor -> . sizequeue
+    (33) valor -> . sizestack
+    (34) valor -> . deep
+    (35) valor -> . width
+    (36) valor -> . llamar
+    (15) techo -> . CEIL PA opmath PC
+    (16) piso -> . FLOOR PA opmath PC
+    (37) longitud -> . LENGTH PA STRINGVAL PC
+    (53) longitud -> . LENGTH PA error PC
+    (38) dequeue -> . DEQUEUE PA ID PC
+    (54) dequeue -> . DEQUEUE PA error PC
+    (39) pop -> . POP PA ID PC
+    (55) pop -> . POP PA error PC
+    (40) get -> . GET PA ID COMA INTEGERVAL PC
+    (56) get -> . GET PA ID COMA error PC
+    (41) getq -> . GET_P PA ID PC
+    (57) getq -> . GET_P PA error PC
+    (42) getp -> . GET_Q PA ID PC
+    (58) getp -> . GET_Q PA error PC
+    (43) size -> . SIZE PA ID PC
+    (59) size -> . SIZE PA error PC
+    (44) sizequeue -> . SIZE_QUEUE PA ID PC
+    (60) sizequeue -> . SIZE_QUEUE PA error PC
+    (45) sizestack -> . SIZE_STACK PA ID PC
+    (61) sizestack -> . SIZE_STACK PA error PC
+    (46) deep -> . DEEP PA ID PC
+    (62) deep -> . DEEP PA error PC
+    (47) width -> . WIDTH PA ID PC
+    (63) width -> . WIDTH PA error PC
+    (48) llamar -> . CALL ID PA valoresCall PC
+    (49) llamar -> . CALL ID PA PC
+
+    ID              shift and go to state 7
+    INTEGERVAL      shift and go to state 8
+    DOUBLEVAL       shift and go to state 9
+    STRINGVAL       shift and go to state 10
+    TRUE            shift and go to state 11
+    FALSE           shift and go to state 12
+    CEIL            shift and go to state 27
+    FLOOR           shift and go to state 28
+    LENGTH          shift and go to state 29
+    DEQUEUE         shift and go to state 30
+    POP             shift and go to state 31
+    GET             shift and go to state 32
+    GET_P           shift and go to state 33
+    GET_Q           shift and go to state 34
+    SIZE            shift and go to state 35
+    SIZE_QUEUE      shift and go to state 36
+    SIZE_STACK      shift and go to state 37
+    DEEP            shift and go to state 38
+    WIDTH           shift and go to state 39
+    CALL            shift and go to state 40
+
+    valor                          shift and go to state 117
+    valoresCall                    shift and go to state 125
+    techo                          shift and go to state 13
+    piso                           shift and go to state 14
+    longitud                       shift and go to state 15
+    dequeue                        shift and go to state 16
+    pop                            shift and go to state 17
+    get                            shift and go to state 18
+    getq                           shift and go to state 19
+    getp                           shift and go to state 20
+    size                           shift and go to state 21
+    sizequeue                      shift and go to state 22
+    sizestack                      shift and go to state 23
+    deep                           shift and go to state 24
+    width                          shift and go to state 25
+    llamar                         shift and go to state 26
+
+state 123
+
+    (40) get -> GET PA ID COMA INTEGERVAL PC .
+
+    MAS             reduce using rule 40 (get -> GET PA ID COMA INTEGERVAL PC .)
+    MENOS           reduce using rule 40 (get -> GET PA ID COMA INTEGERVAL PC .)
+    POR             reduce using rule 40 (get -> GET PA ID COMA INTEGERVAL PC .)
+    DIVIDIR         reduce using rule 40 (get -> GET PA ID COMA INTEGERVAL PC .)
+    DIV             reduce using rule 40 (get -> GET PA ID COMA INTEGERVAL PC .)
+    MOD             reduce using rule 40 (get -> GET PA ID COMA INTEGERVAL PC .)
+    $end            reduce using rule 40 (get -> GET PA ID COMA INTEGERVAL PC .)
+    PC              reduce using rule 40 (get -> GET PA ID COMA INTEGERVAL PC .)
+    COMA            reduce using rule 40 (get -> GET PA ID COMA INTEGERVAL PC .)
+
+
+state 124
+
+    (56) get -> GET PA ID COMA error PC .
+
+    MAS             reduce using rule 56 (get -> GET PA ID COMA error PC .)
+    MENOS           reduce using rule 56 (get -> GET PA ID COMA error PC .)
+    POR             reduce using rule 56 (get -> GET PA ID COMA error PC .)
+    DIVIDIR         reduce using rule 56 (get -> GET PA ID COMA error PC .)
+    DIV             reduce using rule 56 (get -> GET PA ID COMA error PC .)
+    MOD             reduce using rule 56 (get -> GET PA ID COMA error PC .)
+    $end            reduce using rule 56 (get -> GET PA ID COMA error PC .)
+    PC              reduce using rule 56 (get -> GET PA ID COMA error PC .)
+    COMA            reduce using rule 56 (get -> GET PA ID COMA error PC .)
+
+
+state 125
+
+    (51) valoresCall -> valor COMA valoresCall .
+
+    PC              reduce using rule 51 (valoresCall -> valor COMA valoresCall .)
+
