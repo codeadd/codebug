@@ -1,0 +1,162 @@
+declaracionPrincipal -> VAR especiales declaracion
+declaracion -> variable declaracion | €
+variable -> nombresV DOSPUNTOS tipo PUNTOCOMA | nombresV DOSPUNTOS tipo ARRAY PUNTOCOMA
+tipo -> INTEGER | DOUBLE | STRING | BOOLEAN | ARRAY | STACK | QUEUE | LIST | GRAPH
+nombresV -> ID | ID COMA nombresV
+
+asignar -> arregloID ASIGNACION operacion PUNTOCOMA  |  arregloID ASIGNACION NULL PUNTOCOMA | asignarRecord
+arregloID -> ID | ID ARRAY
+
+
+par ->  opmath | PA par PC parAux  
+opmath ->  valor mathsymbol par | valor
+mathsymbol -> MAS | MENOS | POR | DIVIDIR | DIV | MOD
+techo -> CEIL PA opmath PC
+piso -> FLOOR PA opmath PC
+parAux -> mathsymbol par | €
+
+
+valor -> ID | INTEGERVAL | DOUBLEVAL | STRINGVAL | TRUE | FALSE | techo | piso |longitud | dequeue | pop | get | getq | getp | size | sizequeue | sizestack | deep | width | llamar
+
+
+
+longitud -> LENGTH PA STRINGVAL PC PUNTOCOMA
+
+
+llamar -> CALL ID PA valoresCall PC | CALL ID PA  PC   
+valoresCall -> valor | valor COMA valoresCall 
+
+
+dequeue -> 	DEQUEUE PA ID PC
+pop		->	POP PA ID PC
+size ->	SIZE PA ID PC
+sizequeue -> SIZE_QUEUE PA ID PC
+sizestack -> SIZE_STACK PA ID PC
+get -> GET PA ID  COMA INTEGERVAL PC
+getq -> GET_P PA ID PC
+getp -> GET_Q PA ID PC
+deep -> DEEP PA ID PC
+width -> WIDTH PA ID PC
+
+
+
+
+
+
+especiales -> registro especiales | funcion especiales | procedimiento especiales | €
+
+
+
+parametros -> MODOVALOR ID| MODOREFERENCIA ID | MODOVALOR ID COMA parametros | MODOREFERENCIA ID COMA parametros
+
+
+
+funcion -> FUNCTION ID PA parametros PC bloqueFuncion PUNTOCOMA
+procedimiento -> PROCEDURE ID PA parametros PC bloque PUNTOCOMA
+registro  -> RECORD ID BEGIN declaracion END PUNTOCOMA  | €
+
+
+
+
+
+
+
+asignarRecord -> ID punto ID ASIGNACION operacion PUNTOCOMA | ID punto asignarRecord
+
+
+
+
+
+
+operacion ->  par | SUBARRAY
+
+
+
+
+escribir -> WRITELN PA  par  PC PUNTOCOMA
+
+
+
+
+
+addList -> ADD PA ID COMA valor PC PUNTOCOMA
+enqueue -> ENQUEUE PA ID COMA valor PC PUNTOCOMA
+push 	-> PUSH PA ID COMA valor	PC PUNTOCOMA
+addnode	-> ADD_NODE PA ID COMA valor PC PUNTOCOMA
+addtrans -> ADD_TRANS PA ID COMA valor COMA valor COMA valor PC PUNTOCOMA
+
+
+
+
+
+
+
+
+
+
+remove	->	REMOVE PA ID COMA valor PC PUNTOCOMA
+
+
+remove_node -> REMOVE_NODE PA ID COMA valor PC PUNTOCOMA
+remove_trans -> REMOVE_TRANS PA ID COMA valor COMA valor COMA valor PC PUNTOCOMA
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+para -> FOR ID ASIGNACION INTEGERVAL TO 	INTEGERVAL	DO bloque
+mientras -> WHILE PA condicion PC DO bloque 
+repetir -> REPEAT bloqueContenido UNTIL PA condicion PC   
+
+
+
+
+
+si -> IF PA condicion PC THEN bloque sino
+sino -> ELSE bloque | €
+
+
+
+
+
+condicion -> negacion par comparar par continuidad 
+comparar -> MAYOR | MENOR | MAYORIGUAL | MENORIGUAL | IGUAL | DIFERENTE 
+oplogico -> AND | OR
+continuidad -> oplogico condicion | €
+negacion -> NOT | €
+
+
+
+
+
+
+
+
+bloqueP -> declaracionPrincipal bloque
+bloque -> BEGIN bloqueContenido  END
+bloqueFuncion -> BEGIN bloqueContenido retorno END  *** SOLO VA UN RETORNO DEBEMOS MIRAR ESO SI DIOS QUIERE***
+retorno -> RETURN valor | €
+bloqueContenido ->  si bloqueContenido| para bloqueContenido | mientras bloqueContenido | repeat bloqueContenido | asignar bloqueContenido | escribir bloqueContenido |€ 
+
+
+
+
+
+
+
+
