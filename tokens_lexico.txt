@@ -1,0 +1,176 @@
+**KEYWORDS
+
+BEGIN   BEGIN
+END     END
+VAR     VAR
+
+INTEGER INTEGER
+DOUBLE  DOUBLE
+STRING  STRING
+BOOLEAN BOOLEAN
+
+
+FOR     FOR
+WHILE   WHILE
+REPEAT  REPEAT
+
+IF      IF
+ELSE    ELSE
+
+THEN
+UNTIL
+
+
+PROCEDURE   PROCEDURE
+FUNCTION    FUNCTION
+CALL    CALL
+
+MOD MOD
+DIV DIV
+
+AND AND
+OR  OR
+NOT NOT
+
+NULL    NULL
+
+TRUE    T
+FALSE   F
+
+MODOVALOR       E
+MODOREFERENCIA  ES
+
+LENGHT		LENGHT
+
+RECORD 	RECORD
+STACK 	STACK
+QUEUE 	QUEUE
+GRAPH 	GRAPH
+LIST	LIST
+
+ADD		ADD
+REMOVE  REMOVE
+SIZE    SIZE
+GET		GET
+
+ENQUEUE ENQUEUE
+DEQUEUE DEQUEUE
+GET_Q	GET_Q
+SIZE_QUEUE SIZE_QUEUE
+
+PUSH    PUSH
+POP		POP
+GET_P	GET_P
+SIZE_STACK SIZE_STACK
+
+ADD_NODE	ADD_NODE
+ADD_TRANS	ADD_TRANS
+REMOVE_NODE	REMOVE_NODE
+REMOVE_TRANS REMOVE_TRANS
+WIDTH		WIDTH
+DEEP		DEEP
+
+WRITELN     WRITELN
+
+
+FLOOR   FLOOR
+CEIL      CEIL
+
+TO		TO
+DO		DO
+
+
++++++++++++++++++++++++++++++
+ID 	: 	STACK
+ID	: 	QUEUE
+ID	:	GRAPH
+ID	:	LIST
+
+
+----------- LIST ---------------------
+	ADD(LISTA , Valor);
+	REMOVE(LISTA, Valor);
+	SIZE(LISTA); ---> retorna
+	GET(LISTA, Posicion)	---> retorna
+	
+------------- QUEUE ---------------------
+	ENQUEUE(COLA, Valor);	--> ENCOLAMOS
+	DEQUEUE(COLA);	-->	Retornamos eliminando
+	GET_Q(COLA);	--> Retornamos sin eliminar
+	SIZE_QUEUE(COLA);	-->	Retornamos tamano de la cola
+
+------------ STACK ----------------------
+
+	PUSH(PILA,VALOR);
+	POP(PILA,VALOR);
+	GET_P(PILA);
+	SIZE_STACK(PILA);
+	
+------------GRAPH----------------------------
+	ADD_NODE(GRAPH,VALOR);
+	ADD_TRANS(GRAPH,VALOR,VALOR,VALOR);
+	REMOVE_NODE(GRAPH,VALOR);
+	REMOVE_TRANS(GRAPH,VALOR,VALOR,VALOR);
+    DEEP(GRAPH);
+	WIDTH(GRAPH);
+
+
+RECORD ID
+BEGIN
+	ID : TIPO
+	ID2 : TIPO
+	.
+	.
+	.
+	
+END
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+ID          r'[a-zA-Z_][a-zA-Z_0-9]*'
+
+INTEGERVAL      r'\d+'
+STRINGVAL   r'\"(\s*\w*\_*\+*\-*\.*\,*\€*\!*\@*\#*\$*\%*\^*\&*\**\(*\)*\;*\:*\\*\/*\|*\<*\>*\!*\¡*\?*\¿*\}*\{*\[*\]*\~*)*\"'# Recordar tomar en cuenta los saltos de linea
+DOUBLEVAL   r'\d+\.\d+' 
+
+
+
+
+COMENTARIO r'\#.*'
+
+
+
+
+ASIGNACION <--  r'\<--'
+
+POR *   r'\*'
+DIVIDIR /   r'\/'
+MAS +       r'\+'
+MENOS   -   r'-'
+
+
+PA    (   r'\('      
+PC    )   r'\)'
+
+
+MENORIGUAL  <=  r'\<\='
+MENOR   <   r'\<'
+MAYORIGUAL  >=  r'\>\='
+MAYOR   >   r'\>'
+IGUAL   =   r'\='
+DIFERENTE  !=   r'\!\='
+
+
+ARRAY   []						r'\[\d+\]'
+SUBARRAY [12312 .. 12312]		r'\[\d+\s*\.\.\s*\d+\]'
+
+PUNTOCOMA	r'\;'
+PUNTO	r'\.'
+DOSPUNTOS r'\:'
+COMA		r'\,'
+
+
+
+# falta el de los comentarios

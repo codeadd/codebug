@@ -1,0 +1,25 @@
+VAR
+
+    i : INTEGER;
+    j : INTEGER;
+    
+    FUNCTION fac(E INTEGER n1,ES INTEGER res)
+    BEGIN
+	
+	IF(n1 = 0 OR n1 = 1)THEN
+	BEGIN
+	    res <-- 1;
+	END
+	ELSE
+	BEGIN
+	    n1 <-- n1-1;
+	    res <-- CALL FUNCTION fac(n1,res);
+	    res <-- res*(n1+1);
+	END
+	
+	RETURN res;
+    END
+BEGIN
+    i <-- CALL FUNCTION fac(5,j);
+    WRITELN(STR(i));
+END

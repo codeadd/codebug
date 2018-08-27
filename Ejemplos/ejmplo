@@ -1,0 +1,21 @@
+VAR 
+    a : INTEGER;
+    b : INTEGER;
+    c : STRING;
+    d : STRING;
+    PROCEDURE hola(E INTEGER a)
+    BEGIN
+	WRITELN("El valor de a es " + STR(a));
+    END
+    
+
+BEGIN
+    a <-- 2;
+    WRITELN(STR(a));
+    b <-- 4;
+    WRITELN(STR(b));
+    c <-- "Hola";
+    d <-- "Mundo";
+    WRITELN(c+d);
+    CALL PROCEDURE hola(a);
+END

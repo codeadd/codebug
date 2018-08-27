@@ -1,0 +1,4068 @@
+Created by PLY version 3.9 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    COMENTARIO
+
+Grammar
+
+Rule 0     S' -> bloqueP
+Rule 1     bloqueP -> declaracionPrincipal bloque
+Rule 2     bloque -> BEGIN bloqueContenido END
+Rule 3     bloqueFuncion -> BEGIN bloqueContenido retorno END
+Rule 4     retorno -> RETURN valor PUNTOCOMA
+Rule 5     bloqueContenido -> si bloqueContenido
+Rule 6     bloqueContenido -> para bloqueContenido
+Rule 7     bloqueContenido -> mientras bloqueContenido
+Rule 8     bloqueContenido -> repetir bloqueContenido
+Rule 9     bloqueContenido -> escribir bloqueContenido
+Rule 10    bloqueContenido -> asignar bloqueContenido
+Rule 11    bloqueContenido -> llamarProcedure bloqueContenido
+Rule 12    bloqueContenido -> empty
+Rule 13    escribir -> WRITELN PA par PC PUNTOCOMA
+Rule 14    para -> FOR ID ASIGNACION toFor TO toFor DO bloque
+Rule 15    toFor -> ID
+Rule 16    toFor -> INTEGERVAL
+Rule 17    mientras -> WHILE PA condicion PC DO bloque
+Rule 18    repetir -> REPEAT bloqueContenido UNTIL PA condicion PC
+Rule 19    si -> IF PA condicion PC THEN bloque sino
+Rule 20    sino -> ELSE bloque
+Rule 21    sino -> empty
+Rule 22    declaracionPrincipal -> VAR declaracion especiales
+Rule 23    especiales -> registro especiales
+Rule 24    especiales -> funcion especiales
+Rule 25    especiales -> procedimiento especiales
+Rule 26    parametros -> MODOVALOR tipo ID
+Rule 27    parametros -> MODOREFERENCIA tipo ID
+Rule 28    parametros -> MODOVALOR tipo ID COMA parametros
+Rule 29    parametros -> MODOREFERENCIA tipo ID COMA parametros
+Rule 30    funcion -> FUNCTION ID PA parametros PC bloqueFuncion
+Rule 31    procedimiento -> PROCEDURE ID PA parametros PC bloque
+Rule 32    registro -> RECORD ID BEGIN declaracionReg END
+Rule 33    declaracionReg -> variableReg declaracionReg
+Rule 34    declaracionReg -> empty
+Rule 35    variableReg -> nombresV DOSPUNTOS tipo PUNTOCOMA
+Rule 36    variableReg -> nombresV DOSPUNTOS tipo ARRAY PUNTOCOMA
+Rule 37    declaracion -> variable declaracion
+Rule 38    declaracion -> empty
+Rule 39    variable -> nombresV DOSPUNTOS tipo PUNTOCOMA
+Rule 40    variable -> nombresV DOSPUNTOS tipo ARRAY PUNTOCOMA
+Rule 41    nombresV -> ID
+Rule 42    nombresV -> ID COMA nombresV
+Rule 43    tipo -> INTEGER
+Rule 44    tipo -> DOUBLE
+Rule 45    tipo -> STRING
+Rule 46    tipo -> BOOLEAN
+Rule 47    tipo -> ARRAY
+Rule 48    tipo -> STACK
+Rule 49    tipo -> QUEUE
+Rule 50    tipo -> LIST
+Rule 51    tipo -> GRAPH
+Rule 52    tipo -> ID
+Rule 53    especiales -> empty
+Rule 54    asignar -> arregloID ASIGNACION operacion PUNTOCOMA
+Rule 55    asignar -> arregloID ASIGNACION llamarFunction PUNTOCOMA
+Rule 56    asignar -> arregloID ASIGNACION NULL PUNTOCOMA
+Rule 57    asignar -> asignacionRecord
+Rule 58    asignacionRecord -> idRecord ASIGNACION operacion PUNTOCOMA
+Rule 59    idRecord -> ID PUNTO idRecord2
+Rule 60    idRecord2 -> ID
+Rule 61    arregloID -> ID
+Rule 62    arregloID -> ID ARRAY
+Rule 63    operacion -> par
+Rule 64    operacion -> SUBARRAY
+Rule 65    par -> opmath
+Rule 66    par -> PA par PC parAux
+Rule 67    parAux -> mathsymbol par
+Rule 68    parAux -> empty
+Rule 69    condicion -> negacion par comparar par continuidad
+Rule 70    continuidad -> oplogico condicion
+Rule 71    continuidad -> empty
+Rule 72    comparar -> MAYOR
+Rule 73    comparar -> MENOR
+Rule 74    comparar -> MAYORIGUAL
+Rule 75    comparar -> MENORIGUAL
+Rule 76    comparar -> IGUAL
+Rule 77    comparar -> DIFERENTE
+Rule 78    oplogico -> AND
+Rule 79    oplogico -> OR
+Rule 80    negacion -> NOT
+Rule 81    negacion -> empty
+Rule 82    opmath -> valor
+Rule 83    opmath -> valor mathsymbol par
+Rule 84    mathsymbol -> MAS
+Rule 85    mathsymbol -> MENOS
+Rule 86    mathsymbol -> POR
+Rule 87    mathsymbol -> DIVIDIR
+Rule 88    mathsymbol -> DIV
+Rule 89    mathsymbol -> MOD
+Rule 90    techo -> CEIL PA opmath PC
+Rule 91    piso -> FLOOR PA opmath PC
+Rule 92    valor -> arregloID
+Rule 93    valor -> INTEGERVAL
+Rule 94    valor -> DOUBLEVAL
+Rule 95    valor -> STRINGVAL
+Rule 96    valor -> TRUE
+Rule 97    valor -> FALSE
+Rule 98    valor -> techo
+Rule 99    valor -> piso
+Rule 100   valor -> longitud
+Rule 101   valor -> conversionCad
+Rule 102   conversionCad -> STR PA opmath PC
+Rule 103   longitud -> LENGTH PA STRINGVAL PC
+Rule 104   llamarProcedure -> CALL PROCEDURE ID PA valoresCall PC PUNTOCOMA
+Rule 105   llamarProcedure -> CALL PROCEDURE ID PA error PC PUNTOCOMA
+Rule 106   llamarFunction -> CALL FUNCTION ID PA valoresCall PC
+Rule 107   llamarFunction -> CALL FUNCTION ID PA error PC
+Rule 108   valoresCall -> valor
+Rule 109   valoresCall -> valor COMA valoresCall
+Rule 110   empty -> <empty>
+Rule 111   longitud -> LENGTH PA error PC
+
+Terminals, with rules where they appear
+
+AND                  : 78
+ARRAY                : 36 40 47 62
+ASIGNACION           : 14 54 55 56 58
+BEGIN                : 2 3 32
+BOOLEAN              : 46
+CALL                 : 104 105 106 107
+CEIL                 : 90
+COMA                 : 28 29 42 109
+COMENTARIO           : 
+DIFERENTE            : 77
+DIV                  : 88
+DIVIDIR              : 87
+DO                   : 14 17
+DOSPUNTOS            : 35 36 39 40
+DOUBLE               : 44
+DOUBLEVAL            : 94
+ELSE                 : 20
+END                  : 2 3 32
+FALSE                : 97
+FLOOR                : 91
+FOR                  : 14
+FUNCTION             : 30 106 107
+GRAPH                : 51
+ID                   : 14 15 26 27 28 29 30 31 32 41 42 52 59 60 61 62 104 105 106 107
+IF                   : 19
+IGUAL                : 76
+INTEGER              : 43
+INTEGERVAL           : 16 93
+LENGTH               : 103 111
+LIST                 : 50
+MAS                  : 84
+MAYOR                : 72
+MAYORIGUAL           : 74
+MENOR                : 73
+MENORIGUAL           : 75
+MENOS                : 85
+MOD                  : 89
+MODOREFERENCIA       : 27 29
+MODOVALOR            : 26 28
+NOT                  : 80
+NULL                 : 56
+OR                   : 79
+PA                   : 13 17 18 19 30 31 66 90 91 102 103 104 105 106 107 111
+PC                   : 13 17 18 19 30 31 66 90 91 102 103 104 105 106 107 111
+POR                  : 86
+PROCEDURE            : 31 104 105
+PUNTO                : 59
+PUNTOCOMA            : 4 13 35 36 39 40 54 55 56 58 104 105
+QUEUE                : 49
+RECORD               : 32
+REPEAT               : 18
+RETURN               : 4
+STACK                : 48
+STR                  : 102
+STRING               : 45
+STRINGVAL            : 95 103
+SUBARRAY             : 64
+THEN                 : 19
+TO                   : 14
+TRUE                 : 96
+UNTIL                : 18
+VAR                  : 22
+WHILE                : 17
+WRITELN              : 13
+error                : 105 107 111
+
+Nonterminals, with rules where they appear
+
+arregloID            : 54 55 56 92
+asignacionRecord     : 57
+asignar              : 10
+bloque               : 1 14 17 19 20 31
+bloqueContenido      : 2 3 5 6 7 8 9 10 11 18
+bloqueFuncion        : 30
+bloqueP              : 0
+comparar             : 69
+condicion            : 17 18 19 70
+continuidad          : 69
+conversionCad        : 101
+declaracion          : 22 37
+declaracionPrincipal : 1
+declaracionReg       : 32 33
+empty                : 12 21 34 38 53 68 71 81
+escribir             : 9
+especiales           : 22 23 24 25
+funcion              : 24
+idRecord             : 58
+idRecord2            : 59
+llamarFunction       : 55
+llamarProcedure      : 11
+longitud             : 100
+mathsymbol           : 67 83
+mientras             : 7
+negacion             : 69
+nombresV             : 35 36 39 40 42
+operacion            : 54 58
+oplogico             : 70
+opmath               : 65 90 91 102
+par                  : 13 63 66 67 69 69 83
+parAux               : 66
+para                 : 6
+parametros           : 28 29 30 31
+piso                 : 99
+procedimiento        : 25
+registro             : 23
+repetir              : 8
+retorno              : 3
+si                   : 5
+sino                 : 19
+techo                : 98
+tipo                 : 26 27 28 29 35 36 39 40
+toFor                : 14 14
+valor                : 4 82 83 108 109
+valoresCall          : 104 106 109
+variable             : 37
+variableReg          : 33
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . bloqueP
+    (1) bloqueP -> . declaracionPrincipal bloque
+    (22) declaracionPrincipal -> . VAR declaracion especiales
+
+    VAR             shift and go to state 3
+
+    bloqueP                        shift and go to state 1
+    declaracionPrincipal           shift and go to state 2
+
+state 1
+
+    (0) S' -> bloqueP .
+
+
+
+state 2
+
+    (1) bloqueP -> declaracionPrincipal . bloque
+    (2) bloque -> . BEGIN bloqueContenido END
+
+    BEGIN           shift and go to state 5
+
+    bloque                         shift and go to state 4
+
+state 3
+
+    (22) declaracionPrincipal -> VAR . declaracion especiales
+    (37) declaracion -> . variable declaracion
+    (38) declaracion -> . empty
+    (39) variable -> . nombresV DOSPUNTOS tipo PUNTOCOMA
+    (40) variable -> . nombresV DOSPUNTOS tipo ARRAY PUNTOCOMA
+    (110) empty -> .
+    (41) nombresV -> . ID
+    (42) nombresV -> . ID COMA nombresV
+
+    RECORD          reduce using rule 110 (empty -> .)
+    FUNCTION        reduce using rule 110 (empty -> .)
+    PROCEDURE       reduce using rule 110 (empty -> .)
+    BEGIN           reduce using rule 110 (empty -> .)
+    ID              shift and go to state 10
+
+    declaracion                    shift and go to state 6
+    variable                       shift and go to state 7
+    empty                          shift and go to state 8
+    nombresV                       shift and go to state 9
+
+state 4
+
+    (1) bloqueP -> declaracionPrincipal bloque .
+
+    $end            reduce using rule 1 (bloqueP -> declaracionPrincipal bloque .)
+
+
+state 5
+
+    (2) bloque -> BEGIN . bloqueContenido END
+    (5) bloqueContenido -> . si bloqueContenido
+    (6) bloqueContenido -> . para bloqueContenido
+    (7) bloqueContenido -> . mientras bloqueContenido
+    (8) bloqueContenido -> . repetir bloqueContenido
+    (9) bloqueContenido -> . escribir bloqueContenido
+    (10) bloqueContenido -> . asignar bloqueContenido
+    (11) bloqueContenido -> . llamarProcedure bloqueContenido
+    (12) bloqueContenido -> . empty
+    (19) si -> . IF PA condicion PC THEN bloque sino
+    (14) para -> . FOR ID ASIGNACION toFor TO toFor DO bloque
+    (17) mientras -> . WHILE PA condicion PC DO bloque
+    (18) repetir -> . REPEAT bloqueContenido UNTIL PA condicion PC
+    (13) escribir -> . WRITELN PA par PC PUNTOCOMA
+    (54) asignar -> . arregloID ASIGNACION operacion PUNTOCOMA
+    (55) asignar -> . arregloID ASIGNACION llamarFunction PUNTOCOMA
+    (56) asignar -> . arregloID ASIGNACION NULL PUNTOCOMA
+    (57) asignar -> . asignacionRecord
+    (104) llamarProcedure -> . CALL PROCEDURE ID PA valoresCall PC PUNTOCOMA
+    (105) llamarProcedure -> . CALL PROCEDURE ID PA error PC PUNTOCOMA
+    (110) empty -> .
+    (61) arregloID -> . ID
+    (62) arregloID -> . ID ARRAY
+    (58) asignacionRecord -> . idRecord ASIGNACION operacion PUNTOCOMA
+    (59) idRecord -> . ID PUNTO idRecord2
+
+    IF              shift and go to state 20
+    FOR             shift and go to state 21
+    WHILE           shift and go to state 23
+    REPEAT          shift and go to state 24
+    WRITELN         shift and go to state 25
+    CALL            shift and go to state 28
+    END             reduce using rule 110 (empty -> .)
+    ID              shift and go to state 22
+
+    bloqueContenido                shift and go to state 11
+    si                             shift and go to state 12
+    para                           shift and go to state 13
+    mientras                       shift and go to state 14
+    repetir                        shift and go to state 15
+    escribir                       shift and go to state 16
+    asignar                        shift and go to state 17
+    llamarProcedure                shift and go to state 18
+    empty                          shift and go to state 19
+    arregloID                      shift and go to state 26
+    asignacionRecord               shift and go to state 27
+    idRecord                       shift and go to state 29
+
+state 6
+
+    (22) declaracionPrincipal -> VAR declaracion . especiales
+    (23) especiales -> . registro especiales
+    (24) especiales -> . funcion especiales
+    (25) especiales -> . procedimiento especiales
+    (53) especiales -> . empty
+    (32) registro -> . RECORD ID BEGIN declaracionReg END
+    (30) funcion -> . FUNCTION ID PA parametros PC bloqueFuncion
+    (31) procedimiento -> . PROCEDURE ID PA parametros PC bloque
+    (110) empty -> .
+
+    RECORD          shift and go to state 35
+    FUNCTION        shift and go to state 36
+    PROCEDURE       shift and go to state 37
+    BEGIN           reduce using rule 110 (empty -> .)
+
+    especiales                     shift and go to state 30
+    registro                       shift and go to state 31
+    funcion                        shift and go to state 32
+    procedimiento                  shift and go to state 33
+    empty                          shift and go to state 34
+
+state 7
+
+    (37) declaracion -> variable . declaracion
+    (37) declaracion -> . variable declaracion
+    (38) declaracion -> . empty
+    (39) variable -> . nombresV DOSPUNTOS tipo PUNTOCOMA
+    (40) variable -> . nombresV DOSPUNTOS tipo ARRAY PUNTOCOMA
+    (110) empty -> .
+    (41) nombresV -> . ID
+    (42) nombresV -> . ID COMA nombresV
+
+    RECORD          reduce using rule 110 (empty -> .)
+    FUNCTION        reduce using rule 110 (empty -> .)
+    PROCEDURE       reduce using rule 110 (empty -> .)
+    BEGIN           reduce using rule 110 (empty -> .)
+    ID              shift and go to state 10
+
+    variable                       shift and go to state 7
+    declaracion                    shift and go to state 38
+    empty                          shift and go to state 8
+    nombresV                       shift and go to state 9
+
+state 8
+
+    (38) declaracion -> empty .
+
+    RECORD          reduce using rule 38 (declaracion -> empty .)
+    FUNCTION        reduce using rule 38 (declaracion -> empty .)
+    PROCEDURE       reduce using rule 38 (declaracion -> empty .)
+    BEGIN           reduce using rule 38 (declaracion -> empty .)
+
+
+state 9
+
+    (39) variable -> nombresV . DOSPUNTOS tipo PUNTOCOMA
+    (40) variable -> nombresV . DOSPUNTOS tipo ARRAY PUNTOCOMA
+
+    DOSPUNTOS       shift and go to state 39
+
+
+state 10
+
+    (41) nombresV -> ID .
+    (42) nombresV -> ID . COMA nombresV
+
+    DOSPUNTOS       reduce using rule 41 (nombresV -> ID .)
+    COMA            shift and go to state 40
+
+
+state 11
+
+    (2) bloque -> BEGIN bloqueContenido . END
+
+    END             shift and go to state 41
+
+
+state 12
+
+    (5) bloqueContenido -> si . bloqueContenido
+    (5) bloqueContenido -> . si bloqueContenido
+    (6) bloqueContenido -> . para bloqueContenido
+    (7) bloqueContenido -> . mientras bloqueContenido
+    (8) bloqueContenido -> . repetir bloqueContenido
+    (9) bloqueContenido -> . escribir bloqueContenido
+    (10) bloqueContenido -> . asignar bloqueContenido
+    (11) bloqueContenido -> . llamarProcedure bloqueContenido
+    (12) bloqueContenido -> . empty
+    (19) si -> . IF PA condicion PC THEN bloque sino
+    (14) para -> . FOR ID ASIGNACION toFor TO toFor DO bloque
+    (17) mientras -> . WHILE PA condicion PC DO bloque
+    (18) repetir -> . REPEAT bloqueContenido UNTIL PA condicion PC
+    (13) escribir -> . WRITELN PA par PC PUNTOCOMA
+    (54) asignar -> . arregloID ASIGNACION operacion PUNTOCOMA
+    (55) asignar -> . arregloID ASIGNACION llamarFunction PUNTOCOMA
+    (56) asignar -> . arregloID ASIGNACION NULL PUNTOCOMA
+    (57) asignar -> . asignacionRecord
+    (104) llamarProcedure -> . CALL PROCEDURE ID PA valoresCall PC PUNTOCOMA
+    (105) llamarProcedure -> . CALL PROCEDURE ID PA error PC PUNTOCOMA
+    (110) empty -> .
+    (61) arregloID -> . ID
+    (62) arregloID -> . ID ARRAY
+    (58) asignacionRecord -> . idRecord ASIGNACION operacion PUNTOCOMA
+    (59) idRecord -> . ID PUNTO idRecord2
+
+    IF              shift and go to state 20
+    FOR             shift and go to state 21
+    WHILE           shift and go to state 23
+    REPEAT          shift and go to state 24
+    WRITELN         shift and go to state 25
+    CALL            shift and go to state 28
+    END             reduce using rule 110 (empty -> .)
+    UNTIL           reduce using rule 110 (empty -> .)
+    RETURN          reduce using rule 110 (empty -> .)
+    ID              shift and go to state 22
+
+    si                             shift and go to state 12
+    bloqueContenido                shift and go to state 42
+    para                           shift and go to state 13
+    mientras                       shift and go to state 14
+    repetir                        shift and go to state 15
+    escribir                       shift and go to state 16
+    asignar                        shift and go to state 17
+    llamarProcedure                shift and go to state 18
+    empty                          shift and go to state 19
+    arregloID                      shift and go to state 26
+    asignacionRecord               shift and go to state 27
+    idRecord                       shift and go to state 29
+
+state 13
+
+    (6) bloqueContenido -> para . bloqueContenido
+    (5) bloqueContenido -> . si bloqueContenido
+    (6) bloqueContenido -> . para bloqueContenido
+    (7) bloqueContenido -> . mientras bloqueContenido
+    (8) bloqueContenido -> . repetir bloqueContenido
+    (9) bloqueContenido -> . escribir bloqueContenido
+    (10) bloqueContenido -> . asignar bloqueContenido
+    (11) bloqueContenido -> . llamarProcedure bloqueContenido
+    (12) bloqueContenido -> . empty
+    (19) si -> . IF PA condicion PC THEN bloque sino
+    (14) para -> . FOR ID ASIGNACION toFor TO toFor DO bloque
+    (17) mientras -> . WHILE PA condicion PC DO bloque
+    (18) repetir -> . REPEAT bloqueContenido UNTIL PA condicion PC
+    (13) escribir -> . WRITELN PA par PC PUNTOCOMA
+    (54) asignar -> . arregloID ASIGNACION operacion PUNTOCOMA
+    (55) asignar -> . arregloID ASIGNACION llamarFunction PUNTOCOMA
+    (56) asignar -> . arregloID ASIGNACION NULL PUNTOCOMA
+    (57) asignar -> . asignacionRecord
+    (104) llamarProcedure -> . CALL PROCEDURE ID PA valoresCall PC PUNTOCOMA
+    (105) llamarProcedure -> . CALL PROCEDURE ID PA error PC PUNTOCOMA
+    (110) empty -> .
+    (61) arregloID -> . ID
+    (62) arregloID -> . ID ARRAY
+    (58) asignacionRecord -> . idRecord ASIGNACION operacion PUNTOCOMA
+    (59) idRecord -> . ID PUNTO idRecord2
+
+    IF              shift and go to state 20
+    FOR             shift and go to state 21
+    WHILE           shift and go to state 23
+    REPEAT          shift and go to state 24
+    WRITELN         shift and go to state 25
+    CALL            shift and go to state 28
+    END             reduce using rule 110 (empty -> .)
+    UNTIL           reduce using rule 110 (empty -> .)
+    RETURN          reduce using rule 110 (empty -> .)
+    ID              shift and go to state 22
+
+    para                           shift and go to state 13
+    bloqueContenido                shift and go to state 43
+    si                             shift and go to state 12
+    mientras                       shift and go to state 14
+    repetir                        shift and go to state 15
+    escribir                       shift and go to state 16
+    asignar                        shift and go to state 17
+    llamarProcedure                shift and go to state 18
+    empty                          shift and go to state 19
+    arregloID                      shift and go to state 26
+    asignacionRecord               shift and go to state 27
+    idRecord                       shift and go to state 29
+
+state 14
+
+    (7) bloqueContenido -> mientras . bloqueContenido
+    (5) bloqueContenido -> . si bloqueContenido
+    (6) bloqueContenido -> . para bloqueContenido
+    (7) bloqueContenido -> . mientras bloqueContenido
+    (8) bloqueContenido -> . repetir bloqueContenido
+    (9) bloqueContenido -> . escribir bloqueContenido
+    (10) bloqueContenido -> . asignar bloqueContenido
+    (11) bloqueContenido -> . llamarProcedure bloqueContenido
+    (12) bloqueContenido -> . empty
+    (19) si -> . IF PA condicion PC THEN bloque sino
+    (14) para -> . FOR ID ASIGNACION toFor TO toFor DO bloque
+    (17) mientras -> . WHILE PA condicion PC DO bloque
+    (18) repetir -> . REPEAT bloqueContenido UNTIL PA condicion PC
+    (13) escribir -> . WRITELN PA par PC PUNTOCOMA
+    (54) asignar -> . arregloID ASIGNACION operacion PUNTOCOMA
+    (55) asignar -> . arregloID ASIGNACION llamarFunction PUNTOCOMA
+    (56) asignar -> . arregloID ASIGNACION NULL PUNTOCOMA
+    (57) asignar -> . asignacionRecord
+    (104) llamarProcedure -> . CALL PROCEDURE ID PA valoresCall PC PUNTOCOMA
+    (105) llamarProcedure -> . CALL PROCEDURE ID PA error PC PUNTOCOMA
+    (110) empty -> .
+    (61) arregloID -> . ID
+    (62) arregloID -> . ID ARRAY
+    (58) asignacionRecord -> . idRecord ASIGNACION operacion PUNTOCOMA
+    (59) idRecord -> . ID PUNTO idRecord2
+
+    IF              shift and go to state 20
+    FOR             shift and go to state 21
+    WHILE           shift and go to state 23
+    REPEAT          shift and go to state 24
+    WRITELN         shift and go to state 25
+    CALL            shift and go to state 28
+    END             reduce using rule 110 (empty -> .)
+    UNTIL           reduce using rule 110 (empty -> .)
+    RETURN          reduce using rule 110 (empty -> .)
+    ID              shift and go to state 22
+
+    mientras                       shift and go to state 14
+    bloqueContenido                shift and go to state 44
+    si                             shift and go to state 12
+    para                           shift and go to state 13
+    repetir                        shift and go to state 15
+    escribir                       shift and go to state 16
+    asignar                        shift and go to state 17
+    llamarProcedure                shift and go to state 18
+    empty                          shift and go to state 19
+    arregloID                      shift and go to state 26
+    asignacionRecord               shift and go to state 27
+    idRecord                       shift and go to state 29
+
+state 15
+
+    (8) bloqueContenido -> repetir . bloqueContenido
+    (5) bloqueContenido -> . si bloqueContenido
+    (6) bloqueContenido -> . para bloqueContenido
+    (7) bloqueContenido -> . mientras bloqueContenido
+    (8) bloqueContenido -> . repetir bloqueContenido
+    (9) bloqueContenido -> . escribir bloqueContenido
+    (10) bloqueContenido -> . asignar bloqueContenido
+    (11) bloqueContenido -> . llamarProcedure bloqueContenido
+    (12) bloqueContenido -> . empty
+    (19) si -> . IF PA condicion PC THEN bloque sino
+    (14) para -> . FOR ID ASIGNACION toFor TO toFor DO bloque
+    (17) mientras -> . WHILE PA condicion PC DO bloque
+    (18) repetir -> . REPEAT bloqueContenido UNTIL PA condicion PC
+    (13) escribir -> . WRITELN PA par PC PUNTOCOMA
+    (54) asignar -> . arregloID ASIGNACION operacion PUNTOCOMA
+    (55) asignar -> . arregloID ASIGNACION llamarFunction PUNTOCOMA
+    (56) asignar -> . arregloID ASIGNACION NULL PUNTOCOMA
+    (57) asignar -> . asignacionRecord
+    (104) llamarProcedure -> . CALL PROCEDURE ID PA valoresCall PC PUNTOCOMA
+    (105) llamarProcedure -> . CALL PROCEDURE ID PA error PC PUNTOCOMA
+    (110) empty -> .
+    (61) arregloID -> . ID
+    (62) arregloID -> . ID ARRAY
+    (58) asignacionRecord -> . idRecord ASIGNACION operacion PUNTOCOMA
+    (59) idRecord -> . ID PUNTO idRecord2
+
+    IF              shift and go to state 20
+    FOR             shift and go to state 21
+    WHILE           shift and go to state 23
+    REPEAT          shift and go to state 24
+    WRITELN         shift and go to state 25
+    CALL            shift and go to state 28
+    END             reduce using rule 110 (empty -> .)
+    UNTIL           reduce using rule 110 (empty -> .)
+    RETURN          reduce using rule 110 (empty -> .)
+    ID              shift and go to state 22
+
+    repetir                        shift and go to state 15
+    bloqueContenido                shift and go to state 45
+    si                             shift and go to state 12
+    para                           shift and go to state 13
+    mientras                       shift and go to state 14
+    escribir                       shift and go to state 16
+    asignar                        shift and go to state 17
+    llamarProcedure                shift and go to state 18
+    empty                          shift and go to state 19
+    arregloID                      shift and go to state 26
+    asignacionRecord               shift and go to state 27
+    idRecord                       shift and go to state 29
+
+state 16
+
+    (9) bloqueContenido -> escribir . bloqueContenido
+    (5) bloqueContenido -> . si bloqueContenido
+    (6) bloqueContenido -> . para bloqueContenido
+    (7) bloqueContenido -> . mientras bloqueContenido
+    (8) bloqueContenido -> . repetir bloqueContenido
+    (9) bloqueContenido -> . escribir bloqueContenido
+    (10) bloqueContenido -> . asignar bloqueContenido
+    (11) bloqueContenido -> . llamarProcedure bloqueContenido
+    (12) bloqueContenido -> . empty
+    (19) si -> . IF PA condicion PC THEN bloque sino
+    (14) para -> . FOR ID ASIGNACION toFor TO toFor DO bloque
+    (17) mientras -> . WHILE PA condicion PC DO bloque
+    (18) repetir -> . REPEAT bloqueContenido UNTIL PA condicion PC
+    (13) escribir -> . WRITELN PA par PC PUNTOCOMA
+    (54) asignar -> . arregloID ASIGNACION operacion PUNTOCOMA
+    (55) asignar -> . arregloID ASIGNACION llamarFunction PUNTOCOMA
+    (56) asignar -> . arregloID ASIGNACION NULL PUNTOCOMA
+    (57) asignar -> . asignacionRecord
+    (104) llamarProcedure -> . CALL PROCEDURE ID PA valoresCall PC PUNTOCOMA
+    (105) llamarProcedure -> . CALL PROCEDURE ID PA error PC PUNTOCOMA
+    (110) empty -> .
+    (61) arregloID -> . ID
+    (62) arregloID -> . ID ARRAY
+    (58) asignacionRecord -> . idRecord ASIGNACION operacion PUNTOCOMA
+    (59) idRecord -> . ID PUNTO idRecord2
+
+    IF              shift and go to state 20
+    FOR             shift and go to state 21
+    WHILE           shift and go to state 23
+    REPEAT          shift and go to state 24
+    WRITELN         shift and go to state 25
+    CALL            shift and go to state 28
+    END             reduce using rule 110 (empty -> .)
+    UNTIL           reduce using rule 110 (empty -> .)
+    RETURN          reduce using rule 110 (empty -> .)
+    ID              shift and go to state 22
+
+    escribir                       shift and go to state 16
+    bloqueContenido                shift and go to state 46
+    si                             shift and go to state 12
+    para                           shift and go to state 13
+    mientras                       shift and go to state 14
+    repetir                        shift and go to state 15
+    asignar                        shift and go to state 17
+    llamarProcedure                shift and go to state 18
+    empty                          shift and go to state 19
+    arregloID                      shift and go to state 26
+    asignacionRecord               shift and go to state 27
+    idRecord                       shift and go to state 29
+
+state 17
+
+    (10) bloqueContenido -> asignar . bloqueContenido
+    (5) bloqueContenido -> . si bloqueContenido
+    (6) bloqueContenido -> . para bloqueContenido
+    (7) bloqueContenido -> . mientras bloqueContenido
+    (8) bloqueContenido -> . repetir bloqueContenido
+    (9) bloqueContenido -> . escribir bloqueContenido
+    (10) bloqueContenido -> . asignar bloqueContenido
+    (11) bloqueContenido -> . llamarProcedure bloqueContenido
+    (12) bloqueContenido -> . empty
+    (19) si -> . IF PA condicion PC THEN bloque sino
+    (14) para -> . FOR ID ASIGNACION toFor TO toFor DO bloque
+    (17) mientras -> . WHILE PA condicion PC DO bloque
+    (18) repetir -> . REPEAT bloqueContenido UNTIL PA condicion PC
+    (13) escribir -> . WRITELN PA par PC PUNTOCOMA
+    (54) asignar -> . arregloID ASIGNACION operacion PUNTOCOMA
+    (55) asignar -> . arregloID ASIGNACION llamarFunction PUNTOCOMA
+    (56) asignar -> . arregloID ASIGNACION NULL PUNTOCOMA
+    (57) asignar -> . asignacionRecord
+    (104) llamarProcedure -> . CALL PROCEDURE ID PA valoresCall PC PUNTOCOMA
+    (105) llamarProcedure -> . CALL PROCEDURE ID PA error PC PUNTOCOMA
+    (110) empty -> .
+    (61) arregloID -> . ID
+    (62) arregloID -> . ID ARRAY
+    (58) asignacionRecord -> . idRecord ASIGNACION operacion PUNTOCOMA
+    (59) idRecord -> . ID PUNTO idRecord2
+
+    IF              shift and go to state 20
+    FOR             shift and go to state 21
+    WHILE           shift and go to state 23
+    REPEAT          shift and go to state 24
+    WRITELN         shift and go to state 25
+    CALL            shift and go to state 28
+    END             reduce using rule 110 (empty -> .)
+    UNTIL           reduce using rule 110 (empty -> .)
+    RETURN          reduce using rule 110 (empty -> .)
+    ID              shift and go to state 22
+
+    asignar                        shift and go to state 17
+    bloqueContenido                shift and go to state 47
+    si                             shift and go to state 12
+    para                           shift and go to state 13
+    mientras                       shift and go to state 14
+    repetir                        shift and go to state 15
+    escribir                       shift and go to state 16
+    llamarProcedure                shift and go to state 18
+    empty                          shift and go to state 19
+    arregloID                      shift and go to state 26
+    asignacionRecord               shift and go to state 27
+    idRecord                       shift and go to state 29
+
+state 18
+
+    (11) bloqueContenido -> llamarProcedure . bloqueContenido
+    (5) bloqueContenido -> . si bloqueContenido
+    (6) bloqueContenido -> . para bloqueContenido
+    (7) bloqueContenido -> . mientras bloqueContenido
+    (8) bloqueContenido -> . repetir bloqueContenido
+    (9) bloqueContenido -> . escribir bloqueContenido
+    (10) bloqueContenido -> . asignar bloqueContenido
+    (11) bloqueContenido -> . llamarProcedure bloqueContenido
+    (12) bloqueContenido -> . empty
+    (19) si -> . IF PA condicion PC THEN bloque sino
+    (14) para -> . FOR ID ASIGNACION toFor TO toFor DO bloque
+    (17) mientras -> . WHILE PA condicion PC DO bloque
+    (18) repetir -> . REPEAT bloqueContenido UNTIL PA condicion PC
+    (13) escribir -> . WRITELN PA par PC PUNTOCOMA
+    (54) asignar -> . arregloID ASIGNACION operacion PUNTOCOMA
+    (55) asignar -> . arregloID ASIGNACION llamarFunction PUNTOCOMA
+    (56) asignar -> . arregloID ASIGNACION NULL PUNTOCOMA
+    (57) asignar -> . asignacionRecord
+    (104) llamarProcedure -> . CALL PROCEDURE ID PA valoresCall PC PUNTOCOMA
+    (105) llamarProcedure -> . CALL PROCEDURE ID PA error PC PUNTOCOMA
+    (110) empty -> .
+    (61) arregloID -> . ID
+    (62) arregloID -> . ID ARRAY
+    (58) asignacionRecord -> . idRecord ASIGNACION operacion PUNTOCOMA
+    (59) idRecord -> . ID PUNTO idRecord2
+
+    IF              shift and go to state 20
+    FOR             shift and go to state 21
+    WHILE           shift and go to state 23
+    REPEAT          shift and go to state 24
+    WRITELN         shift and go to state 25
+    CALL            shift and go to state 28
+    END             reduce using rule 110 (empty -> .)
+    UNTIL           reduce using rule 110 (empty -> .)
+    RETURN          reduce using rule 110 (empty -> .)
+    ID              shift and go to state 22
+
+    llamarProcedure                shift and go to state 18
+    bloqueContenido                shift and go to state 48
+    si                             shift and go to state 12
+    para                           shift and go to state 13
+    mientras                       shift and go to state 14
+    repetir                        shift and go to state 15
+    escribir                       shift and go to state 16
+    asignar                        shift and go to state 17
+    empty                          shift and go to state 19
+    arregloID                      shift and go to state 26
+    asignacionRecord               shift and go to state 27
+    idRecord                       shift and go to state 29
+
+state 19
+
+    (12) bloqueContenido -> empty .
+
+    END             reduce using rule 12 (bloqueContenido -> empty .)
+    UNTIL           reduce using rule 12 (bloqueContenido -> empty .)
+    RETURN          reduce using rule 12 (bloqueContenido -> empty .)
+
+
+state 20
+
+    (19) si -> IF . PA condicion PC THEN bloque sino
+
+    PA              shift and go to state 49
+
+
+state 21
+
+    (14) para -> FOR . ID ASIGNACION toFor TO toFor DO bloque
+
+    ID              shift and go to state 50
+
+
+state 22
+
+    (61) arregloID -> ID .
+    (62) arregloID -> ID . ARRAY
+    (59) idRecord -> ID . PUNTO idRecord2
+
+    ASIGNACION      reduce using rule 61 (arregloID -> ID .)
+    ARRAY           shift and go to state 51
+    PUNTO           shift and go to state 52
+
+
+state 23
+
+    (17) mientras -> WHILE . PA condicion PC DO bloque
+
+    PA              shift and go to state 53
+
+
+state 24
+
+    (18) repetir -> REPEAT . bloqueContenido UNTIL PA condicion PC
+    (5) bloqueContenido -> . si bloqueContenido
+    (6) bloqueContenido -> . para bloqueContenido
+    (7) bloqueContenido -> . mientras bloqueContenido
+    (8) bloqueContenido -> . repetir bloqueContenido
+    (9) bloqueContenido -> . escribir bloqueContenido
+    (10) bloqueContenido -> . asignar bloqueContenido
+    (11) bloqueContenido -> . llamarProcedure bloqueContenido
+    (12) bloqueContenido -> . empty
+    (19) si -> . IF PA condicion PC THEN bloque sino
+    (14) para -> . FOR ID ASIGNACION toFor TO toFor DO bloque
+    (17) mientras -> . WHILE PA condicion PC DO bloque
+    (18) repetir -> . REPEAT bloqueContenido UNTIL PA condicion PC
+    (13) escribir -> . WRITELN PA par PC PUNTOCOMA
+    (54) asignar -> . arregloID ASIGNACION operacion PUNTOCOMA
+    (55) asignar -> . arregloID ASIGNACION llamarFunction PUNTOCOMA
+    (56) asignar -> . arregloID ASIGNACION NULL PUNTOCOMA
+    (57) asignar -> . asignacionRecord
+    (104) llamarProcedure -> . CALL PROCEDURE ID PA valoresCall PC PUNTOCOMA
+    (105) llamarProcedure -> . CALL PROCEDURE ID PA error PC PUNTOCOMA
+    (110) empty -> .
+    (61) arregloID -> . ID
+    (62) arregloID -> . ID ARRAY
+    (58) asignacionRecord -> . idRecord ASIGNACION operacion PUNTOCOMA
+    (59) idRecord -> . ID PUNTO idRecord2
+
+    IF              shift and go to state 20
+    FOR             shift and go to state 21
+    WHILE           shift and go to state 23
+    REPEAT          shift and go to state 24
+    WRITELN         shift and go to state 25
+    CALL            shift and go to state 28
+    UNTIL           reduce using rule 110 (empty -> .)
+    ID              shift and go to state 22
+
+    bloqueContenido                shift and go to state 54
+    si                             shift and go to state 12
+    para                           shift and go to state 13
+    mientras                       shift and go to state 14
+    repetir                        shift and go to state 15
+    escribir                       shift and go to state 16
+    asignar                        shift and go to state 17
+    llamarProcedure                shift and go to state 18
+    empty                          shift and go to state 19
+    arregloID                      shift and go to state 26
+    asignacionRecord               shift and go to state 27
+    idRecord                       shift and go to state 29
+
+state 25
+
+    (13) escribir -> WRITELN . PA par PC PUNTOCOMA
+
+    PA              shift and go to state 55
+
+
+state 26
+
+    (54) asignar -> arregloID . ASIGNACION operacion PUNTOCOMA
+    (55) asignar -> arregloID . ASIGNACION llamarFunction PUNTOCOMA
+    (56) asignar -> arregloID . ASIGNACION NULL PUNTOCOMA
+
+    ASIGNACION      shift and go to state 56
+
+
+state 27
+
+    (57) asignar -> asignacionRecord .
+
+    IF              reduce using rule 57 (asignar -> asignacionRecord .)
+    FOR             reduce using rule 57 (asignar -> asignacionRecord .)
+    WHILE           reduce using rule 57 (asignar -> asignacionRecord .)
+    REPEAT          reduce using rule 57 (asignar -> asignacionRecord .)
+    WRITELN         reduce using rule 57 (asignar -> asignacionRecord .)
+    CALL            reduce using rule 57 (asignar -> asignacionRecord .)
+    ID              reduce using rule 57 (asignar -> asignacionRecord .)
+    END             reduce using rule 57 (asignar -> asignacionRecord .)
+    UNTIL           reduce using rule 57 (asignar -> asignacionRecord .)
+    RETURN          reduce using rule 57 (asignar -> asignacionRecord .)
+
+
+state 28
+
+    (104) llamarProcedure -> CALL . PROCEDURE ID PA valoresCall PC PUNTOCOMA
+    (105) llamarProcedure -> CALL . PROCEDURE ID PA error PC PUNTOCOMA
+
+    PROCEDURE       shift and go to state 57
+
+
+state 29
+
+    (58) asignacionRecord -> idRecord . ASIGNACION operacion PUNTOCOMA
+
+    ASIGNACION      shift and go to state 58
+
+
+state 30
+
+    (22) declaracionPrincipal -> VAR declaracion especiales .
+
+    BEGIN           reduce using rule 22 (declaracionPrincipal -> VAR declaracion especiales .)
+
+
+state 31
+
+    (23) especiales -> registro . especiales
+    (23) especiales -> . registro especiales
+    (24) especiales -> . funcion especiales
+    (25) especiales -> . procedimiento especiales
+    (53) especiales -> . empty
+    (32) registro -> . RECORD ID BEGIN declaracionReg END
+    (30) funcion -> . FUNCTION ID PA parametros PC bloqueFuncion
+    (31) procedimiento -> . PROCEDURE ID PA parametros PC bloque
+    (110) empty -> .
+
+    RECORD          shift and go to state 35
+    FUNCTION        shift and go to state 36
+    PROCEDURE       shift and go to state 37
+    BEGIN           reduce using rule 110 (empty -> .)
+
+    registro                       shift and go to state 31
+    especiales                     shift and go to state 59
+    funcion                        shift and go to state 32
+    procedimiento                  shift and go to state 33
+    empty                          shift and go to state 34
+
+state 32
+
+    (24) especiales -> funcion . especiales
+    (23) especiales -> . registro especiales
+    (24) especiales -> . funcion especiales
+    (25) especiales -> . procedimiento especiales
+    (53) especiales -> . empty
+    (32) registro -> . RECORD ID BEGIN declaracionReg END
+    (30) funcion -> . FUNCTION ID PA parametros PC bloqueFuncion
+    (31) procedimiento -> . PROCEDURE ID PA parametros PC bloque
+    (110) empty -> .
+
+    RECORD          shift and go to state 35
+    FUNCTION        shift and go to state 36
+    PROCEDURE       shift and go to state 37
+    BEGIN           reduce using rule 110 (empty -> .)
+
+    funcion                        shift and go to state 32
+    especiales                     shift and go to state 60
+    registro                       shift and go to state 31
+    procedimiento                  shift and go to state 33
+    empty                          shift and go to state 34
+
+state 33
+
+    (25) especiales -> procedimiento . especiales
+    (23) especiales -> . registro especiales
+    (24) especiales -> . funcion especiales
+    (25) especiales -> . procedimiento especiales
+    (53) especiales -> . empty
+    (32) registro -> . RECORD ID BEGIN declaracionReg END
+    (30) funcion -> . FUNCTION ID PA parametros PC bloqueFuncion
+    (31) procedimiento -> . PROCEDURE ID PA parametros PC bloque
+    (110) empty -> .
+
+    RECORD          shift and go to state 35
+    FUNCTION        shift and go to state 36
+    PROCEDURE       shift and go to state 37
+    BEGIN           reduce using rule 110 (empty -> .)
+
+    procedimiento                  shift and go to state 33
+    especiales                     shift and go to state 61
+    registro                       shift and go to state 31
+    funcion                        shift and go to state 32
+    empty                          shift and go to state 34
+
+state 34
+
+    (53) especiales -> empty .
+
+    BEGIN           reduce using rule 53 (especiales -> empty .)
+
+
+state 35
+
+    (32) registro -> RECORD . ID BEGIN declaracionReg END
+
+    ID              shift and go to state 62
+
+
+state 36
+
+    (30) funcion -> FUNCTION . ID PA parametros PC bloqueFuncion
+
+    ID              shift and go to state 63
+
+
+state 37
+
+    (31) procedimiento -> PROCEDURE . ID PA parametros PC bloque
+
+    ID              shift and go to state 64
+
+
+state 38
+
+    (37) declaracion -> variable declaracion .
+
+    RECORD          reduce using rule 37 (declaracion -> variable declaracion .)
+    FUNCTION        reduce using rule 37 (declaracion -> variable declaracion .)
+    PROCEDURE       reduce using rule 37 (declaracion -> variable declaracion .)
+    BEGIN           reduce using rule 37 (declaracion -> variable declaracion .)
+
+
+state 39
+
+    (39) variable -> nombresV DOSPUNTOS . tipo PUNTOCOMA
+    (40) variable -> nombresV DOSPUNTOS . tipo ARRAY PUNTOCOMA
+    (43) tipo -> . INTEGER
+    (44) tipo -> . DOUBLE
+    (45) tipo -> . STRING
+    (46) tipo -> . BOOLEAN
+    (47) tipo -> . ARRAY
+    (48) tipo -> . STACK
+    (49) tipo -> . QUEUE
+    (50) tipo -> . LIST
+    (51) tipo -> . GRAPH
+    (52) tipo -> . ID
+
+    INTEGER         shift and go to state 67
+    DOUBLE          shift and go to state 68
+    STRING          shift and go to state 69
+    BOOLEAN         shift and go to state 70
+    ARRAY           shift and go to state 66
+    STACK           shift and go to state 71
+    QUEUE           shift and go to state 72
+    LIST            shift and go to state 73
+    GRAPH           shift and go to state 74
+    ID              shift and go to state 75
+
+    tipo                           shift and go to state 65
+
+state 40
+
+    (42) nombresV -> ID COMA . nombresV
+    (41) nombresV -> . ID
+    (42) nombresV -> . ID COMA nombresV
+
+    ID              shift and go to state 10
+
+    nombresV                       shift and go to state 76
+
+state 41
+
+    (2) bloque -> BEGIN bloqueContenido END .
+
+    $end            reduce using rule 2 (bloque -> BEGIN bloqueContenido END .)
+    ELSE            reduce using rule 2 (bloque -> BEGIN bloqueContenido END .)
+    IF              reduce using rule 2 (bloque -> BEGIN bloqueContenido END .)
+    FOR             reduce using rule 2 (bloque -> BEGIN bloqueContenido END .)
+    WHILE           reduce using rule 2 (bloque -> BEGIN bloqueContenido END .)
+    REPEAT          reduce using rule 2 (bloque -> BEGIN bloqueContenido END .)
+    WRITELN         reduce using rule 2 (bloque -> BEGIN bloqueContenido END .)
+    CALL            reduce using rule 2 (bloque -> BEGIN bloqueContenido END .)
+    ID              reduce using rule 2 (bloque -> BEGIN bloqueContenido END .)
+    END             reduce using rule 2 (bloque -> BEGIN bloqueContenido END .)
+    UNTIL           reduce using rule 2 (bloque -> BEGIN bloqueContenido END .)
+    RETURN          reduce using rule 2 (bloque -> BEGIN bloqueContenido END .)
+    RECORD          reduce using rule 2 (bloque -> BEGIN bloqueContenido END .)
+    FUNCTION        reduce using rule 2 (bloque -> BEGIN bloqueContenido END .)
+    PROCEDURE       reduce using rule 2 (bloque -> BEGIN bloqueContenido END .)
+    BEGIN           reduce using rule 2 (bloque -> BEGIN bloqueContenido END .)
+
+
+state 42
+
+    (5) bloqueContenido -> si bloqueContenido .
+
+    END             reduce using rule 5 (bloqueContenido -> si bloqueContenido .)
+    UNTIL           reduce using rule 5 (bloqueContenido -> si bloqueContenido .)
+    RETURN          reduce using rule 5 (bloqueContenido -> si bloqueContenido .)
+
+
+state 43
+
+    (6) bloqueContenido -> para bloqueContenido .
+
+    END             reduce using rule 6 (bloqueContenido -> para bloqueContenido .)
+    UNTIL           reduce using rule 6 (bloqueContenido -> para bloqueContenido .)
+    RETURN          reduce using rule 6 (bloqueContenido -> para bloqueContenido .)
+
+
+state 44
+
+    (7) bloqueContenido -> mientras bloqueContenido .
+
+    END             reduce using rule 7 (bloqueContenido -> mientras bloqueContenido .)
+    UNTIL           reduce using rule 7 (bloqueContenido -> mientras bloqueContenido .)
+    RETURN          reduce using rule 7 (bloqueContenido -> mientras bloqueContenido .)
+
+
+state 45
+
+    (8) bloqueContenido -> repetir bloqueContenido .
+
+    END             reduce using rule 8 (bloqueContenido -> repetir bloqueContenido .)
+    UNTIL           reduce using rule 8 (bloqueContenido -> repetir bloqueContenido .)
+    RETURN          reduce using rule 8 (bloqueContenido -> repetir bloqueContenido .)
+
+
+state 46
+
+    (9) bloqueContenido -> escribir bloqueContenido .
+
+    END             reduce using rule 9 (bloqueContenido -> escribir bloqueContenido .)
+    UNTIL           reduce using rule 9 (bloqueContenido -> escribir bloqueContenido .)
+    RETURN          reduce using rule 9 (bloqueContenido -> escribir bloqueContenido .)
+
+
+state 47
+
+    (10) bloqueContenido -> asignar bloqueContenido .
+
+    END             reduce using rule 10 (bloqueContenido -> asignar bloqueContenido .)
+    UNTIL           reduce using rule 10 (bloqueContenido -> asignar bloqueContenido .)
+    RETURN          reduce using rule 10 (bloqueContenido -> asignar bloqueContenido .)
+
+
+state 48
+
+    (11) bloqueContenido -> llamarProcedure bloqueContenido .
+
+    END             reduce using rule 11 (bloqueContenido -> llamarProcedure bloqueContenido .)
+    UNTIL           reduce using rule 11 (bloqueContenido -> llamarProcedure bloqueContenido .)
+    RETURN          reduce using rule 11 (bloqueContenido -> llamarProcedure bloqueContenido .)
+
+
+state 49
+
+    (19) si -> IF PA . condicion PC THEN bloque sino
+    (69) condicion -> . negacion par comparar par continuidad
+    (80) negacion -> . NOT
+    (81) negacion -> . empty
+    (110) empty -> .
+
+    NOT             shift and go to state 79
+    PA              reduce using rule 110 (empty -> .)
+    INTEGERVAL      reduce using rule 110 (empty -> .)
+    DOUBLEVAL       reduce using rule 110 (empty -> .)
+    STRINGVAL       reduce using rule 110 (empty -> .)
+    TRUE            reduce using rule 110 (empty -> .)
+    FALSE           reduce using rule 110 (empty -> .)
+    ID              reduce using rule 110 (empty -> .)
+    CEIL            reduce using rule 110 (empty -> .)
+    FLOOR           reduce using rule 110 (empty -> .)
+    LENGTH          reduce using rule 110 (empty -> .)
+    STR             reduce using rule 110 (empty -> .)
+
+    condicion                      shift and go to state 77
+    negacion                       shift and go to state 78
+    empty                          shift and go to state 80
+
+state 50
+
+    (14) para -> FOR ID . ASIGNACION toFor TO toFor DO bloque
+
+    ASIGNACION      shift and go to state 81
+
+
+state 51
+
+    (62) arregloID -> ID ARRAY .
+
+    ASIGNACION      reduce using rule 62 (arregloID -> ID ARRAY .)
+    MAS             reduce using rule 62 (arregloID -> ID ARRAY .)
+    MENOS           reduce using rule 62 (arregloID -> ID ARRAY .)
+    POR             reduce using rule 62 (arregloID -> ID ARRAY .)
+    DIVIDIR         reduce using rule 62 (arregloID -> ID ARRAY .)
+    DIV             reduce using rule 62 (arregloID -> ID ARRAY .)
+    MOD             reduce using rule 62 (arregloID -> ID ARRAY .)
+    PC              reduce using rule 62 (arregloID -> ID ARRAY .)
+    PUNTOCOMA       reduce using rule 62 (arregloID -> ID ARRAY .)
+    MAYOR           reduce using rule 62 (arregloID -> ID ARRAY .)
+    MENOR           reduce using rule 62 (arregloID -> ID ARRAY .)
+    MAYORIGUAL      reduce using rule 62 (arregloID -> ID ARRAY .)
+    MENORIGUAL      reduce using rule 62 (arregloID -> ID ARRAY .)
+    IGUAL           reduce using rule 62 (arregloID -> ID ARRAY .)
+    DIFERENTE       reduce using rule 62 (arregloID -> ID ARRAY .)
+    AND             reduce using rule 62 (arregloID -> ID ARRAY .)
+    OR              reduce using rule 62 (arregloID -> ID ARRAY .)
+    COMA            reduce using rule 62 (arregloID -> ID ARRAY .)
+
+
+state 52
+
+    (59) idRecord -> ID PUNTO . idRecord2
+    (60) idRecord2 -> . ID
+
+    ID              shift and go to state 82
+
+    idRecord2                      shift and go to state 83
+
+state 53
+
+    (17) mientras -> WHILE PA . condicion PC DO bloque
+    (69) condicion -> . negacion par comparar par continuidad
+    (80) negacion -> . NOT
+    (81) negacion -> . empty
+    (110) empty -> .
+
+    NOT             shift and go to state 79
+    PA              reduce using rule 110 (empty -> .)
+    INTEGERVAL      reduce using rule 110 (empty -> .)
+    DOUBLEVAL       reduce using rule 110 (empty -> .)
+    STRINGVAL       reduce using rule 110 (empty -> .)
+    TRUE            reduce using rule 110 (empty -> .)
+    FALSE           reduce using rule 110 (empty -> .)
+    ID              reduce using rule 110 (empty -> .)
+    CEIL            reduce using rule 110 (empty -> .)
+    FLOOR           reduce using rule 110 (empty -> .)
+    LENGTH          reduce using rule 110 (empty -> .)
+    STR             reduce using rule 110 (empty -> .)
+
+    condicion                      shift and go to state 84
+    negacion                       shift and go to state 78
+    empty                          shift and go to state 80
+
+state 54
+
+    (18) repetir -> REPEAT bloqueContenido . UNTIL PA condicion PC
+
+    UNTIL           shift and go to state 85
+
+
+state 55
+
+    (13) escribir -> WRITELN PA . par PC PUNTOCOMA
+    (65) par -> . opmath
+    (66) par -> . PA par PC parAux
+    (82) opmath -> . valor
+    (83) opmath -> . valor mathsymbol par
+    (92) valor -> . arregloID
+    (93) valor -> . INTEGERVAL
+    (94) valor -> . DOUBLEVAL
+    (95) valor -> . STRINGVAL
+    (96) valor -> . TRUE
+    (97) valor -> . FALSE
+    (98) valor -> . techo
+    (99) valor -> . piso
+    (100) valor -> . longitud
+    (101) valor -> . conversionCad
+    (61) arregloID -> . ID
+    (62) arregloID -> . ID ARRAY
+    (90) techo -> . CEIL PA opmath PC
+    (91) piso -> . FLOOR PA opmath PC
+    (103) longitud -> . LENGTH PA STRINGVAL PC
+    (111) longitud -> . LENGTH PA error PC
+    (102) conversionCad -> . STR PA opmath PC
+
+    PA              shift and go to state 86
+    INTEGERVAL      shift and go to state 91
+    DOUBLEVAL       shift and go to state 92
+    STRINGVAL       shift and go to state 93
+    TRUE            shift and go to state 94
+    FALSE           shift and go to state 95
+    ID              shift and go to state 100
+    CEIL            shift and go to state 101
+    FLOOR           shift and go to state 102
+    LENGTH          shift and go to state 103
+    STR             shift and go to state 104
+
+    par                            shift and go to state 87
+    opmath                         shift and go to state 88
+    valor                          shift and go to state 89
+    arregloID                      shift and go to state 90
+    techo                          shift and go to state 96
+    piso                           shift and go to state 97
+    longitud                       shift and go to state 98
+    conversionCad                  shift and go to state 99
+
+state 56
+
+    (54) asignar -> arregloID ASIGNACION . operacion PUNTOCOMA
+    (55) asignar -> arregloID ASIGNACION . llamarFunction PUNTOCOMA
+    (56) asignar -> arregloID ASIGNACION . NULL PUNTOCOMA
+    (63) operacion -> . par
+    (64) operacion -> . SUBARRAY
+    (106) llamarFunction -> . CALL FUNCTION ID PA valoresCall PC
+    (107) llamarFunction -> . CALL FUNCTION ID PA error PC
+    (65) par -> . opmath
+    (66) par -> . PA par PC parAux
+    (82) opmath -> . valor
+    (83) opmath -> . valor mathsymbol par
+    (92) valor -> . arregloID
+    (93) valor -> . INTEGERVAL
+    (94) valor -> . DOUBLEVAL
+    (95) valor -> . STRINGVAL
+    (96) valor -> . TRUE
+    (97) valor -> . FALSE
+    (98) valor -> . techo
+    (99) valor -> . piso
+    (100) valor -> . longitud
+    (101) valor -> . conversionCad
+    (61) arregloID -> . ID
+    (62) arregloID -> . ID ARRAY
+    (90) techo -> . CEIL PA opmath PC
+    (91) piso -> . FLOOR PA opmath PC
+    (103) longitud -> . LENGTH PA STRINGVAL PC
+    (111) longitud -> . LENGTH PA error PC
+    (102) conversionCad -> . STR PA opmath PC
+
+    NULL            shift and go to state 107
+    SUBARRAY        shift and go to state 109
+    CALL            shift and go to state 110
+    PA              shift and go to state 86
+    INTEGERVAL      shift and go to state 91
+    DOUBLEVAL       shift and go to state 92
+    STRINGVAL       shift and go to state 93
+    TRUE            shift and go to state 94
+    FALSE           shift and go to state 95
+    ID              shift and go to state 100
+    CEIL            shift and go to state 101
+    FLOOR           shift and go to state 102
+    LENGTH          shift and go to state 103
+    STR             shift and go to state 104
+
+    arregloID                      shift and go to state 90
+    operacion                      shift and go to state 105
+    llamarFunction                 shift and go to state 106
+    par                            shift and go to state 108
+    opmath                         shift and go to state 88
+    valor                          shift and go to state 89
+    techo                          shift and go to state 96
+    piso                           shift and go to state 97
+    longitud                       shift and go to state 98
+    conversionCad                  shift and go to state 99
+
+state 57
+
+    (104) llamarProcedure -> CALL PROCEDURE . ID PA valoresCall PC PUNTOCOMA
+    (105) llamarProcedure -> CALL PROCEDURE . ID PA error PC PUNTOCOMA
+
+    ID              shift and go to state 111
+
+
+state 58
+
+    (58) asignacionRecord -> idRecord ASIGNACION . operacion PUNTOCOMA
+    (63) operacion -> . par
+    (64) operacion -> . SUBARRAY
+    (65) par -> . opmath
+    (66) par -> . PA par PC parAux
+    (82) opmath -> . valor
+    (83) opmath -> . valor mathsymbol par
+    (92) valor -> . arregloID
+    (93) valor -> . INTEGERVAL
+    (94) valor -> . DOUBLEVAL
+    (95) valor -> . STRINGVAL
+    (96) valor -> . TRUE
+    (97) valor -> . FALSE
+    (98) valor -> . techo
+    (99) valor -> . piso
+    (100) valor -> . longitud
+    (101) valor -> . conversionCad
+    (61) arregloID -> . ID
+    (62) arregloID -> . ID ARRAY
+    (90) techo -> . CEIL PA opmath PC
+    (91) piso -> . FLOOR PA opmath PC
+    (103) longitud -> . LENGTH PA STRINGVAL PC
+    (111) longitud -> . LENGTH PA error PC
+    (102) conversionCad -> . STR PA opmath PC
+
+    SUBARRAY        shift and go to state 109
+    PA              shift and go to state 86
+    INTEGERVAL      shift and go to state 91
+    DOUBLEVAL       shift and go to state 92
+    STRINGVAL       shift and go to state 93
+    TRUE            shift and go to state 94
+    FALSE           shift and go to state 95
+    ID              shift and go to state 100
+    CEIL            shift and go to state 101
+    FLOOR           shift and go to state 102
+    LENGTH          shift and go to state 103
+    STR             shift and go to state 104
+
+    operacion                      shift and go to state 112
+    par                            shift and go to state 108
+    opmath                         shift and go to state 88
+    valor                          shift and go to state 89
+    arregloID                      shift and go to state 90
+    techo                          shift and go to state 96
+    piso                           shift and go to state 97
+    longitud                       shift and go to state 98
+    conversionCad                  shift and go to state 99
+
+state 59
+
+    (23) especiales -> registro especiales .
+
+    BEGIN           reduce using rule 23 (especiales -> registro especiales .)
+
+
+state 60
+
+    (24) especiales -> funcion especiales .
+
+    BEGIN           reduce using rule 24 (especiales -> funcion especiales .)
+
+
+state 61
+
+    (25) especiales -> procedimiento especiales .
+
+    BEGIN           reduce using rule 25 (especiales -> procedimiento especiales .)
+
+
+state 62
+
+    (32) registro -> RECORD ID . BEGIN declaracionReg END
+
+    BEGIN           shift and go to state 113
+
+
+state 63
+
+    (30) funcion -> FUNCTION ID . PA parametros PC bloqueFuncion
+
+    PA              shift and go to state 114
+
+
+state 64
+
+    (31) procedimiento -> PROCEDURE ID . PA parametros PC bloque
+
+    PA              shift and go to state 115
+
+
+state 65
+
+    (39) variable -> nombresV DOSPUNTOS tipo . PUNTOCOMA
+    (40) variable -> nombresV DOSPUNTOS tipo . ARRAY PUNTOCOMA
+
+    PUNTOCOMA       shift and go to state 116
+    ARRAY           shift and go to state 117
+
+
+state 66
+
+    (47) tipo -> ARRAY .
+
+    PUNTOCOMA       reduce using rule 47 (tipo -> ARRAY .)
+    ARRAY           reduce using rule 47 (tipo -> ARRAY .)
+    ID              reduce using rule 47 (tipo -> ARRAY .)
+
+
+state 67
+
+    (43) tipo -> INTEGER .
+
+    PUNTOCOMA       reduce using rule 43 (tipo -> INTEGER .)
+    ARRAY           reduce using rule 43 (tipo -> INTEGER .)
+    ID              reduce using rule 43 (tipo -> INTEGER .)
+
+
+state 68
+
+    (44) tipo -> DOUBLE .
+
+    PUNTOCOMA       reduce using rule 44 (tipo -> DOUBLE .)
+    ARRAY           reduce using rule 44 (tipo -> DOUBLE .)
+    ID              reduce using rule 44 (tipo -> DOUBLE .)
+
+
+state 69
+
+    (45) tipo -> STRING .
+
+    PUNTOCOMA       reduce using rule 45 (tipo -> STRING .)
+    ARRAY           reduce using rule 45 (tipo -> STRING .)
+    ID              reduce using rule 45 (tipo -> STRING .)
+
+
+state 70
+
+    (46) tipo -> BOOLEAN .
+
+    PUNTOCOMA       reduce using rule 46 (tipo -> BOOLEAN .)
+    ARRAY           reduce using rule 46 (tipo -> BOOLEAN .)
+    ID              reduce using rule 46 (tipo -> BOOLEAN .)
+
+
+state 71
+
+    (48) tipo -> STACK .
+
+    PUNTOCOMA       reduce using rule 48 (tipo -> STACK .)
+    ARRAY           reduce using rule 48 (tipo -> STACK .)
+    ID              reduce using rule 48 (tipo -> STACK .)
+
+
+state 72
+
+    (49) tipo -> QUEUE .
+
+    PUNTOCOMA       reduce using rule 49 (tipo -> QUEUE .)
+    ARRAY           reduce using rule 49 (tipo -> QUEUE .)
+    ID              reduce using rule 49 (tipo -> QUEUE .)
+
+
+state 73
+
+    (50) tipo -> LIST .
+
+    PUNTOCOMA       reduce using rule 50 (tipo -> LIST .)
+    ARRAY           reduce using rule 50 (tipo -> LIST .)
+    ID              reduce using rule 50 (tipo -> LIST .)
+
+
+state 74
+
+    (51) tipo -> GRAPH .
+
+    PUNTOCOMA       reduce using rule 51 (tipo -> GRAPH .)
+    ARRAY           reduce using rule 51 (tipo -> GRAPH .)
+    ID              reduce using rule 51 (tipo -> GRAPH .)
+
+
+state 75
+
+    (52) tipo -> ID .
+
+    PUNTOCOMA       reduce using rule 52 (tipo -> ID .)
+    ARRAY           reduce using rule 52 (tipo -> ID .)
+    ID              reduce using rule 52 (tipo -> ID .)
+
+
+state 76
+
+    (42) nombresV -> ID COMA nombresV .
+
+    DOSPUNTOS       reduce using rule 42 (nombresV -> ID COMA nombresV .)
+
+
+state 77
+
+    (19) si -> IF PA condicion . PC THEN bloque sino
+
+    PC              shift and go to state 118
+
+
+state 78
+
+    (69) condicion -> negacion . par comparar par continuidad
+    (65) par -> . opmath
+    (66) par -> . PA par PC parAux
+    (82) opmath -> . valor
+    (83) opmath -> . valor mathsymbol par
+    (92) valor -> . arregloID
+    (93) valor -> . INTEGERVAL
+    (94) valor -> . DOUBLEVAL
+    (95) valor -> . STRINGVAL
+    (96) valor -> . TRUE
+    (97) valor -> . FALSE
+    (98) valor -> . techo
+    (99) valor -> . piso
+    (100) valor -> . longitud
+    (101) valor -> . conversionCad
+    (61) arregloID -> . ID
+    (62) arregloID -> . ID ARRAY
+    (90) techo -> . CEIL PA opmath PC
+    (91) piso -> . FLOOR PA opmath PC
+    (103) longitud -> . LENGTH PA STRINGVAL PC
+    (111) longitud -> . LENGTH PA error PC
+    (102) conversionCad -> . STR PA opmath PC
+
+    PA              shift and go to state 86
+    INTEGERVAL      shift and go to state 91
+    DOUBLEVAL       shift and go to state 92
+    STRINGVAL       shift and go to state 93
+    TRUE            shift and go to state 94
+    FALSE           shift and go to state 95
+    ID              shift and go to state 100
+    CEIL            shift and go to state 101
+    FLOOR           shift and go to state 102
+    LENGTH          shift and go to state 103
+    STR             shift and go to state 104
+
+    par                            shift and go to state 119
+    opmath                         shift and go to state 88
+    valor                          shift and go to state 89
+    arregloID                      shift and go to state 90
+    techo                          shift and go to state 96
+    piso                           shift and go to state 97
+    longitud                       shift and go to state 98
+    conversionCad                  shift and go to state 99
+
+state 79
+
+    (80) negacion -> NOT .
+
+    PA              reduce using rule 80 (negacion -> NOT .)
+    INTEGERVAL      reduce using rule 80 (negacion -> NOT .)
+    DOUBLEVAL       reduce using rule 80 (negacion -> NOT .)
+    STRINGVAL       reduce using rule 80 (negacion -> NOT .)
+    TRUE            reduce using rule 80 (negacion -> NOT .)
+    FALSE           reduce using rule 80 (negacion -> NOT .)
+    ID              reduce using rule 80 (negacion -> NOT .)
+    CEIL            reduce using rule 80 (negacion -> NOT .)
+    FLOOR           reduce using rule 80 (negacion -> NOT .)
+    LENGTH          reduce using rule 80 (negacion -> NOT .)
+    STR             reduce using rule 80 (negacion -> NOT .)
+
+
+state 80
+
+    (81) negacion -> empty .
+
+    PA              reduce using rule 81 (negacion -> empty .)
+    INTEGERVAL      reduce using rule 81 (negacion -> empty .)
+    DOUBLEVAL       reduce using rule 81 (negacion -> empty .)
+    STRINGVAL       reduce using rule 81 (negacion -> empty .)
+    TRUE            reduce using rule 81 (negacion -> empty .)
+    FALSE           reduce using rule 81 (negacion -> empty .)
+    ID              reduce using rule 81 (negacion -> empty .)
+    CEIL            reduce using rule 81 (negacion -> empty .)
+    FLOOR           reduce using rule 81 (negacion -> empty .)
+    LENGTH          reduce using rule 81 (negacion -> empty .)
+    STR             reduce using rule 81 (negacion -> empty .)
+
+
+state 81
+
+    (14) para -> FOR ID ASIGNACION . toFor TO toFor DO bloque
+    (15) toFor -> . ID
+    (16) toFor -> . INTEGERVAL
+
+    ID              shift and go to state 120
+    INTEGERVAL      shift and go to state 122
+
+    toFor                          shift and go to state 121
+
+state 82
+
+    (60) idRecord2 -> ID .
+
+    ASIGNACION      reduce using rule 60 (idRecord2 -> ID .)
+
+
+state 83
+
+    (59) idRecord -> ID PUNTO idRecord2 .
+
+    ASIGNACION      reduce using rule 59 (idRecord -> ID PUNTO idRecord2 .)
+
+
+state 84
+
+    (17) mientras -> WHILE PA condicion . PC DO bloque
+
+    PC              shift and go to state 123
+
+
+state 85
+
+    (18) repetir -> REPEAT bloqueContenido UNTIL . PA condicion PC
+
+    PA              shift and go to state 124
+
+
+state 86
+
+    (66) par -> PA . par PC parAux
+    (65) par -> . opmath
+    (66) par -> . PA par PC parAux
+    (82) opmath -> . valor
+    (83) opmath -> . valor mathsymbol par
+    (92) valor -> . arregloID
+    (93) valor -> . INTEGERVAL
+    (94) valor -> . DOUBLEVAL
+    (95) valor -> . STRINGVAL
+    (96) valor -> . TRUE
+    (97) valor -> . FALSE
+    (98) valor -> . techo
+    (99) valor -> . piso
+    (100) valor -> . longitud
+    (101) valor -> . conversionCad
+    (61) arregloID -> . ID
+    (62) arregloID -> . ID ARRAY
+    (90) techo -> . CEIL PA opmath PC
+    (91) piso -> . FLOOR PA opmath PC
+    (103) longitud -> . LENGTH PA STRINGVAL PC
+    (111) longitud -> . LENGTH PA error PC
+    (102) conversionCad -> . STR PA opmath PC
+
+    PA              shift and go to state 86
+    INTEGERVAL      shift and go to state 91
+    DOUBLEVAL       shift and go to state 92
+    STRINGVAL       shift and go to state 93
+    TRUE            shift and go to state 94
+    FALSE           shift and go to state 95
+    ID              shift and go to state 100
+    CEIL            shift and go to state 101
+    FLOOR           shift and go to state 102
+    LENGTH          shift and go to state 103
+    STR             shift and go to state 104
+
+    par                            shift and go to state 125
+    opmath                         shift and go to state 88
+    valor                          shift and go to state 89
+    arregloID                      shift and go to state 90
+    techo                          shift and go to state 96
+    piso                           shift and go to state 97
+    longitud                       shift and go to state 98
+    conversionCad                  shift and go to state 99
+
+state 87
+
+    (13) escribir -> WRITELN PA par . PC PUNTOCOMA
+
+    PC              shift and go to state 126
+
+
+state 88
+
+    (65) par -> opmath .
+
+    PC              reduce using rule 65 (par -> opmath .)
+    PUNTOCOMA       reduce using rule 65 (par -> opmath .)
+    MAYOR           reduce using rule 65 (par -> opmath .)
+    MENOR           reduce using rule 65 (par -> opmath .)
+    MAYORIGUAL      reduce using rule 65 (par -> opmath .)
+    MENORIGUAL      reduce using rule 65 (par -> opmath .)
+    IGUAL           reduce using rule 65 (par -> opmath .)
+    DIFERENTE       reduce using rule 65 (par -> opmath .)
+    AND             reduce using rule 65 (par -> opmath .)
+    OR              reduce using rule 65 (par -> opmath .)
+
+
+state 89
+
+    (82) opmath -> valor .
+    (83) opmath -> valor . mathsymbol par
+    (84) mathsymbol -> . MAS
+    (85) mathsymbol -> . MENOS
+    (86) mathsymbol -> . POR
+    (87) mathsymbol -> . DIVIDIR
+    (88) mathsymbol -> . DIV
+    (89) mathsymbol -> . MOD
+
+    PC              reduce using rule 82 (opmath -> valor .)
+    PUNTOCOMA       reduce using rule 82 (opmath -> valor .)
+    MAYOR           reduce using rule 82 (opmath -> valor .)
+    MENOR           reduce using rule 82 (opmath -> valor .)
+    MAYORIGUAL      reduce using rule 82 (opmath -> valor .)
+    MENORIGUAL      reduce using rule 82 (opmath -> valor .)
+    IGUAL           reduce using rule 82 (opmath -> valor .)
+    DIFERENTE       reduce using rule 82 (opmath -> valor .)
+    AND             reduce using rule 82 (opmath -> valor .)
+    OR              reduce using rule 82 (opmath -> valor .)
+    MAS             shift and go to state 128
+    MENOS           shift and go to state 129
+    POR             shift and go to state 130
+    DIVIDIR         shift and go to state 131
+    DIV             shift and go to state 132
+    MOD             shift and go to state 133
+
+    mathsymbol                     shift and go to state 127
+
+state 90
+
+    (92) valor -> arregloID .
+
+    MAS             reduce using rule 92 (valor -> arregloID .)
+    MENOS           reduce using rule 92 (valor -> arregloID .)
+    POR             reduce using rule 92 (valor -> arregloID .)
+    DIVIDIR         reduce using rule 92 (valor -> arregloID .)
+    DIV             reduce using rule 92 (valor -> arregloID .)
+    MOD             reduce using rule 92 (valor -> arregloID .)
+    PC              reduce using rule 92 (valor -> arregloID .)
+    PUNTOCOMA       reduce using rule 92 (valor -> arregloID .)
+    MAYOR           reduce using rule 92 (valor -> arregloID .)
+    MENOR           reduce using rule 92 (valor -> arregloID .)
+    MAYORIGUAL      reduce using rule 92 (valor -> arregloID .)
+    MENORIGUAL      reduce using rule 92 (valor -> arregloID .)
+    IGUAL           reduce using rule 92 (valor -> arregloID .)
+    DIFERENTE       reduce using rule 92 (valor -> arregloID .)
+    AND             reduce using rule 92 (valor -> arregloID .)
+    OR              reduce using rule 92 (valor -> arregloID .)
+    COMA            reduce using rule 92 (valor -> arregloID .)
+
+
+state 91
+
+    (93) valor -> INTEGERVAL .
+
+    MAS             reduce using rule 93 (valor -> INTEGERVAL .)
+    MENOS           reduce using rule 93 (valor -> INTEGERVAL .)
+    POR             reduce using rule 93 (valor -> INTEGERVAL .)
+    DIVIDIR         reduce using rule 93 (valor -> INTEGERVAL .)
+    DIV             reduce using rule 93 (valor -> INTEGERVAL .)
+    MOD             reduce using rule 93 (valor -> INTEGERVAL .)
+    PC              reduce using rule 93 (valor -> INTEGERVAL .)
+    PUNTOCOMA       reduce using rule 93 (valor -> INTEGERVAL .)
+    MAYOR           reduce using rule 93 (valor -> INTEGERVAL .)
+    MENOR           reduce using rule 93 (valor -> INTEGERVAL .)
+    MAYORIGUAL      reduce using rule 93 (valor -> INTEGERVAL .)
+    MENORIGUAL      reduce using rule 93 (valor -> INTEGERVAL .)
+    IGUAL           reduce using rule 93 (valor -> INTEGERVAL .)
+    DIFERENTE       reduce using rule 93 (valor -> INTEGERVAL .)
+    AND             reduce using rule 93 (valor -> INTEGERVAL .)
+    OR              reduce using rule 93 (valor -> INTEGERVAL .)
+    COMA            reduce using rule 93 (valor -> INTEGERVAL .)
+
+
+state 92
+
+    (94) valor -> DOUBLEVAL .
+
+    MAS             reduce using rule 94 (valor -> DOUBLEVAL .)
+    MENOS           reduce using rule 94 (valor -> DOUBLEVAL .)
+    POR             reduce using rule 94 (valor -> DOUBLEVAL .)
+    DIVIDIR         reduce using rule 94 (valor -> DOUBLEVAL .)
+    DIV             reduce using rule 94 (valor -> DOUBLEVAL .)
+    MOD             reduce using rule 94 (valor -> DOUBLEVAL .)
+    PC              reduce using rule 94 (valor -> DOUBLEVAL .)
+    PUNTOCOMA       reduce using rule 94 (valor -> DOUBLEVAL .)
+    MAYOR           reduce using rule 94 (valor -> DOUBLEVAL .)
+    MENOR           reduce using rule 94 (valor -> DOUBLEVAL .)
+    MAYORIGUAL      reduce using rule 94 (valor -> DOUBLEVAL .)
+    MENORIGUAL      reduce using rule 94 (valor -> DOUBLEVAL .)
+    IGUAL           reduce using rule 94 (valor -> DOUBLEVAL .)
+    DIFERENTE       reduce using rule 94 (valor -> DOUBLEVAL .)
+    AND             reduce using rule 94 (valor -> DOUBLEVAL .)
+    OR              reduce using rule 94 (valor -> DOUBLEVAL .)
+    COMA            reduce using rule 94 (valor -> DOUBLEVAL .)
+
+
+state 93
+
+    (95) valor -> STRINGVAL .
+
+    MAS             reduce using rule 95 (valor -> STRINGVAL .)
+    MENOS           reduce using rule 95 (valor -> STRINGVAL .)
+    POR             reduce using rule 95 (valor -> STRINGVAL .)
+    DIVIDIR         reduce using rule 95 (valor -> STRINGVAL .)
+    DIV             reduce using rule 95 (valor -> STRINGVAL .)
+    MOD             reduce using rule 95 (valor -> STRINGVAL .)
+    PC              reduce using rule 95 (valor -> STRINGVAL .)
+    PUNTOCOMA       reduce using rule 95 (valor -> STRINGVAL .)
+    MAYOR           reduce using rule 95 (valor -> STRINGVAL .)
+    MENOR           reduce using rule 95 (valor -> STRINGVAL .)
+    MAYORIGUAL      reduce using rule 95 (valor -> STRINGVAL .)
+    MENORIGUAL      reduce using rule 95 (valor -> STRINGVAL .)
+    IGUAL           reduce using rule 95 (valor -> STRINGVAL .)
+    DIFERENTE       reduce using rule 95 (valor -> STRINGVAL .)
+    AND             reduce using rule 95 (valor -> STRINGVAL .)
+    OR              reduce using rule 95 (valor -> STRINGVAL .)
+    COMA            reduce using rule 95 (valor -> STRINGVAL .)
+
+
+state 94
+
+    (96) valor -> TRUE .
+
+    MAS             reduce using rule 96 (valor -> TRUE .)
+    MENOS           reduce using rule 96 (valor -> TRUE .)
+    POR             reduce using rule 96 (valor -> TRUE .)
+    DIVIDIR         reduce using rule 96 (valor -> TRUE .)
+    DIV             reduce using rule 96 (valor -> TRUE .)
+    MOD             reduce using rule 96 (valor -> TRUE .)
+    PC              reduce using rule 96 (valor -> TRUE .)
+    PUNTOCOMA       reduce using rule 96 (valor -> TRUE .)
+    MAYOR           reduce using rule 96 (valor -> TRUE .)
+    MENOR           reduce using rule 96 (valor -> TRUE .)
+    MAYORIGUAL      reduce using rule 96 (valor -> TRUE .)
+    MENORIGUAL      reduce using rule 96 (valor -> TRUE .)
+    IGUAL           reduce using rule 96 (valor -> TRUE .)
+    DIFERENTE       reduce using rule 96 (valor -> TRUE .)
+    AND             reduce using rule 96 (valor -> TRUE .)
+    OR              reduce using rule 96 (valor -> TRUE .)
+    COMA            reduce using rule 96 (valor -> TRUE .)
+
+
+state 95
+
+    (97) valor -> FALSE .
+
+    MAS             reduce using rule 97 (valor -> FALSE .)
+    MENOS           reduce using rule 97 (valor -> FALSE .)
+    POR             reduce using rule 97 (valor -> FALSE .)
+    DIVIDIR         reduce using rule 97 (valor -> FALSE .)
+    DIV             reduce using rule 97 (valor -> FALSE .)
+    MOD             reduce using rule 97 (valor -> FALSE .)
+    PC              reduce using rule 97 (valor -> FALSE .)
+    PUNTOCOMA       reduce using rule 97 (valor -> FALSE .)
+    MAYOR           reduce using rule 97 (valor -> FALSE .)
+    MENOR           reduce using rule 97 (valor -> FALSE .)
+    MAYORIGUAL      reduce using rule 97 (valor -> FALSE .)
+    MENORIGUAL      reduce using rule 97 (valor -> FALSE .)
+    IGUAL           reduce using rule 97 (valor -> FALSE .)
+    DIFERENTE       reduce using rule 97 (valor -> FALSE .)
+    AND             reduce using rule 97 (valor -> FALSE .)
+    OR              reduce using rule 97 (valor -> FALSE .)
+    COMA            reduce using rule 97 (valor -> FALSE .)
+
+
+state 96
+
+    (98) valor -> techo .
+
+    MAS             reduce using rule 98 (valor -> techo .)
+    MENOS           reduce using rule 98 (valor -> techo .)
+    POR             reduce using rule 98 (valor -> techo .)
+    DIVIDIR         reduce using rule 98 (valor -> techo .)
+    DIV             reduce using rule 98 (valor -> techo .)
+    MOD             reduce using rule 98 (valor -> techo .)
+    PC              reduce using rule 98 (valor -> techo .)
+    PUNTOCOMA       reduce using rule 98 (valor -> techo .)
+    MAYOR           reduce using rule 98 (valor -> techo .)
+    MENOR           reduce using rule 98 (valor -> techo .)
+    MAYORIGUAL      reduce using rule 98 (valor -> techo .)
+    MENORIGUAL      reduce using rule 98 (valor -> techo .)
+    IGUAL           reduce using rule 98 (valor -> techo .)
+    DIFERENTE       reduce using rule 98 (valor -> techo .)
+    AND             reduce using rule 98 (valor -> techo .)
+    OR              reduce using rule 98 (valor -> techo .)
+    COMA            reduce using rule 98 (valor -> techo .)
+
+
+state 97
+
+    (99) valor -> piso .
+
+    MAS             reduce using rule 99 (valor -> piso .)
+    MENOS           reduce using rule 99 (valor -> piso .)
+    POR             reduce using rule 99 (valor -> piso .)
+    DIVIDIR         reduce using rule 99 (valor -> piso .)
+    DIV             reduce using rule 99 (valor -> piso .)
+    MOD             reduce using rule 99 (valor -> piso .)
+    PC              reduce using rule 99 (valor -> piso .)
+    PUNTOCOMA       reduce using rule 99 (valor -> piso .)
+    MAYOR           reduce using rule 99 (valor -> piso .)
+    MENOR           reduce using rule 99 (valor -> piso .)
+    MAYORIGUAL      reduce using rule 99 (valor -> piso .)
+    MENORIGUAL      reduce using rule 99 (valor -> piso .)
+    IGUAL           reduce using rule 99 (valor -> piso .)
+    DIFERENTE       reduce using rule 99 (valor -> piso .)
+    AND             reduce using rule 99 (valor -> piso .)
+    OR              reduce using rule 99 (valor -> piso .)
+    COMA            reduce using rule 99 (valor -> piso .)
+
+
+state 98
+
+    (100) valor -> longitud .
+
+    MAS             reduce using rule 100 (valor -> longitud .)
+    MENOS           reduce using rule 100 (valor -> longitud .)
+    POR             reduce using rule 100 (valor -> longitud .)
+    DIVIDIR         reduce using rule 100 (valor -> longitud .)
+    DIV             reduce using rule 100 (valor -> longitud .)
+    MOD             reduce using rule 100 (valor -> longitud .)
+    PC              reduce using rule 100 (valor -> longitud .)
+    PUNTOCOMA       reduce using rule 100 (valor -> longitud .)
+    MAYOR           reduce using rule 100 (valor -> longitud .)
+    MENOR           reduce using rule 100 (valor -> longitud .)
+    MAYORIGUAL      reduce using rule 100 (valor -> longitud .)
+    MENORIGUAL      reduce using rule 100 (valor -> longitud .)
+    IGUAL           reduce using rule 100 (valor -> longitud .)
+    DIFERENTE       reduce using rule 100 (valor -> longitud .)
+    AND             reduce using rule 100 (valor -> longitud .)
+    OR              reduce using rule 100 (valor -> longitud .)
+    COMA            reduce using rule 100 (valor -> longitud .)
+
+
+state 99
+
+    (101) valor -> conversionCad .
+
+    MAS             reduce using rule 101 (valor -> conversionCad .)
+    MENOS           reduce using rule 101 (valor -> conversionCad .)
+    POR             reduce using rule 101 (valor -> conversionCad .)
+    DIVIDIR         reduce using rule 101 (valor -> conversionCad .)
+    DIV             reduce using rule 101 (valor -> conversionCad .)
+    MOD             reduce using rule 101 (valor -> conversionCad .)
+    PC              reduce using rule 101 (valor -> conversionCad .)
+    PUNTOCOMA       reduce using rule 101 (valor -> conversionCad .)
+    MAYOR           reduce using rule 101 (valor -> conversionCad .)
+    MENOR           reduce using rule 101 (valor -> conversionCad .)
+    MAYORIGUAL      reduce using rule 101 (valor -> conversionCad .)
+    MENORIGUAL      reduce using rule 101 (valor -> conversionCad .)
+    IGUAL           reduce using rule 101 (valor -> conversionCad .)
+    DIFERENTE       reduce using rule 101 (valor -> conversionCad .)
+    AND             reduce using rule 101 (valor -> conversionCad .)
+    OR              reduce using rule 101 (valor -> conversionCad .)
+    COMA            reduce using rule 101 (valor -> conversionCad .)
+
+
+state 100
+
+    (61) arregloID -> ID .
+    (62) arregloID -> ID . ARRAY
+
+    MAS             reduce using rule 61 (arregloID -> ID .)
+    MENOS           reduce using rule 61 (arregloID -> ID .)
+    POR             reduce using rule 61 (arregloID -> ID .)
+    DIVIDIR         reduce using rule 61 (arregloID -> ID .)
+    DIV             reduce using rule 61 (arregloID -> ID .)
+    MOD             reduce using rule 61 (arregloID -> ID .)
+    PC              reduce using rule 61 (arregloID -> ID .)
+    PUNTOCOMA       reduce using rule 61 (arregloID -> ID .)
+    MAYOR           reduce using rule 61 (arregloID -> ID .)
+    MENOR           reduce using rule 61 (arregloID -> ID .)
+    MAYORIGUAL      reduce using rule 61 (arregloID -> ID .)
+    MENORIGUAL      reduce using rule 61 (arregloID -> ID .)
+    IGUAL           reduce using rule 61 (arregloID -> ID .)
+    DIFERENTE       reduce using rule 61 (arregloID -> ID .)
+    AND             reduce using rule 61 (arregloID -> ID .)
+    OR              reduce using rule 61 (arregloID -> ID .)
+    COMA            reduce using rule 61 (arregloID -> ID .)
+    ARRAY           shift and go to state 51
+
+
+state 101
+
+    (90) techo -> CEIL . PA opmath PC
+
+    PA              shift and go to state 134
+
+
+state 102
+
+    (91) piso -> FLOOR . PA opmath PC
+
+    PA              shift and go to state 135
+
+
+state 103
+
+    (103) longitud -> LENGTH . PA STRINGVAL PC
+    (111) longitud -> LENGTH . PA error PC
+
+    PA              shift and go to state 136
+
+
+state 104
+
+    (102) conversionCad -> STR . PA opmath PC
+
+    PA              shift and go to state 137
+
+
+state 105
+
+    (54) asignar -> arregloID ASIGNACION operacion . PUNTOCOMA
+
+    PUNTOCOMA       shift and go to state 138
+
+
+state 106
+
+    (55) asignar -> arregloID ASIGNACION llamarFunction . PUNTOCOMA
+
+    PUNTOCOMA       shift and go to state 139
+
+
+state 107
+
+    (56) asignar -> arregloID ASIGNACION NULL . PUNTOCOMA
+
+    PUNTOCOMA       shift and go to state 140
+
+
+state 108
+
+    (63) operacion -> par .
+
+    PUNTOCOMA       reduce using rule 63 (operacion -> par .)
+
+
+state 109
+
+    (64) operacion -> SUBARRAY .
+
+    PUNTOCOMA       reduce using rule 64 (operacion -> SUBARRAY .)
+
+
+state 110
+
+    (106) llamarFunction -> CALL . FUNCTION ID PA valoresCall PC
+    (107) llamarFunction -> CALL . FUNCTION ID PA error PC
+
+    FUNCTION        shift and go to state 141
+
+
+state 111
+
+    (104) llamarProcedure -> CALL PROCEDURE ID . PA valoresCall PC PUNTOCOMA
+    (105) llamarProcedure -> CALL PROCEDURE ID . PA error PC PUNTOCOMA
+
+    PA              shift and go to state 142
+
+
+state 112
+
+    (58) asignacionRecord -> idRecord ASIGNACION operacion . PUNTOCOMA
+
+    PUNTOCOMA       shift and go to state 143
+
+
+state 113
+
+    (32) registro -> RECORD ID BEGIN . declaracionReg END
+    (33) declaracionReg -> . variableReg declaracionReg
+    (34) declaracionReg -> . empty
+    (35) variableReg -> . nombresV DOSPUNTOS tipo PUNTOCOMA
+    (36) variableReg -> . nombresV DOSPUNTOS tipo ARRAY PUNTOCOMA
+    (110) empty -> .
+    (41) nombresV -> . ID
+    (42) nombresV -> . ID COMA nombresV
+
+    END             reduce using rule 110 (empty -> .)
+    ID              shift and go to state 10
+
+    declaracionReg                 shift and go to state 144
+    variableReg                    shift and go to state 145
+    empty                          shift and go to state 146
+    nombresV                       shift and go to state 147
+
+state 114
+
+    (30) funcion -> FUNCTION ID PA . parametros PC bloqueFuncion
+    (26) parametros -> . MODOVALOR tipo ID
+    (27) parametros -> . MODOREFERENCIA tipo ID
+    (28) parametros -> . MODOVALOR tipo ID COMA parametros
+    (29) parametros -> . MODOREFERENCIA tipo ID COMA parametros
+
+    MODOVALOR       shift and go to state 149
+    MODOREFERENCIA  shift and go to state 150
+
+    parametros                     shift and go to state 148
+
+state 115
+
+    (31) procedimiento -> PROCEDURE ID PA . parametros PC bloque
+    (26) parametros -> . MODOVALOR tipo ID
+    (27) parametros -> . MODOREFERENCIA tipo ID
+    (28) parametros -> . MODOVALOR tipo ID COMA parametros
+    (29) parametros -> . MODOREFERENCIA tipo ID COMA parametros
+
+    MODOVALOR       shift and go to state 149
+    MODOREFERENCIA  shift and go to state 150
+
+    parametros                     shift and go to state 151
+
+state 116
+
+    (39) variable -> nombresV DOSPUNTOS tipo PUNTOCOMA .
+
+    ID              reduce using rule 39 (variable -> nombresV DOSPUNTOS tipo PUNTOCOMA .)
+    RECORD          reduce using rule 39 (variable -> nombresV DOSPUNTOS tipo PUNTOCOMA .)
+    FUNCTION        reduce using rule 39 (variable -> nombresV DOSPUNTOS tipo PUNTOCOMA .)
+    PROCEDURE       reduce using rule 39 (variable -> nombresV DOSPUNTOS tipo PUNTOCOMA .)
+    BEGIN           reduce using rule 39 (variable -> nombresV DOSPUNTOS tipo PUNTOCOMA .)
+
+
+state 117
+
+    (40) variable -> nombresV DOSPUNTOS tipo ARRAY . PUNTOCOMA
+
+    PUNTOCOMA       shift and go to state 152
+
+
+state 118
+
+    (19) si -> IF PA condicion PC . THEN bloque sino
+
+    THEN            shift and go to state 153
+
+
+state 119
+
+    (69) condicion -> negacion par . comparar par continuidad
+    (72) comparar -> . MAYOR
+    (73) comparar -> . MENOR
+    (74) comparar -> . MAYORIGUAL
+    (75) comparar -> . MENORIGUAL
+    (76) comparar -> . IGUAL
+    (77) comparar -> . DIFERENTE
+
+    MAYOR           shift and go to state 155
+    MENOR           shift and go to state 156
+    MAYORIGUAL      shift and go to state 157
+    MENORIGUAL      shift and go to state 158
+    IGUAL           shift and go to state 159
+    DIFERENTE       shift and go to state 160
+
+    comparar                       shift and go to state 154
+
+state 120
+
+    (15) toFor -> ID .
+
+    TO              reduce using rule 15 (toFor -> ID .)
+    DO              reduce using rule 15 (toFor -> ID .)
+
+
+state 121
+
+    (14) para -> FOR ID ASIGNACION toFor . TO toFor DO bloque
+
+    TO              shift and go to state 161
+
+
+state 122
+
+    (16) toFor -> INTEGERVAL .
+
+    TO              reduce using rule 16 (toFor -> INTEGERVAL .)
+    DO              reduce using rule 16 (toFor -> INTEGERVAL .)
+
+
+state 123
+
+    (17) mientras -> WHILE PA condicion PC . DO bloque
+
+    DO              shift and go to state 162
+
+
+state 124
+
+    (18) repetir -> REPEAT bloqueContenido UNTIL PA . condicion PC
+    (69) condicion -> . negacion par comparar par continuidad
+    (80) negacion -> . NOT
+    (81) negacion -> . empty
+    (110) empty -> .
+
+    NOT             shift and go to state 79
+    PA              reduce using rule 110 (empty -> .)
+    INTEGERVAL      reduce using rule 110 (empty -> .)
+    DOUBLEVAL       reduce using rule 110 (empty -> .)
+    STRINGVAL       reduce using rule 110 (empty -> .)
+    TRUE            reduce using rule 110 (empty -> .)
+    FALSE           reduce using rule 110 (empty -> .)
+    ID              reduce using rule 110 (empty -> .)
+    CEIL            reduce using rule 110 (empty -> .)
+    FLOOR           reduce using rule 110 (empty -> .)
+    LENGTH          reduce using rule 110 (empty -> .)
+    STR             reduce using rule 110 (empty -> .)
+
+    condicion                      shift and go to state 163
+    negacion                       shift and go to state 78
+    empty                          shift and go to state 80
+
+state 125
+
+    (66) par -> PA par . PC parAux
+
+    PC              shift and go to state 164
+
+
+state 126
+
+    (13) escribir -> WRITELN PA par PC . PUNTOCOMA
+
+    PUNTOCOMA       shift and go to state 165
+
+
+state 127
+
+    (83) opmath -> valor mathsymbol . par
+    (65) par -> . opmath
+    (66) par -> . PA par PC parAux
+    (82) opmath -> . valor
+    (83) opmath -> . valor mathsymbol par
+    (92) valor -> . arregloID
+    (93) valor -> . INTEGERVAL
+    (94) valor -> . DOUBLEVAL
+    (95) valor -> . STRINGVAL
+    (96) valor -> . TRUE
+    (97) valor -> . FALSE
+    (98) valor -> . techo
+    (99) valor -> . piso
+    (100) valor -> . longitud
+    (101) valor -> . conversionCad
+    (61) arregloID -> . ID
+    (62) arregloID -> . ID ARRAY
+    (90) techo -> . CEIL PA opmath PC
+    (91) piso -> . FLOOR PA opmath PC
+    (103) longitud -> . LENGTH PA STRINGVAL PC
+    (111) longitud -> . LENGTH PA error PC
+    (102) conversionCad -> . STR PA opmath PC
+
+    PA              shift and go to state 86
+    INTEGERVAL      shift and go to state 91
+    DOUBLEVAL       shift and go to state 92
+    STRINGVAL       shift and go to state 93
+    TRUE            shift and go to state 94
+    FALSE           shift and go to state 95
+    ID              shift and go to state 100
+    CEIL            shift and go to state 101
+    FLOOR           shift and go to state 102
+    LENGTH          shift and go to state 103
+    STR             shift and go to state 104
+
+    valor                          shift and go to state 89
+    par                            shift and go to state 166
+    opmath                         shift and go to state 88
+    arregloID                      shift and go to state 90
+    techo                          shift and go to state 96
+    piso                           shift and go to state 97
+    longitud                       shift and go to state 98
+    conversionCad                  shift and go to state 99
+
+state 128
+
+    (84) mathsymbol -> MAS .
+
+    PA              reduce using rule 84 (mathsymbol -> MAS .)
+    INTEGERVAL      reduce using rule 84 (mathsymbol -> MAS .)
+    DOUBLEVAL       reduce using rule 84 (mathsymbol -> MAS .)
+    STRINGVAL       reduce using rule 84 (mathsymbol -> MAS .)
+    TRUE            reduce using rule 84 (mathsymbol -> MAS .)
+    FALSE           reduce using rule 84 (mathsymbol -> MAS .)
+    ID              reduce using rule 84 (mathsymbol -> MAS .)
+    CEIL            reduce using rule 84 (mathsymbol -> MAS .)
+    FLOOR           reduce using rule 84 (mathsymbol -> MAS .)
+    LENGTH          reduce using rule 84 (mathsymbol -> MAS .)
+    STR             reduce using rule 84 (mathsymbol -> MAS .)
+
+
+state 129
+
+    (85) mathsymbol -> MENOS .
+
+    PA              reduce using rule 85 (mathsymbol -> MENOS .)
+    INTEGERVAL      reduce using rule 85 (mathsymbol -> MENOS .)
+    DOUBLEVAL       reduce using rule 85 (mathsymbol -> MENOS .)
+    STRINGVAL       reduce using rule 85 (mathsymbol -> MENOS .)
+    TRUE            reduce using rule 85 (mathsymbol -> MENOS .)
+    FALSE           reduce using rule 85 (mathsymbol -> MENOS .)
+    ID              reduce using rule 85 (mathsymbol -> MENOS .)
+    CEIL            reduce using rule 85 (mathsymbol -> MENOS .)
+    FLOOR           reduce using rule 85 (mathsymbol -> MENOS .)
+    LENGTH          reduce using rule 85 (mathsymbol -> MENOS .)
+    STR             reduce using rule 85 (mathsymbol -> MENOS .)
+
+
+state 130
+
+    (86) mathsymbol -> POR .
+
+    PA              reduce using rule 86 (mathsymbol -> POR .)
+    INTEGERVAL      reduce using rule 86 (mathsymbol -> POR .)
+    DOUBLEVAL       reduce using rule 86 (mathsymbol -> POR .)
+    STRINGVAL       reduce using rule 86 (mathsymbol -> POR .)
+    TRUE            reduce using rule 86 (mathsymbol -> POR .)
+    FALSE           reduce using rule 86 (mathsymbol -> POR .)
+    ID              reduce using rule 86 (mathsymbol -> POR .)
+    CEIL            reduce using rule 86 (mathsymbol -> POR .)
+    FLOOR           reduce using rule 86 (mathsymbol -> POR .)
+    LENGTH          reduce using rule 86 (mathsymbol -> POR .)
+    STR             reduce using rule 86 (mathsymbol -> POR .)
+
+
+state 131
+
+    (87) mathsymbol -> DIVIDIR .
+
+    PA              reduce using rule 87 (mathsymbol -> DIVIDIR .)
+    INTEGERVAL      reduce using rule 87 (mathsymbol -> DIVIDIR .)
+    DOUBLEVAL       reduce using rule 87 (mathsymbol -> DIVIDIR .)
+    STRINGVAL       reduce using rule 87 (mathsymbol -> DIVIDIR .)
+    TRUE            reduce using rule 87 (mathsymbol -> DIVIDIR .)
+    FALSE           reduce using rule 87 (mathsymbol -> DIVIDIR .)
+    ID              reduce using rule 87 (mathsymbol -> DIVIDIR .)
+    CEIL            reduce using rule 87 (mathsymbol -> DIVIDIR .)
+    FLOOR           reduce using rule 87 (mathsymbol -> DIVIDIR .)
+    LENGTH          reduce using rule 87 (mathsymbol -> DIVIDIR .)
+    STR             reduce using rule 87 (mathsymbol -> DIVIDIR .)
+
+
+state 132
+
+    (88) mathsymbol -> DIV .
+
+    PA              reduce using rule 88 (mathsymbol -> DIV .)
+    INTEGERVAL      reduce using rule 88 (mathsymbol -> DIV .)
+    DOUBLEVAL       reduce using rule 88 (mathsymbol -> DIV .)
+    STRINGVAL       reduce using rule 88 (mathsymbol -> DIV .)
+    TRUE            reduce using rule 88 (mathsymbol -> DIV .)
+    FALSE           reduce using rule 88 (mathsymbol -> DIV .)
+    ID              reduce using rule 88 (mathsymbol -> DIV .)
+    CEIL            reduce using rule 88 (mathsymbol -> DIV .)
+    FLOOR           reduce using rule 88 (mathsymbol -> DIV .)
+    LENGTH          reduce using rule 88 (mathsymbol -> DIV .)
+    STR             reduce using rule 88 (mathsymbol -> DIV .)
+
+
+state 133
+
+    (89) mathsymbol -> MOD .
+
+    PA              reduce using rule 89 (mathsymbol -> MOD .)
+    INTEGERVAL      reduce using rule 89 (mathsymbol -> MOD .)
+    DOUBLEVAL       reduce using rule 89 (mathsymbol -> MOD .)
+    STRINGVAL       reduce using rule 89 (mathsymbol -> MOD .)
+    TRUE            reduce using rule 89 (mathsymbol -> MOD .)
+    FALSE           reduce using rule 89 (mathsymbol -> MOD .)
+    ID              reduce using rule 89 (mathsymbol -> MOD .)
+    CEIL            reduce using rule 89 (mathsymbol -> MOD .)
+    FLOOR           reduce using rule 89 (mathsymbol -> MOD .)
+    LENGTH          reduce using rule 89 (mathsymbol -> MOD .)
+    STR             reduce using rule 89 (mathsymbol -> MOD .)
+
+
+state 134
+
+    (90) techo -> CEIL PA . opmath PC
+    (82) opmath -> . valor
+    (83) opmath -> . valor mathsymbol par
+    (92) valor -> . arregloID
+    (93) valor -> . INTEGERVAL
+    (94) valor -> . DOUBLEVAL
+    (95) valor -> . STRINGVAL
+    (96) valor -> . TRUE
+    (97) valor -> . FALSE
+    (98) valor -> . techo
+    (99) valor -> . piso
+    (100) valor -> . longitud
+    (101) valor -> . conversionCad
+    (61) arregloID -> . ID
+    (62) arregloID -> . ID ARRAY
+    (90) techo -> . CEIL PA opmath PC
+    (91) piso -> . FLOOR PA opmath PC
+    (103) longitud -> . LENGTH PA STRINGVAL PC
+    (111) longitud -> . LENGTH PA error PC
+    (102) conversionCad -> . STR PA opmath PC
+
+    INTEGERVAL      shift and go to state 91
+    DOUBLEVAL       shift and go to state 92
+    STRINGVAL       shift and go to state 93
+    TRUE            shift and go to state 94
+    FALSE           shift and go to state 95
+    ID              shift and go to state 100
+    CEIL            shift and go to state 101
+    FLOOR           shift and go to state 102
+    LENGTH          shift and go to state 103
+    STR             shift and go to state 104
+
+    opmath                         shift and go to state 167
+    valor                          shift and go to state 89
+    arregloID                      shift and go to state 90
+    techo                          shift and go to state 96
+    piso                           shift and go to state 97
+    longitud                       shift and go to state 98
+    conversionCad                  shift and go to state 99
+
+state 135
+
+    (91) piso -> FLOOR PA . opmath PC
+    (82) opmath -> . valor
+    (83) opmath -> . valor mathsymbol par
+    (92) valor -> . arregloID
+    (93) valor -> . INTEGERVAL
+    (94) valor -> . DOUBLEVAL
+    (95) valor -> . STRINGVAL
+    (96) valor -> . TRUE
+    (97) valor -> . FALSE
+    (98) valor -> . techo
+    (99) valor -> . piso
+    (100) valor -> . longitud
+    (101) valor -> . conversionCad
+    (61) arregloID -> . ID
+    (62) arregloID -> . ID ARRAY
+    (90) techo -> . CEIL PA opmath PC
+    (91) piso -> . FLOOR PA opmath PC
+    (103) longitud -> . LENGTH PA STRINGVAL PC
+    (111) longitud -> . LENGTH PA error PC
+    (102) conversionCad -> . STR PA opmath PC
+
+    INTEGERVAL      shift and go to state 91
+    DOUBLEVAL       shift and go to state 92
+    STRINGVAL       shift and go to state 93
+    TRUE            shift and go to state 94
+    FALSE           shift and go to state 95
+    ID              shift and go to state 100
+    CEIL            shift and go to state 101
+    FLOOR           shift and go to state 102
+    LENGTH          shift and go to state 103
+    STR             shift and go to state 104
+
+    opmath                         shift and go to state 168
+    valor                          shift and go to state 89
+    arregloID                      shift and go to state 90
+    techo                          shift and go to state 96
+    piso                           shift and go to state 97
+    longitud                       shift and go to state 98
+    conversionCad                  shift and go to state 99
+
+state 136
+
+    (103) longitud -> LENGTH PA . STRINGVAL PC
+    (111) longitud -> LENGTH PA . error PC
+
+    STRINGVAL       shift and go to state 169
+    error           shift and go to state 170
+
+
+state 137
+
+    (102) conversionCad -> STR PA . opmath PC
+    (82) opmath -> . valor
+    (83) opmath -> . valor mathsymbol par
+    (92) valor -> . arregloID
+    (93) valor -> . INTEGERVAL
+    (94) valor -> . DOUBLEVAL
+    (95) valor -> . STRINGVAL
+    (96) valor -> . TRUE
+    (97) valor -> . FALSE
+    (98) valor -> . techo
+    (99) valor -> . piso
+    (100) valor -> . longitud
+    (101) valor -> . conversionCad
+    (61) arregloID -> . ID
+    (62) arregloID -> . ID ARRAY
+    (90) techo -> . CEIL PA opmath PC
+    (91) piso -> . FLOOR PA opmath PC
+    (103) longitud -> . LENGTH PA STRINGVAL PC
+    (111) longitud -> . LENGTH PA error PC
+    (102) conversionCad -> . STR PA opmath PC
+
+    INTEGERVAL      shift and go to state 91
+    DOUBLEVAL       shift and go to state 92
+    STRINGVAL       shift and go to state 93
+    TRUE            shift and go to state 94
+    FALSE           shift and go to state 95
+    ID              shift and go to state 100
+    CEIL            shift and go to state 101
+    FLOOR           shift and go to state 102
+    LENGTH          shift and go to state 103
+    STR             shift and go to state 104
+
+    opmath                         shift and go to state 171
+    valor                          shift and go to state 89
+    arregloID                      shift and go to state 90
+    techo                          shift and go to state 96
+    piso                           shift and go to state 97
+    longitud                       shift and go to state 98
+    conversionCad                  shift and go to state 99
+
+state 138
+
+    (54) asignar -> arregloID ASIGNACION operacion PUNTOCOMA .
+
+    IF              reduce using rule 54 (asignar -> arregloID ASIGNACION operacion PUNTOCOMA .)
+    FOR             reduce using rule 54 (asignar -> arregloID ASIGNACION operacion PUNTOCOMA .)
+    WHILE           reduce using rule 54 (asignar -> arregloID ASIGNACION operacion PUNTOCOMA .)
+    REPEAT          reduce using rule 54 (asignar -> arregloID ASIGNACION operacion PUNTOCOMA .)
+    WRITELN         reduce using rule 54 (asignar -> arregloID ASIGNACION operacion PUNTOCOMA .)
+    CALL            reduce using rule 54 (asignar -> arregloID ASIGNACION operacion PUNTOCOMA .)
+    ID              reduce using rule 54 (asignar -> arregloID ASIGNACION operacion PUNTOCOMA .)
+    END             reduce using rule 54 (asignar -> arregloID ASIGNACION operacion PUNTOCOMA .)
+    UNTIL           reduce using rule 54 (asignar -> arregloID ASIGNACION operacion PUNTOCOMA .)
+    RETURN          reduce using rule 54 (asignar -> arregloID ASIGNACION operacion PUNTOCOMA .)
+
+
+state 139
+
+    (55) asignar -> arregloID ASIGNACION llamarFunction PUNTOCOMA .
+
+    IF              reduce using rule 55 (asignar -> arregloID ASIGNACION llamarFunction PUNTOCOMA .)
+    FOR             reduce using rule 55 (asignar -> arregloID ASIGNACION llamarFunction PUNTOCOMA .)
+    WHILE           reduce using rule 55 (asignar -> arregloID ASIGNACION llamarFunction PUNTOCOMA .)
+    REPEAT          reduce using rule 55 (asignar -> arregloID ASIGNACION llamarFunction PUNTOCOMA .)
+    WRITELN         reduce using rule 55 (asignar -> arregloID ASIGNACION llamarFunction PUNTOCOMA .)
+    CALL            reduce using rule 55 (asignar -> arregloID ASIGNACION llamarFunction PUNTOCOMA .)
+    ID              reduce using rule 55 (asignar -> arregloID ASIGNACION llamarFunction PUNTOCOMA .)
+    END             reduce using rule 55 (asignar -> arregloID ASIGNACION llamarFunction PUNTOCOMA .)
+    UNTIL           reduce using rule 55 (asignar -> arregloID ASIGNACION llamarFunction PUNTOCOMA .)
+    RETURN          reduce using rule 55 (asignar -> arregloID ASIGNACION llamarFunction PUNTOCOMA .)
+
+
+state 140
+
+    (56) asignar -> arregloID ASIGNACION NULL PUNTOCOMA .
+
+    IF              reduce using rule 56 (asignar -> arregloID ASIGNACION NULL PUNTOCOMA .)
+    FOR             reduce using rule 56 (asignar -> arregloID ASIGNACION NULL PUNTOCOMA .)
+    WHILE           reduce using rule 56 (asignar -> arregloID ASIGNACION NULL PUNTOCOMA .)
+    REPEAT          reduce using rule 56 (asignar -> arregloID ASIGNACION NULL PUNTOCOMA .)
+    WRITELN         reduce using rule 56 (asignar -> arregloID ASIGNACION NULL PUNTOCOMA .)
+    CALL            reduce using rule 56 (asignar -> arregloID ASIGNACION NULL PUNTOCOMA .)
+    ID              reduce using rule 56 (asignar -> arregloID ASIGNACION NULL PUNTOCOMA .)
+    END             reduce using rule 56 (asignar -> arregloID ASIGNACION NULL PUNTOCOMA .)
+    UNTIL           reduce using rule 56 (asignar -> arregloID ASIGNACION NULL PUNTOCOMA .)
+    RETURN          reduce using rule 56 (asignar -> arregloID ASIGNACION NULL PUNTOCOMA .)
+
+
+state 141
+
+    (106) llamarFunction -> CALL FUNCTION . ID PA valoresCall PC
+    (107) llamarFunction -> CALL FUNCTION . ID PA error PC
+
+    ID              shift and go to state 172
+
+
+state 142
+
+    (104) llamarProcedure -> CALL PROCEDURE ID PA . valoresCall PC PUNTOCOMA
+    (105) llamarProcedure -> CALL PROCEDURE ID PA . error PC PUNTOCOMA
+    (108) valoresCall -> . valor
+    (109) valoresCall -> . valor COMA valoresCall
+    (92) valor -> . arregloID
+    (93) valor -> . INTEGERVAL
+    (94) valor -> . DOUBLEVAL
+    (95) valor -> . STRINGVAL
+    (96) valor -> . TRUE
+    (97) valor -> . FALSE
+    (98) valor -> . techo
+    (99) valor -> . piso
+    (100) valor -> . longitud
+    (101) valor -> . conversionCad
+    (61) arregloID -> . ID
+    (62) arregloID -> . ID ARRAY
+    (90) techo -> . CEIL PA opmath PC
+    (91) piso -> . FLOOR PA opmath PC
+    (103) longitud -> . LENGTH PA STRINGVAL PC
+    (111) longitud -> . LENGTH PA error PC
+    (102) conversionCad -> . STR PA opmath PC
+
+    error           shift and go to state 174
+    INTEGERVAL      shift and go to state 91
+    DOUBLEVAL       shift and go to state 92
+    STRINGVAL       shift and go to state 93
+    TRUE            shift and go to state 94
+    FALSE           shift and go to state 95
+    ID              shift and go to state 100
+    CEIL            shift and go to state 101
+    FLOOR           shift and go to state 102
+    LENGTH          shift and go to state 103
+    STR             shift and go to state 104
+
+    valoresCall                    shift and go to state 173
+    valor                          shift and go to state 175
+    arregloID                      shift and go to state 90
+    techo                          shift and go to state 96
+    piso                           shift and go to state 97
+    longitud                       shift and go to state 98
+    conversionCad                  shift and go to state 99
+
+state 143
+
+    (58) asignacionRecord -> idRecord ASIGNACION operacion PUNTOCOMA .
+
+    IF              reduce using rule 58 (asignacionRecord -> idRecord ASIGNACION operacion PUNTOCOMA .)
+    FOR             reduce using rule 58 (asignacionRecord -> idRecord ASIGNACION operacion PUNTOCOMA .)
+    WHILE           reduce using rule 58 (asignacionRecord -> idRecord ASIGNACION operacion PUNTOCOMA .)
+    REPEAT          reduce using rule 58 (asignacionRecord -> idRecord ASIGNACION operacion PUNTOCOMA .)
+    WRITELN         reduce using rule 58 (asignacionRecord -> idRecord ASIGNACION operacion PUNTOCOMA .)
+    CALL            reduce using rule 58 (asignacionRecord -> idRecord ASIGNACION operacion PUNTOCOMA .)
+    ID              reduce using rule 58 (asignacionRecord -> idRecord ASIGNACION operacion PUNTOCOMA .)
+    END             reduce using rule 58 (asignacionRecord -> idRecord ASIGNACION operacion PUNTOCOMA .)
+    UNTIL           reduce using rule 58 (asignacionRecord -> idRecord ASIGNACION operacion PUNTOCOMA .)
+    RETURN          reduce using rule 58 (asignacionRecord -> idRecord ASIGNACION operacion PUNTOCOMA .)
+
+
+state 144
+
+    (32) registro -> RECORD ID BEGIN declaracionReg . END
+
+    END             shift and go to state 176
+
+
+state 145
+
+    (33) declaracionReg -> variableReg . declaracionReg
+    (33) declaracionReg -> . variableReg declaracionReg
+    (34) declaracionReg -> . empty
+    (35) variableReg -> . nombresV DOSPUNTOS tipo PUNTOCOMA
+    (36) variableReg -> . nombresV DOSPUNTOS tipo ARRAY PUNTOCOMA
+    (110) empty -> .
+    (41) nombresV -> . ID
+    (42) nombresV -> . ID COMA nombresV
+
+    END             reduce using rule 110 (empty -> .)
+    ID              shift and go to state 10
+
+    variableReg                    shift and go to state 145
+    declaracionReg                 shift and go to state 177
+    empty                          shift and go to state 146
+    nombresV                       shift and go to state 147
+
+state 146
+
+    (34) declaracionReg -> empty .
+
+    END             reduce using rule 34 (declaracionReg -> empty .)
+
+
+state 147
+
+    (35) variableReg -> nombresV . DOSPUNTOS tipo PUNTOCOMA
+    (36) variableReg -> nombresV . DOSPUNTOS tipo ARRAY PUNTOCOMA
+
+    DOSPUNTOS       shift and go to state 178
+
+
+state 148
+
+    (30) funcion -> FUNCTION ID PA parametros . PC bloqueFuncion
+
+    PC              shift and go to state 179
+
+
+state 149
+
+    (26) parametros -> MODOVALOR . tipo ID
+    (28) parametros -> MODOVALOR . tipo ID COMA parametros
+    (43) tipo -> . INTEGER
+    (44) tipo -> . DOUBLE
+    (45) tipo -> . STRING
+    (46) tipo -> . BOOLEAN
+    (47) tipo -> . ARRAY
+    (48) tipo -> . STACK
+    (49) tipo -> . QUEUE
+    (50) tipo -> . LIST
+    (51) tipo -> . GRAPH
+    (52) tipo -> . ID
+
+    INTEGER         shift and go to state 67
+    DOUBLE          shift and go to state 68
+    STRING          shift and go to state 69
+    BOOLEAN         shift and go to state 70
+    ARRAY           shift and go to state 66
+    STACK           shift and go to state 71
+    QUEUE           shift and go to state 72
+    LIST            shift and go to state 73
+    GRAPH           shift and go to state 74
+    ID              shift and go to state 75
+
+    tipo                           shift and go to state 180
+
+state 150
+
+    (27) parametros -> MODOREFERENCIA . tipo ID
+    (29) parametros -> MODOREFERENCIA . tipo ID COMA parametros
+    (43) tipo -> . INTEGER
+    (44) tipo -> . DOUBLE
+    (45) tipo -> . STRING
+    (46) tipo -> . BOOLEAN
+    (47) tipo -> . ARRAY
+    (48) tipo -> . STACK
+    (49) tipo -> . QUEUE
+    (50) tipo -> . LIST
+    (51) tipo -> . GRAPH
+    (52) tipo -> . ID
+
+    INTEGER         shift and go to state 67
+    DOUBLE          shift and go to state 68
+    STRING          shift and go to state 69
+    BOOLEAN         shift and go to state 70
+    ARRAY           shift and go to state 66
+    STACK           shift and go to state 71
+    QUEUE           shift and go to state 72
+    LIST            shift and go to state 73
+    GRAPH           shift and go to state 74
+    ID              shift and go to state 75
+
+    tipo                           shift and go to state 181
+
+state 151
+
+    (31) procedimiento -> PROCEDURE ID PA parametros . PC bloque
+
+    PC              shift and go to state 182
+
+
+state 152
+
+    (40) variable -> nombresV DOSPUNTOS tipo ARRAY PUNTOCOMA .
+
+    ID              reduce using rule 40 (variable -> nombresV DOSPUNTOS tipo ARRAY PUNTOCOMA .)
+    RECORD          reduce using rule 40 (variable -> nombresV DOSPUNTOS tipo ARRAY PUNTOCOMA .)
+    FUNCTION        reduce using rule 40 (variable -> nombresV DOSPUNTOS tipo ARRAY PUNTOCOMA .)
+    PROCEDURE       reduce using rule 40 (variable -> nombresV DOSPUNTOS tipo ARRAY PUNTOCOMA .)
+    BEGIN           reduce using rule 40 (variable -> nombresV DOSPUNTOS tipo ARRAY PUNTOCOMA .)
+
+
+state 153
+
+    (19) si -> IF PA condicion PC THEN . bloque sino
+    (2) bloque -> . BEGIN bloqueContenido END
+
+    BEGIN           shift and go to state 5
+
+    bloque                         shift and go to state 183
+
+state 154
+
+    (69) condicion -> negacion par comparar . par continuidad
+    (65) par -> . opmath
+    (66) par -> . PA par PC parAux
+    (82) opmath -> . valor
+    (83) opmath -> . valor mathsymbol par
+    (92) valor -> . arregloID
+    (93) valor -> . INTEGERVAL
+    (94) valor -> . DOUBLEVAL
+    (95) valor -> . STRINGVAL
+    (96) valor -> . TRUE
+    (97) valor -> . FALSE
+    (98) valor -> . techo
+    (99) valor -> . piso
+    (100) valor -> . longitud
+    (101) valor -> . conversionCad
+    (61) arregloID -> . ID
+    (62) arregloID -> . ID ARRAY
+    (90) techo -> . CEIL PA opmath PC
+    (91) piso -> . FLOOR PA opmath PC
+    (103) longitud -> . LENGTH PA STRINGVAL PC
+    (111) longitud -> . LENGTH PA error PC
+    (102) conversionCad -> . STR PA opmath PC
+
+    PA              shift and go to state 86
+    INTEGERVAL      shift and go to state 91
+    DOUBLEVAL       shift and go to state 92
+    STRINGVAL       shift and go to state 93
+    TRUE            shift and go to state 94
+    FALSE           shift and go to state 95
+    ID              shift and go to state 100
+    CEIL            shift and go to state 101
+    FLOOR           shift and go to state 102
+    LENGTH          shift and go to state 103
+    STR             shift and go to state 104
+
+    par                            shift and go to state 184
+    opmath                         shift and go to state 88
+    valor                          shift and go to state 89
+    arregloID                      shift and go to state 90
+    techo                          shift and go to state 96
+    piso                           shift and go to state 97
+    longitud                       shift and go to state 98
+    conversionCad                  shift and go to state 99
+
+state 155
+
+    (72) comparar -> MAYOR .
+
+    PA              reduce using rule 72 (comparar -> MAYOR .)
+    INTEGERVAL      reduce using rule 72 (comparar -> MAYOR .)
+    DOUBLEVAL       reduce using rule 72 (comparar -> MAYOR .)
+    STRINGVAL       reduce using rule 72 (comparar -> MAYOR .)
+    TRUE            reduce using rule 72 (comparar -> MAYOR .)
+    FALSE           reduce using rule 72 (comparar -> MAYOR .)
+    ID              reduce using rule 72 (comparar -> MAYOR .)
+    CEIL            reduce using rule 72 (comparar -> MAYOR .)
+    FLOOR           reduce using rule 72 (comparar -> MAYOR .)
+    LENGTH          reduce using rule 72 (comparar -> MAYOR .)
+    STR             reduce using rule 72 (comparar -> MAYOR .)
+
+
+state 156
+
+    (73) comparar -> MENOR .
+
+    PA              reduce using rule 73 (comparar -> MENOR .)
+    INTEGERVAL      reduce using rule 73 (comparar -> MENOR .)
+    DOUBLEVAL       reduce using rule 73 (comparar -> MENOR .)
+    STRINGVAL       reduce using rule 73 (comparar -> MENOR .)
+    TRUE            reduce using rule 73 (comparar -> MENOR .)
+    FALSE           reduce using rule 73 (comparar -> MENOR .)
+    ID              reduce using rule 73 (comparar -> MENOR .)
+    CEIL            reduce using rule 73 (comparar -> MENOR .)
+    FLOOR           reduce using rule 73 (comparar -> MENOR .)
+    LENGTH          reduce using rule 73 (comparar -> MENOR .)
+    STR             reduce using rule 73 (comparar -> MENOR .)
+
+
+state 157
+
+    (74) comparar -> MAYORIGUAL .
+
+    PA              reduce using rule 74 (comparar -> MAYORIGUAL .)
+    INTEGERVAL      reduce using rule 74 (comparar -> MAYORIGUAL .)
+    DOUBLEVAL       reduce using rule 74 (comparar -> MAYORIGUAL .)
+    STRINGVAL       reduce using rule 74 (comparar -> MAYORIGUAL .)
+    TRUE            reduce using rule 74 (comparar -> MAYORIGUAL .)
+    FALSE           reduce using rule 74 (comparar -> MAYORIGUAL .)
+    ID              reduce using rule 74 (comparar -> MAYORIGUAL .)
+    CEIL            reduce using rule 74 (comparar -> MAYORIGUAL .)
+    FLOOR           reduce using rule 74 (comparar -> MAYORIGUAL .)
+    LENGTH          reduce using rule 74 (comparar -> MAYORIGUAL .)
+    STR             reduce using rule 74 (comparar -> MAYORIGUAL .)
+
+
+state 158
+
+    (75) comparar -> MENORIGUAL .
+
+    PA              reduce using rule 75 (comparar -> MENORIGUAL .)
+    INTEGERVAL      reduce using rule 75 (comparar -> MENORIGUAL .)
+    DOUBLEVAL       reduce using rule 75 (comparar -> MENORIGUAL .)
+    STRINGVAL       reduce using rule 75 (comparar -> MENORIGUAL .)
+    TRUE            reduce using rule 75 (comparar -> MENORIGUAL .)
+    FALSE           reduce using rule 75 (comparar -> MENORIGUAL .)
+    ID              reduce using rule 75 (comparar -> MENORIGUAL .)
+    CEIL            reduce using rule 75 (comparar -> MENORIGUAL .)
+    FLOOR           reduce using rule 75 (comparar -> MENORIGUAL .)
+    LENGTH          reduce using rule 75 (comparar -> MENORIGUAL .)
+    STR             reduce using rule 75 (comparar -> MENORIGUAL .)
+
+
+state 159
+
+    (76) comparar -> IGUAL .
+
+    PA              reduce using rule 76 (comparar -> IGUAL .)
+    INTEGERVAL      reduce using rule 76 (comparar -> IGUAL .)
+    DOUBLEVAL       reduce using rule 76 (comparar -> IGUAL .)
+    STRINGVAL       reduce using rule 76 (comparar -> IGUAL .)
+    TRUE            reduce using rule 76 (comparar -> IGUAL .)
+    FALSE           reduce using rule 76 (comparar -> IGUAL .)
+    ID              reduce using rule 76 (comparar -> IGUAL .)
+    CEIL            reduce using rule 76 (comparar -> IGUAL .)
+    FLOOR           reduce using rule 76 (comparar -> IGUAL .)
+    LENGTH          reduce using rule 76 (comparar -> IGUAL .)
+    STR             reduce using rule 76 (comparar -> IGUAL .)
+
+
+state 160
+
+    (77) comparar -> DIFERENTE .
+
+    PA              reduce using rule 77 (comparar -> DIFERENTE .)
+    INTEGERVAL      reduce using rule 77 (comparar -> DIFERENTE .)
+    DOUBLEVAL       reduce using rule 77 (comparar -> DIFERENTE .)
+    STRINGVAL       reduce using rule 77 (comparar -> DIFERENTE .)
+    TRUE            reduce using rule 77 (comparar -> DIFERENTE .)
+    FALSE           reduce using rule 77 (comparar -> DIFERENTE .)
+    ID              reduce using rule 77 (comparar -> DIFERENTE .)
+    CEIL            reduce using rule 77 (comparar -> DIFERENTE .)
+    FLOOR           reduce using rule 77 (comparar -> DIFERENTE .)
+    LENGTH          reduce using rule 77 (comparar -> DIFERENTE .)
+    STR             reduce using rule 77 (comparar -> DIFERENTE .)
+
+
+state 161
+
+    (14) para -> FOR ID ASIGNACION toFor TO . toFor DO bloque
+    (15) toFor -> . ID
+    (16) toFor -> . INTEGERVAL
+
+    ID              shift and go to state 120
+    INTEGERVAL      shift and go to state 122
+
+    toFor                          shift and go to state 185
+
+state 162
+
+    (17) mientras -> WHILE PA condicion PC DO . bloque
+    (2) bloque -> . BEGIN bloqueContenido END
+
+    BEGIN           shift and go to state 5
+
+    bloque                         shift and go to state 186
+
+state 163
+
+    (18) repetir -> REPEAT bloqueContenido UNTIL PA condicion . PC
+
+    PC              shift and go to state 187
+
+
+state 164
+
+    (66) par -> PA par PC . parAux
+    (67) parAux -> . mathsymbol par
+    (68) parAux -> . empty
+    (84) mathsymbol -> . MAS
+    (85) mathsymbol -> . MENOS
+    (86) mathsymbol -> . POR
+    (87) mathsymbol -> . DIVIDIR
+    (88) mathsymbol -> . DIV
+    (89) mathsymbol -> . MOD
+    (110) empty -> .
+
+    MAS             shift and go to state 128
+    MENOS           shift and go to state 129
+    POR             shift and go to state 130
+    DIVIDIR         shift and go to state 131
+    DIV             shift and go to state 132
+    MOD             shift and go to state 133
+    PC              reduce using rule 110 (empty -> .)
+    PUNTOCOMA       reduce using rule 110 (empty -> .)
+    MAYOR           reduce using rule 110 (empty -> .)
+    MENOR           reduce using rule 110 (empty -> .)
+    MAYORIGUAL      reduce using rule 110 (empty -> .)
+    MENORIGUAL      reduce using rule 110 (empty -> .)
+    IGUAL           reduce using rule 110 (empty -> .)
+    DIFERENTE       reduce using rule 110 (empty -> .)
+    AND             reduce using rule 110 (empty -> .)
+    OR              reduce using rule 110 (empty -> .)
+
+    parAux                         shift and go to state 188
+    mathsymbol                     shift and go to state 189
+    empty                          shift and go to state 190
+
+state 165
+
+    (13) escribir -> WRITELN PA par PC PUNTOCOMA .
+
+    IF              reduce using rule 13 (escribir -> WRITELN PA par PC PUNTOCOMA .)
+    FOR             reduce using rule 13 (escribir -> WRITELN PA par PC PUNTOCOMA .)
+    WHILE           reduce using rule 13 (escribir -> WRITELN PA par PC PUNTOCOMA .)
+    REPEAT          reduce using rule 13 (escribir -> WRITELN PA par PC PUNTOCOMA .)
+    WRITELN         reduce using rule 13 (escribir -> WRITELN PA par PC PUNTOCOMA .)
+    CALL            reduce using rule 13 (escribir -> WRITELN PA par PC PUNTOCOMA .)
+    ID              reduce using rule 13 (escribir -> WRITELN PA par PC PUNTOCOMA .)
+    END             reduce using rule 13 (escribir -> WRITELN PA par PC PUNTOCOMA .)
+    UNTIL           reduce using rule 13 (escribir -> WRITELN PA par PC PUNTOCOMA .)
+    RETURN          reduce using rule 13 (escribir -> WRITELN PA par PC PUNTOCOMA .)
+
+
+state 166
+
+    (83) opmath -> valor mathsymbol par .
+
+    PC              reduce using rule 83 (opmath -> valor mathsymbol par .)
+    PUNTOCOMA       reduce using rule 83 (opmath -> valor mathsymbol par .)
+    MAYOR           reduce using rule 83 (opmath -> valor mathsymbol par .)
+    MENOR           reduce using rule 83 (opmath -> valor mathsymbol par .)
+    MAYORIGUAL      reduce using rule 83 (opmath -> valor mathsymbol par .)
+    MENORIGUAL      reduce using rule 83 (opmath -> valor mathsymbol par .)
+    IGUAL           reduce using rule 83 (opmath -> valor mathsymbol par .)
+    DIFERENTE       reduce using rule 83 (opmath -> valor mathsymbol par .)
+    AND             reduce using rule 83 (opmath -> valor mathsymbol par .)
+    OR              reduce using rule 83 (opmath -> valor mathsymbol par .)
+
+
+state 167
+
+    (90) techo -> CEIL PA opmath . PC
+
+    PC              shift and go to state 191
+
+
+state 168
+
+    (91) piso -> FLOOR PA opmath . PC
+
+    PC              shift and go to state 192
+
+
+state 169
+
+    (103) longitud -> LENGTH PA STRINGVAL . PC
+
+    PC              shift and go to state 193
+
+
+state 170
+
+    (111) longitud -> LENGTH PA error . PC
+
+    PC              shift and go to state 194
+
+
+state 171
+
+    (102) conversionCad -> STR PA opmath . PC
+
+    PC              shift and go to state 195
+
+
+state 172
+
+    (106) llamarFunction -> CALL FUNCTION ID . PA valoresCall PC
+    (107) llamarFunction -> CALL FUNCTION ID . PA error PC
+
+    PA              shift and go to state 196
+
+
+state 173
+
+    (104) llamarProcedure -> CALL PROCEDURE ID PA valoresCall . PC PUNTOCOMA
+
+    PC              shift and go to state 197
+
+
+state 174
+
+    (105) llamarProcedure -> CALL PROCEDURE ID PA error . PC PUNTOCOMA
+
+    PC              shift and go to state 198
+
+
+state 175
+
+    (108) valoresCall -> valor .
+    (109) valoresCall -> valor . COMA valoresCall
+
+    PC              reduce using rule 108 (valoresCall -> valor .)
+    COMA            shift and go to state 199
+
+
+state 176
+
+    (32) registro -> RECORD ID BEGIN declaracionReg END .
+
+    RECORD          reduce using rule 32 (registro -> RECORD ID BEGIN declaracionReg END .)
+    FUNCTION        reduce using rule 32 (registro -> RECORD ID BEGIN declaracionReg END .)
+    PROCEDURE       reduce using rule 32 (registro -> RECORD ID BEGIN declaracionReg END .)
+    BEGIN           reduce using rule 32 (registro -> RECORD ID BEGIN declaracionReg END .)
+
+
+state 177
+
+    (33) declaracionReg -> variableReg declaracionReg .
+
+    END             reduce using rule 33 (declaracionReg -> variableReg declaracionReg .)
+
+
+state 178
+
+    (35) variableReg -> nombresV DOSPUNTOS . tipo PUNTOCOMA
+    (36) variableReg -> nombresV DOSPUNTOS . tipo ARRAY PUNTOCOMA
+    (43) tipo -> . INTEGER
+    (44) tipo -> . DOUBLE
+    (45) tipo -> . STRING
+    (46) tipo -> . BOOLEAN
+    (47) tipo -> . ARRAY
+    (48) tipo -> . STACK
+    (49) tipo -> . QUEUE
+    (50) tipo -> . LIST
+    (51) tipo -> . GRAPH
+    (52) tipo -> . ID
+
+    INTEGER         shift and go to state 67
+    DOUBLE          shift and go to state 68
+    STRING          shift and go to state 69
+    BOOLEAN         shift and go to state 70
+    ARRAY           shift and go to state 66
+    STACK           shift and go to state 71
+    QUEUE           shift and go to state 72
+    LIST            shift and go to state 73
+    GRAPH           shift and go to state 74
+    ID              shift and go to state 75
+
+    tipo                           shift and go to state 200
+
+state 179
+
+    (30) funcion -> FUNCTION ID PA parametros PC . bloqueFuncion
+    (3) bloqueFuncion -> . BEGIN bloqueContenido retorno END
+
+    BEGIN           shift and go to state 202
+
+    bloqueFuncion                  shift and go to state 201
+
+state 180
+
+    (26) parametros -> MODOVALOR tipo . ID
+    (28) parametros -> MODOVALOR tipo . ID COMA parametros
+
+    ID              shift and go to state 203
+
+
+state 181
+
+    (27) parametros -> MODOREFERENCIA tipo . ID
+    (29) parametros -> MODOREFERENCIA tipo . ID COMA parametros
+
+    ID              shift and go to state 204
+
+
+state 182
+
+    (31) procedimiento -> PROCEDURE ID PA parametros PC . bloque
+    (2) bloque -> . BEGIN bloqueContenido END
+
+    BEGIN           shift and go to state 5
+
+    bloque                         shift and go to state 205
+
+state 183
+
+    (19) si -> IF PA condicion PC THEN bloque . sino
+    (20) sino -> . ELSE bloque
+    (21) sino -> . empty
+    (110) empty -> .
+
+    ELSE            shift and go to state 207
+    IF              reduce using rule 110 (empty -> .)
+    FOR             reduce using rule 110 (empty -> .)
+    WHILE           reduce using rule 110 (empty -> .)
+    REPEAT          reduce using rule 110 (empty -> .)
+    WRITELN         reduce using rule 110 (empty -> .)
+    CALL            reduce using rule 110 (empty -> .)
+    ID              reduce using rule 110 (empty -> .)
+    END             reduce using rule 110 (empty -> .)
+    UNTIL           reduce using rule 110 (empty -> .)
+    RETURN          reduce using rule 110 (empty -> .)
+
+    sino                           shift and go to state 206
+    empty                          shift and go to state 208
+
+state 184
+
+    (69) condicion -> negacion par comparar par . continuidad
+    (70) continuidad -> . oplogico condicion
+    (71) continuidad -> . empty
+    (78) oplogico -> . AND
+    (79) oplogico -> . OR
+    (110) empty -> .
+
+    AND             shift and go to state 212
+    OR              shift and go to state 213
+    PC              reduce using rule 110 (empty -> .)
+
+    continuidad                    shift and go to state 209
+    oplogico                       shift and go to state 210
+    empty                          shift and go to state 211
+
+state 185
+
+    (14) para -> FOR ID ASIGNACION toFor TO toFor . DO bloque
+
+    DO              shift and go to state 214
+
+
+state 186
+
+    (17) mientras -> WHILE PA condicion PC DO bloque .
+
+    IF              reduce using rule 17 (mientras -> WHILE PA condicion PC DO bloque .)
+    FOR             reduce using rule 17 (mientras -> WHILE PA condicion PC DO bloque .)
+    WHILE           reduce using rule 17 (mientras -> WHILE PA condicion PC DO bloque .)
+    REPEAT          reduce using rule 17 (mientras -> WHILE PA condicion PC DO bloque .)
+    WRITELN         reduce using rule 17 (mientras -> WHILE PA condicion PC DO bloque .)
+    CALL            reduce using rule 17 (mientras -> WHILE PA condicion PC DO bloque .)
+    ID              reduce using rule 17 (mientras -> WHILE PA condicion PC DO bloque .)
+    END             reduce using rule 17 (mientras -> WHILE PA condicion PC DO bloque .)
+    UNTIL           reduce using rule 17 (mientras -> WHILE PA condicion PC DO bloque .)
+    RETURN          reduce using rule 17 (mientras -> WHILE PA condicion PC DO bloque .)
+
+
+state 187
+
+    (18) repetir -> REPEAT bloqueContenido UNTIL PA condicion PC .
+
+    IF              reduce using rule 18 (repetir -> REPEAT bloqueContenido UNTIL PA condicion PC .)
+    FOR             reduce using rule 18 (repetir -> REPEAT bloqueContenido UNTIL PA condicion PC .)
+    WHILE           reduce using rule 18 (repetir -> REPEAT bloqueContenido UNTIL PA condicion PC .)
+    REPEAT          reduce using rule 18 (repetir -> REPEAT bloqueContenido UNTIL PA condicion PC .)
+    WRITELN         reduce using rule 18 (repetir -> REPEAT bloqueContenido UNTIL PA condicion PC .)
+    CALL            reduce using rule 18 (repetir -> REPEAT bloqueContenido UNTIL PA condicion PC .)
+    ID              reduce using rule 18 (repetir -> REPEAT bloqueContenido UNTIL PA condicion PC .)
+    END             reduce using rule 18 (repetir -> REPEAT bloqueContenido UNTIL PA condicion PC .)
+    UNTIL           reduce using rule 18 (repetir -> REPEAT bloqueContenido UNTIL PA condicion PC .)
+    RETURN          reduce using rule 18 (repetir -> REPEAT bloqueContenido UNTIL PA condicion PC .)
+
+
+state 188
+
+    (66) par -> PA par PC parAux .
+
+    PC              reduce using rule 66 (par -> PA par PC parAux .)
+    PUNTOCOMA       reduce using rule 66 (par -> PA par PC parAux .)
+    MAYOR           reduce using rule 66 (par -> PA par PC parAux .)
+    MENOR           reduce using rule 66 (par -> PA par PC parAux .)
+    MAYORIGUAL      reduce using rule 66 (par -> PA par PC parAux .)
+    MENORIGUAL      reduce using rule 66 (par -> PA par PC parAux .)
+    IGUAL           reduce using rule 66 (par -> PA par PC parAux .)
+    DIFERENTE       reduce using rule 66 (par -> PA par PC parAux .)
+    AND             reduce using rule 66 (par -> PA par PC parAux .)
+    OR              reduce using rule 66 (par -> PA par PC parAux .)
+
+
+state 189
+
+    (67) parAux -> mathsymbol . par
+    (65) par -> . opmath
+    (66) par -> . PA par PC parAux
+    (82) opmath -> . valor
+    (83) opmath -> . valor mathsymbol par
+    (92) valor -> . arregloID
+    (93) valor -> . INTEGERVAL
+    (94) valor -> . DOUBLEVAL
+    (95) valor -> . STRINGVAL
+    (96) valor -> . TRUE
+    (97) valor -> . FALSE
+    (98) valor -> . techo
+    (99) valor -> . piso
+    (100) valor -> . longitud
+    (101) valor -> . conversionCad
+    (61) arregloID -> . ID
+    (62) arregloID -> . ID ARRAY
+    (90) techo -> . CEIL PA opmath PC
+    (91) piso -> . FLOOR PA opmath PC
+    (103) longitud -> . LENGTH PA STRINGVAL PC
+    (111) longitud -> . LENGTH PA error PC
+    (102) conversionCad -> . STR PA opmath PC
+
+    PA              shift and go to state 86
+    INTEGERVAL      shift and go to state 91
+    DOUBLEVAL       shift and go to state 92
+    STRINGVAL       shift and go to state 93
+    TRUE            shift and go to state 94
+    FALSE           shift and go to state 95
+    ID              shift and go to state 100
+    CEIL            shift and go to state 101
+    FLOOR           shift and go to state 102
+    LENGTH          shift and go to state 103
+    STR             shift and go to state 104
+
+    par                            shift and go to state 215
+    opmath                         shift and go to state 88
+    valor                          shift and go to state 89
+    arregloID                      shift and go to state 90
+    techo                          shift and go to state 96
+    piso                           shift and go to state 97
+    longitud                       shift and go to state 98
+    conversionCad                  shift and go to state 99
+
+state 190
+
+    (68) parAux -> empty .
+
+    PC              reduce using rule 68 (parAux -> empty .)
+    PUNTOCOMA       reduce using rule 68 (parAux -> empty .)
+    MAYOR           reduce using rule 68 (parAux -> empty .)
+    MENOR           reduce using rule 68 (parAux -> empty .)
+    MAYORIGUAL      reduce using rule 68 (parAux -> empty .)
+    MENORIGUAL      reduce using rule 68 (parAux -> empty .)
+    IGUAL           reduce using rule 68 (parAux -> empty .)
+    DIFERENTE       reduce using rule 68 (parAux -> empty .)
+    AND             reduce using rule 68 (parAux -> empty .)
+    OR              reduce using rule 68 (parAux -> empty .)
+
+
+state 191
+
+    (90) techo -> CEIL PA opmath PC .
+
+    MAS             reduce using rule 90 (techo -> CEIL PA opmath PC .)
+    MENOS           reduce using rule 90 (techo -> CEIL PA opmath PC .)
+    POR             reduce using rule 90 (techo -> CEIL PA opmath PC .)
+    DIVIDIR         reduce using rule 90 (techo -> CEIL PA opmath PC .)
+    DIV             reduce using rule 90 (techo -> CEIL PA opmath PC .)
+    MOD             reduce using rule 90 (techo -> CEIL PA opmath PC .)
+    PC              reduce using rule 90 (techo -> CEIL PA opmath PC .)
+    PUNTOCOMA       reduce using rule 90 (techo -> CEIL PA opmath PC .)
+    MAYOR           reduce using rule 90 (techo -> CEIL PA opmath PC .)
+    MENOR           reduce using rule 90 (techo -> CEIL PA opmath PC .)
+    MAYORIGUAL      reduce using rule 90 (techo -> CEIL PA opmath PC .)
+    MENORIGUAL      reduce using rule 90 (techo -> CEIL PA opmath PC .)
+    IGUAL           reduce using rule 90 (techo -> CEIL PA opmath PC .)
+    DIFERENTE       reduce using rule 90 (techo -> CEIL PA opmath PC .)
+    AND             reduce using rule 90 (techo -> CEIL PA opmath PC .)
+    OR              reduce using rule 90 (techo -> CEIL PA opmath PC .)
+    COMA            reduce using rule 90 (techo -> CEIL PA opmath PC .)
+
+
+state 192
+
+    (91) piso -> FLOOR PA opmath PC .
+
+    MAS             reduce using rule 91 (piso -> FLOOR PA opmath PC .)
+    MENOS           reduce using rule 91 (piso -> FLOOR PA opmath PC .)
+    POR             reduce using rule 91 (piso -> FLOOR PA opmath PC .)
+    DIVIDIR         reduce using rule 91 (piso -> FLOOR PA opmath PC .)
+    DIV             reduce using rule 91 (piso -> FLOOR PA opmath PC .)
+    MOD             reduce using rule 91 (piso -> FLOOR PA opmath PC .)
+    PC              reduce using rule 91 (piso -> FLOOR PA opmath PC .)
+    PUNTOCOMA       reduce using rule 91 (piso -> FLOOR PA opmath PC .)
+    MAYOR           reduce using rule 91 (piso -> FLOOR PA opmath PC .)
+    MENOR           reduce using rule 91 (piso -> FLOOR PA opmath PC .)
+    MAYORIGUAL      reduce using rule 91 (piso -> FLOOR PA opmath PC .)
+    MENORIGUAL      reduce using rule 91 (piso -> FLOOR PA opmath PC .)
+    IGUAL           reduce using rule 91 (piso -> FLOOR PA opmath PC .)
+    DIFERENTE       reduce using rule 91 (piso -> FLOOR PA opmath PC .)
+    AND             reduce using rule 91 (piso -> FLOOR PA opmath PC .)
+    OR              reduce using rule 91 (piso -> FLOOR PA opmath PC .)
+    COMA            reduce using rule 91 (piso -> FLOOR PA opmath PC .)
+
+
+state 193
+
+    (103) longitud -> LENGTH PA STRINGVAL PC .
+
+    MAS             reduce using rule 103 (longitud -> LENGTH PA STRINGVAL PC .)
+    MENOS           reduce using rule 103 (longitud -> LENGTH PA STRINGVAL PC .)
+    POR             reduce using rule 103 (longitud -> LENGTH PA STRINGVAL PC .)
+    DIVIDIR         reduce using rule 103 (longitud -> LENGTH PA STRINGVAL PC .)
+    DIV             reduce using rule 103 (longitud -> LENGTH PA STRINGVAL PC .)
+    MOD             reduce using rule 103 (longitud -> LENGTH PA STRINGVAL PC .)
+    PC              reduce using rule 103 (longitud -> LENGTH PA STRINGVAL PC .)
+    PUNTOCOMA       reduce using rule 103 (longitud -> LENGTH PA STRINGVAL PC .)
+    MAYOR           reduce using rule 103 (longitud -> LENGTH PA STRINGVAL PC .)
+    MENOR           reduce using rule 103 (longitud -> LENGTH PA STRINGVAL PC .)
+    MAYORIGUAL      reduce using rule 103 (longitud -> LENGTH PA STRINGVAL PC .)
+    MENORIGUAL      reduce using rule 103 (longitud -> LENGTH PA STRINGVAL PC .)
+    IGUAL           reduce using rule 103 (longitud -> LENGTH PA STRINGVAL PC .)
+    DIFERENTE       reduce using rule 103 (longitud -> LENGTH PA STRINGVAL PC .)
+    AND             reduce using rule 103 (longitud -> LENGTH PA STRINGVAL PC .)
+    OR              reduce using rule 103 (longitud -> LENGTH PA STRINGVAL PC .)
+    COMA            reduce using rule 103 (longitud -> LENGTH PA STRINGVAL PC .)
+
+
+state 194
+
+    (111) longitud -> LENGTH PA error PC .
+
+    MAS             reduce using rule 111 (longitud -> LENGTH PA error PC .)
+    MENOS           reduce using rule 111 (longitud -> LENGTH PA error PC .)
+    POR             reduce using rule 111 (longitud -> LENGTH PA error PC .)
+    DIVIDIR         reduce using rule 111 (longitud -> LENGTH PA error PC .)
+    DIV             reduce using rule 111 (longitud -> LENGTH PA error PC .)
+    MOD             reduce using rule 111 (longitud -> LENGTH PA error PC .)
+    PC              reduce using rule 111 (longitud -> LENGTH PA error PC .)
+    PUNTOCOMA       reduce using rule 111 (longitud -> LENGTH PA error PC .)
+    MAYOR           reduce using rule 111 (longitud -> LENGTH PA error PC .)
+    MENOR           reduce using rule 111 (longitud -> LENGTH PA error PC .)
+    MAYORIGUAL      reduce using rule 111 (longitud -> LENGTH PA error PC .)
+    MENORIGUAL      reduce using rule 111 (longitud -> LENGTH PA error PC .)
+    IGUAL           reduce using rule 111 (longitud -> LENGTH PA error PC .)
+    DIFERENTE       reduce using rule 111 (longitud -> LENGTH PA error PC .)
+    AND             reduce using rule 111 (longitud -> LENGTH PA error PC .)
+    OR              reduce using rule 111 (longitud -> LENGTH PA error PC .)
+    COMA            reduce using rule 111 (longitud -> LENGTH PA error PC .)
+
+
+state 195
+
+    (102) conversionCad -> STR PA opmath PC .
+
+    MAS             reduce using rule 102 (conversionCad -> STR PA opmath PC .)
+    MENOS           reduce using rule 102 (conversionCad -> STR PA opmath PC .)
+    POR             reduce using rule 102 (conversionCad -> STR PA opmath PC .)
+    DIVIDIR         reduce using rule 102 (conversionCad -> STR PA opmath PC .)
+    DIV             reduce using rule 102 (conversionCad -> STR PA opmath PC .)
+    MOD             reduce using rule 102 (conversionCad -> STR PA opmath PC .)
+    PC              reduce using rule 102 (conversionCad -> STR PA opmath PC .)
+    PUNTOCOMA       reduce using rule 102 (conversionCad -> STR PA opmath PC .)
+    MAYOR           reduce using rule 102 (conversionCad -> STR PA opmath PC .)
+    MENOR           reduce using rule 102 (conversionCad -> STR PA opmath PC .)
+    MAYORIGUAL      reduce using rule 102 (conversionCad -> STR PA opmath PC .)
+    MENORIGUAL      reduce using rule 102 (conversionCad -> STR PA opmath PC .)
+    IGUAL           reduce using rule 102 (conversionCad -> STR PA opmath PC .)
+    DIFERENTE       reduce using rule 102 (conversionCad -> STR PA opmath PC .)
+    AND             reduce using rule 102 (conversionCad -> STR PA opmath PC .)
+    OR              reduce using rule 102 (conversionCad -> STR PA opmath PC .)
+    COMA            reduce using rule 102 (conversionCad -> STR PA opmath PC .)
+
+
+state 196
+
+    (106) llamarFunction -> CALL FUNCTION ID PA . valoresCall PC
+    (107) llamarFunction -> CALL FUNCTION ID PA . error PC
+    (108) valoresCall -> . valor
+    (109) valoresCall -> . valor COMA valoresCall
+    (92) valor -> . arregloID
+    (93) valor -> . INTEGERVAL
+    (94) valor -> . DOUBLEVAL
+    (95) valor -> . STRINGVAL
+    (96) valor -> . TRUE
+    (97) valor -> . FALSE
+    (98) valor -> . techo
+    (99) valor -> . piso
+    (100) valor -> . longitud
+    (101) valor -> . conversionCad
+    (61) arregloID -> . ID
+    (62) arregloID -> . ID ARRAY
+    (90) techo -> . CEIL PA opmath PC
+    (91) piso -> . FLOOR PA opmath PC
+    (103) longitud -> . LENGTH PA STRINGVAL PC
+    (111) longitud -> . LENGTH PA error PC
+    (102) conversionCad -> . STR PA opmath PC
+
+    error           shift and go to state 217
+    INTEGERVAL      shift and go to state 91
+    DOUBLEVAL       shift and go to state 92
+    STRINGVAL       shift and go to state 93
+    TRUE            shift and go to state 94
+    FALSE           shift and go to state 95
+    ID              shift and go to state 100
+    CEIL            shift and go to state 101
+    FLOOR           shift and go to state 102
+    LENGTH          shift and go to state 103
+    STR             shift and go to state 104
+
+    valoresCall                    shift and go to state 216
+    valor                          shift and go to state 175
+    arregloID                      shift and go to state 90
+    techo                          shift and go to state 96
+    piso                           shift and go to state 97
+    longitud                       shift and go to state 98
+    conversionCad                  shift and go to state 99
+
+state 197
+
+    (104) llamarProcedure -> CALL PROCEDURE ID PA valoresCall PC . PUNTOCOMA
+
+    PUNTOCOMA       shift and go to state 218
+
+
+state 198
+
+    (105) llamarProcedure -> CALL PROCEDURE ID PA error PC . PUNTOCOMA
+
+    PUNTOCOMA       shift and go to state 219
+
+
+state 199
+
+    (109) valoresCall -> valor COMA . valoresCall
+    (108) valoresCall -> . valor
+    (109) valoresCall -> . valor COMA valoresCall
+    (92) valor -> . arregloID
+    (93) valor -> . INTEGERVAL
+    (94) valor -> . DOUBLEVAL
+    (95) valor -> . STRINGVAL
+    (96) valor -> . TRUE
+    (97) valor -> . FALSE
+    (98) valor -> . techo
+    (99) valor -> . piso
+    (100) valor -> . longitud
+    (101) valor -> . conversionCad
+    (61) arregloID -> . ID
+    (62) arregloID -> . ID ARRAY
+    (90) techo -> . CEIL PA opmath PC
+    (91) piso -> . FLOOR PA opmath PC
+    (103) longitud -> . LENGTH PA STRINGVAL PC
+    (111) longitud -> . LENGTH PA error PC
+    (102) conversionCad -> . STR PA opmath PC
+
+    INTEGERVAL      shift and go to state 91
+    DOUBLEVAL       shift and go to state 92
+    STRINGVAL       shift and go to state 93
+    TRUE            shift and go to state 94
+    FALSE           shift and go to state 95
+    ID              shift and go to state 100
+    CEIL            shift and go to state 101
+    FLOOR           shift and go to state 102
+    LENGTH          shift and go to state 103
+    STR             shift and go to state 104
+
+    valor                          shift and go to state 175
+    valoresCall                    shift and go to state 220
+    arregloID                      shift and go to state 90
+    techo                          shift and go to state 96
+    piso                           shift and go to state 97
+    longitud                       shift and go to state 98
+    conversionCad                  shift and go to state 99
+
+state 200
+
+    (35) variableReg -> nombresV DOSPUNTOS tipo . PUNTOCOMA
+    (36) variableReg -> nombresV DOSPUNTOS tipo . ARRAY PUNTOCOMA
+
+    PUNTOCOMA       shift and go to state 221
+    ARRAY           shift and go to state 222
+
+
+state 201
+
+    (30) funcion -> FUNCTION ID PA parametros PC bloqueFuncion .
+
+    RECORD          reduce using rule 30 (funcion -> FUNCTION ID PA parametros PC bloqueFuncion .)
+    FUNCTION        reduce using rule 30 (funcion -> FUNCTION ID PA parametros PC bloqueFuncion .)
+    PROCEDURE       reduce using rule 30 (funcion -> FUNCTION ID PA parametros PC bloqueFuncion .)
+    BEGIN           reduce using rule 30 (funcion -> FUNCTION ID PA parametros PC bloqueFuncion .)
+
+
+state 202
+
+    (3) bloqueFuncion -> BEGIN . bloqueContenido retorno END
+    (5) bloqueContenido -> . si bloqueContenido
+    (6) bloqueContenido -> . para bloqueContenido
+    (7) bloqueContenido -> . mientras bloqueContenido
+    (8) bloqueContenido -> . repetir bloqueContenido
+    (9) bloqueContenido -> . escribir bloqueContenido
+    (10) bloqueContenido -> . asignar bloqueContenido
+    (11) bloqueContenido -> . llamarProcedure bloqueContenido
+    (12) bloqueContenido -> . empty
+    (19) si -> . IF PA condicion PC THEN bloque sino
+    (14) para -> . FOR ID ASIGNACION toFor TO toFor DO bloque
+    (17) mientras -> . WHILE PA condicion PC DO bloque
+    (18) repetir -> . REPEAT bloqueContenido UNTIL PA condicion PC
+    (13) escribir -> . WRITELN PA par PC PUNTOCOMA
+    (54) asignar -> . arregloID ASIGNACION operacion PUNTOCOMA
+    (55) asignar -> . arregloID ASIGNACION llamarFunction PUNTOCOMA
+    (56) asignar -> . arregloID ASIGNACION NULL PUNTOCOMA
+    (57) asignar -> . asignacionRecord
+    (104) llamarProcedure -> . CALL PROCEDURE ID PA valoresCall PC PUNTOCOMA
+    (105) llamarProcedure -> . CALL PROCEDURE ID PA error PC PUNTOCOMA
+    (110) empty -> .
+    (61) arregloID -> . ID
+    (62) arregloID -> . ID ARRAY
+    (58) asignacionRecord -> . idRecord ASIGNACION operacion PUNTOCOMA
+    (59) idRecord -> . ID PUNTO idRecord2
+
+    IF              shift and go to state 20
+    FOR             shift and go to state 21
+    WHILE           shift and go to state 23
+    REPEAT          shift and go to state 24
+    WRITELN         shift and go to state 25
+    CALL            shift and go to state 28
+    RETURN          reduce using rule 110 (empty -> .)
+    ID              shift and go to state 22
+
+    bloqueContenido                shift and go to state 223
+    si                             shift and go to state 12
+    para                           shift and go to state 13
+    mientras                       shift and go to state 14
+    repetir                        shift and go to state 15
+    escribir                       shift and go to state 16
+    asignar                        shift and go to state 17
+    llamarProcedure                shift and go to state 18
+    empty                          shift and go to state 19
+    arregloID                      shift and go to state 26
+    asignacionRecord               shift and go to state 27
+    idRecord                       shift and go to state 29
+
+state 203
+
+    (26) parametros -> MODOVALOR tipo ID .
+    (28) parametros -> MODOVALOR tipo ID . COMA parametros
+
+    PC              reduce using rule 26 (parametros -> MODOVALOR tipo ID .)
+    COMA            shift and go to state 224
+
+
+state 204
+
+    (27) parametros -> MODOREFERENCIA tipo ID .
+    (29) parametros -> MODOREFERENCIA tipo ID . COMA parametros
+
+    PC              reduce using rule 27 (parametros -> MODOREFERENCIA tipo ID .)
+    COMA            shift and go to state 225
+
+
+state 205
+
+    (31) procedimiento -> PROCEDURE ID PA parametros PC bloque .
+
+    RECORD          reduce using rule 31 (procedimiento -> PROCEDURE ID PA parametros PC bloque .)
+    FUNCTION        reduce using rule 31 (procedimiento -> PROCEDURE ID PA parametros PC bloque .)
+    PROCEDURE       reduce using rule 31 (procedimiento -> PROCEDURE ID PA parametros PC bloque .)
+    BEGIN           reduce using rule 31 (procedimiento -> PROCEDURE ID PA parametros PC bloque .)
+
+
+state 206
+
+    (19) si -> IF PA condicion PC THEN bloque sino .
+
+    IF              reduce using rule 19 (si -> IF PA condicion PC THEN bloque sino .)
+    FOR             reduce using rule 19 (si -> IF PA condicion PC THEN bloque sino .)
+    WHILE           reduce using rule 19 (si -> IF PA condicion PC THEN bloque sino .)
+    REPEAT          reduce using rule 19 (si -> IF PA condicion PC THEN bloque sino .)
+    WRITELN         reduce using rule 19 (si -> IF PA condicion PC THEN bloque sino .)
+    CALL            reduce using rule 19 (si -> IF PA condicion PC THEN bloque sino .)
+    ID              reduce using rule 19 (si -> IF PA condicion PC THEN bloque sino .)
+    END             reduce using rule 19 (si -> IF PA condicion PC THEN bloque sino .)
+    UNTIL           reduce using rule 19 (si -> IF PA condicion PC THEN bloque sino .)
+    RETURN          reduce using rule 19 (si -> IF PA condicion PC THEN bloque sino .)
+
+
+state 207
+
+    (20) sino -> ELSE . bloque
+    (2) bloque -> . BEGIN bloqueContenido END
+
+    BEGIN           shift and go to state 5
+
+    bloque                         shift and go to state 226
+
+state 208
+
+    (21) sino -> empty .
+
+    IF              reduce using rule 21 (sino -> empty .)
+    FOR             reduce using rule 21 (sino -> empty .)
+    WHILE           reduce using rule 21 (sino -> empty .)
+    REPEAT          reduce using rule 21 (sino -> empty .)
+    WRITELN         reduce using rule 21 (sino -> empty .)
+    CALL            reduce using rule 21 (sino -> empty .)
+    ID              reduce using rule 21 (sino -> empty .)
+    END             reduce using rule 21 (sino -> empty .)
+    UNTIL           reduce using rule 21 (sino -> empty .)
+    RETURN          reduce using rule 21 (sino -> empty .)
+
+
+state 209
+
+    (69) condicion -> negacion par comparar par continuidad .
+
+    PC              reduce using rule 69 (condicion -> negacion par comparar par continuidad .)
+
+
+state 210
+
+    (70) continuidad -> oplogico . condicion
+    (69) condicion -> . negacion par comparar par continuidad
+    (80) negacion -> . NOT
+    (81) negacion -> . empty
+    (110) empty -> .
+
+    NOT             shift and go to state 79
+    PA              reduce using rule 110 (empty -> .)
+    INTEGERVAL      reduce using rule 110 (empty -> .)
+    DOUBLEVAL       reduce using rule 110 (empty -> .)
+    STRINGVAL       reduce using rule 110 (empty -> .)
+    TRUE            reduce using rule 110 (empty -> .)
+    FALSE           reduce using rule 110 (empty -> .)
+    ID              reduce using rule 110 (empty -> .)
+    CEIL            reduce using rule 110 (empty -> .)
+    FLOOR           reduce using rule 110 (empty -> .)
+    LENGTH          reduce using rule 110 (empty -> .)
+    STR             reduce using rule 110 (empty -> .)
+
+    condicion                      shift and go to state 227
+    negacion                       shift and go to state 78
+    empty                          shift and go to state 80
+
+state 211
+
+    (71) continuidad -> empty .
+
+    PC              reduce using rule 71 (continuidad -> empty .)
+
+
+state 212
+
+    (78) oplogico -> AND .
+
+    NOT             reduce using rule 78 (oplogico -> AND .)
+    PA              reduce using rule 78 (oplogico -> AND .)
+    INTEGERVAL      reduce using rule 78 (oplogico -> AND .)
+    DOUBLEVAL       reduce using rule 78 (oplogico -> AND .)
+    STRINGVAL       reduce using rule 78 (oplogico -> AND .)
+    TRUE            reduce using rule 78 (oplogico -> AND .)
+    FALSE           reduce using rule 78 (oplogico -> AND .)
+    ID              reduce using rule 78 (oplogico -> AND .)
+    CEIL            reduce using rule 78 (oplogico -> AND .)
+    FLOOR           reduce using rule 78 (oplogico -> AND .)
+    LENGTH          reduce using rule 78 (oplogico -> AND .)
+    STR             reduce using rule 78 (oplogico -> AND .)
+
+
+state 213
+
+    (79) oplogico -> OR .
+
+    NOT             reduce using rule 79 (oplogico -> OR .)
+    PA              reduce using rule 79 (oplogico -> OR .)
+    INTEGERVAL      reduce using rule 79 (oplogico -> OR .)
+    DOUBLEVAL       reduce using rule 79 (oplogico -> OR .)
+    STRINGVAL       reduce using rule 79 (oplogico -> OR .)
+    TRUE            reduce using rule 79 (oplogico -> OR .)
+    FALSE           reduce using rule 79 (oplogico -> OR .)
+    ID              reduce using rule 79 (oplogico -> OR .)
+    CEIL            reduce using rule 79 (oplogico -> OR .)
+    FLOOR           reduce using rule 79 (oplogico -> OR .)
+    LENGTH          reduce using rule 79 (oplogico -> OR .)
+    STR             reduce using rule 79 (oplogico -> OR .)
+
+
+state 214
+
+    (14) para -> FOR ID ASIGNACION toFor TO toFor DO . bloque
+    (2) bloque -> . BEGIN bloqueContenido END
+
+    BEGIN           shift and go to state 5
+
+    bloque                         shift and go to state 228
+
+state 215
+
+    (67) parAux -> mathsymbol par .
+
+    PC              reduce using rule 67 (parAux -> mathsymbol par .)
+    PUNTOCOMA       reduce using rule 67 (parAux -> mathsymbol par .)
+    MAYOR           reduce using rule 67 (parAux -> mathsymbol par .)
+    MENOR           reduce using rule 67 (parAux -> mathsymbol par .)
+    MAYORIGUAL      reduce using rule 67 (parAux -> mathsymbol par .)
+    MENORIGUAL      reduce using rule 67 (parAux -> mathsymbol par .)
+    IGUAL           reduce using rule 67 (parAux -> mathsymbol par .)
+    DIFERENTE       reduce using rule 67 (parAux -> mathsymbol par .)
+    AND             reduce using rule 67 (parAux -> mathsymbol par .)
+    OR              reduce using rule 67 (parAux -> mathsymbol par .)
+
+
+state 216
+
+    (106) llamarFunction -> CALL FUNCTION ID PA valoresCall . PC
+
+    PC              shift and go to state 229
+
+
+state 217
+
+    (107) llamarFunction -> CALL FUNCTION ID PA error . PC
+
+    PC              shift and go to state 230
+
+
+state 218
+
+    (104) llamarProcedure -> CALL PROCEDURE ID PA valoresCall PC PUNTOCOMA .
+
+    IF              reduce using rule 104 (llamarProcedure -> CALL PROCEDURE ID PA valoresCall PC PUNTOCOMA .)
+    FOR             reduce using rule 104 (llamarProcedure -> CALL PROCEDURE ID PA valoresCall PC PUNTOCOMA .)
+    WHILE           reduce using rule 104 (llamarProcedure -> CALL PROCEDURE ID PA valoresCall PC PUNTOCOMA .)
+    REPEAT          reduce using rule 104 (llamarProcedure -> CALL PROCEDURE ID PA valoresCall PC PUNTOCOMA .)
+    WRITELN         reduce using rule 104 (llamarProcedure -> CALL PROCEDURE ID PA valoresCall PC PUNTOCOMA .)
+    CALL            reduce using rule 104 (llamarProcedure -> CALL PROCEDURE ID PA valoresCall PC PUNTOCOMA .)
+    ID              reduce using rule 104 (llamarProcedure -> CALL PROCEDURE ID PA valoresCall PC PUNTOCOMA .)
+    END             reduce using rule 104 (llamarProcedure -> CALL PROCEDURE ID PA valoresCall PC PUNTOCOMA .)
+    UNTIL           reduce using rule 104 (llamarProcedure -> CALL PROCEDURE ID PA valoresCall PC PUNTOCOMA .)
+    RETURN          reduce using rule 104 (llamarProcedure -> CALL PROCEDURE ID PA valoresCall PC PUNTOCOMA .)
+
+
+state 219
+
+    (105) llamarProcedure -> CALL PROCEDURE ID PA error PC PUNTOCOMA .
+
+    IF              reduce using rule 105 (llamarProcedure -> CALL PROCEDURE ID PA error PC PUNTOCOMA .)
+    FOR             reduce using rule 105 (llamarProcedure -> CALL PROCEDURE ID PA error PC PUNTOCOMA .)
+    WHILE           reduce using rule 105 (llamarProcedure -> CALL PROCEDURE ID PA error PC PUNTOCOMA .)
+    REPEAT          reduce using rule 105 (llamarProcedure -> CALL PROCEDURE ID PA error PC PUNTOCOMA .)
+    WRITELN         reduce using rule 105 (llamarProcedure -> CALL PROCEDURE ID PA error PC PUNTOCOMA .)
+    CALL            reduce using rule 105 (llamarProcedure -> CALL PROCEDURE ID PA error PC PUNTOCOMA .)
+    ID              reduce using rule 105 (llamarProcedure -> CALL PROCEDURE ID PA error PC PUNTOCOMA .)
+    END             reduce using rule 105 (llamarProcedure -> CALL PROCEDURE ID PA error PC PUNTOCOMA .)
+    UNTIL           reduce using rule 105 (llamarProcedure -> CALL PROCEDURE ID PA error PC PUNTOCOMA .)
+    RETURN          reduce using rule 105 (llamarProcedure -> CALL PROCEDURE ID PA error PC PUNTOCOMA .)
+
+
+state 220
+
+    (109) valoresCall -> valor COMA valoresCall .
+
+    PC              reduce using rule 109 (valoresCall -> valor COMA valoresCall .)
+
+
+state 221
+
+    (35) variableReg -> nombresV DOSPUNTOS tipo PUNTOCOMA .
+
+    ID              reduce using rule 35 (variableReg -> nombresV DOSPUNTOS tipo PUNTOCOMA .)
+    END             reduce using rule 35 (variableReg -> nombresV DOSPUNTOS tipo PUNTOCOMA .)
+
+
+state 222
+
+    (36) variableReg -> nombresV DOSPUNTOS tipo ARRAY . PUNTOCOMA
+
+    PUNTOCOMA       shift and go to state 231
+
+
+state 223
+
+    (3) bloqueFuncion -> BEGIN bloqueContenido . retorno END
+    (4) retorno -> . RETURN valor PUNTOCOMA
+
+    RETURN          shift and go to state 233
+
+    retorno                        shift and go to state 232
+
+state 224
+
+    (28) parametros -> MODOVALOR tipo ID COMA . parametros
+    (26) parametros -> . MODOVALOR tipo ID
+    (27) parametros -> . MODOREFERENCIA tipo ID
+    (28) parametros -> . MODOVALOR tipo ID COMA parametros
+    (29) parametros -> . MODOREFERENCIA tipo ID COMA parametros
+
+    MODOVALOR       shift and go to state 149
+    MODOREFERENCIA  shift and go to state 150
+
+    parametros                     shift and go to state 234
+
+state 225
+
+    (29) parametros -> MODOREFERENCIA tipo ID COMA . parametros
+    (26) parametros -> . MODOVALOR tipo ID
+    (27) parametros -> . MODOREFERENCIA tipo ID
+    (28) parametros -> . MODOVALOR tipo ID COMA parametros
+    (29) parametros -> . MODOREFERENCIA tipo ID COMA parametros
+
+    MODOVALOR       shift and go to state 149
+    MODOREFERENCIA  shift and go to state 150
+
+    parametros                     shift and go to state 235
+
+state 226
+
+    (20) sino -> ELSE bloque .
+
+    IF              reduce using rule 20 (sino -> ELSE bloque .)
+    FOR             reduce using rule 20 (sino -> ELSE bloque .)
+    WHILE           reduce using rule 20 (sino -> ELSE bloque .)
+    REPEAT          reduce using rule 20 (sino -> ELSE bloque .)
+    WRITELN         reduce using rule 20 (sino -> ELSE bloque .)
+    CALL            reduce using rule 20 (sino -> ELSE bloque .)
+    ID              reduce using rule 20 (sino -> ELSE bloque .)
+    END             reduce using rule 20 (sino -> ELSE bloque .)
+    UNTIL           reduce using rule 20 (sino -> ELSE bloque .)
+    RETURN          reduce using rule 20 (sino -> ELSE bloque .)
+
+
+state 227
+
+    (70) continuidad -> oplogico condicion .
+
+    PC              reduce using rule 70 (continuidad -> oplogico condicion .)
+
+
+state 228
+
+    (14) para -> FOR ID ASIGNACION toFor TO toFor DO bloque .
+
+    IF              reduce using rule 14 (para -> FOR ID ASIGNACION toFor TO toFor DO bloque .)
+    FOR             reduce using rule 14 (para -> FOR ID ASIGNACION toFor TO toFor DO bloque .)
+    WHILE           reduce using rule 14 (para -> FOR ID ASIGNACION toFor TO toFor DO bloque .)
+    REPEAT          reduce using rule 14 (para -> FOR ID ASIGNACION toFor TO toFor DO bloque .)
+    WRITELN         reduce using rule 14 (para -> FOR ID ASIGNACION toFor TO toFor DO bloque .)
+    CALL            reduce using rule 14 (para -> FOR ID ASIGNACION toFor TO toFor DO bloque .)
+    ID              reduce using rule 14 (para -> FOR ID ASIGNACION toFor TO toFor DO bloque .)
+    END             reduce using rule 14 (para -> FOR ID ASIGNACION toFor TO toFor DO bloque .)
+    UNTIL           reduce using rule 14 (para -> FOR ID ASIGNACION toFor TO toFor DO bloque .)
+    RETURN          reduce using rule 14 (para -> FOR ID ASIGNACION toFor TO toFor DO bloque .)
+
+
+state 229
+
+    (106) llamarFunction -> CALL FUNCTION ID PA valoresCall PC .
+
+    PUNTOCOMA       reduce using rule 106 (llamarFunction -> CALL FUNCTION ID PA valoresCall PC .)
+
+
+state 230
+
+    (107) llamarFunction -> CALL FUNCTION ID PA error PC .
+
+    PUNTOCOMA       reduce using rule 107 (llamarFunction -> CALL FUNCTION ID PA error PC .)
+
+
+state 231
+
+    (36) variableReg -> nombresV DOSPUNTOS tipo ARRAY PUNTOCOMA .
+
+    ID              reduce using rule 36 (variableReg -> nombresV DOSPUNTOS tipo ARRAY PUNTOCOMA .)
+    END             reduce using rule 36 (variableReg -> nombresV DOSPUNTOS tipo ARRAY PUNTOCOMA .)
+
+
+state 232
+
+    (3) bloqueFuncion -> BEGIN bloqueContenido retorno . END
+
+    END             shift and go to state 236
+
+
+state 233
+
+    (4) retorno -> RETURN . valor PUNTOCOMA
+    (92) valor -> . arregloID
+    (93) valor -> . INTEGERVAL
+    (94) valor -> . DOUBLEVAL
+    (95) valor -> . STRINGVAL
+    (96) valor -> . TRUE
+    (97) valor -> . FALSE
+    (98) valor -> . techo
+    (99) valor -> . piso
+    (100) valor -> . longitud
+    (101) valor -> . conversionCad
+    (61) arregloID -> . ID
+    (62) arregloID -> . ID ARRAY
+    (90) techo -> . CEIL PA opmath PC
+    (91) piso -> . FLOOR PA opmath PC
+    (103) longitud -> . LENGTH PA STRINGVAL PC
+    (111) longitud -> . LENGTH PA error PC
+    (102) conversionCad -> . STR PA opmath PC
+
+    INTEGERVAL      shift and go to state 91
+    DOUBLEVAL       shift and go to state 92
+    STRINGVAL       shift and go to state 93
+    TRUE            shift and go to state 94
+    FALSE           shift and go to state 95
+    ID              shift and go to state 100
+    CEIL            shift and go to state 101
+    FLOOR           shift and go to state 102
+    LENGTH          shift and go to state 103
+    STR             shift and go to state 104
+
+    valor                          shift and go to state 237
+    arregloID                      shift and go to state 90
+    techo                          shift and go to state 96
+    piso                           shift and go to state 97
+    longitud                       shift and go to state 98
+    conversionCad                  shift and go to state 99
+
+state 234
+
+    (28) parametros -> MODOVALOR tipo ID COMA parametros .
+
+    PC              reduce using rule 28 (parametros -> MODOVALOR tipo ID COMA parametros .)
+
+
+state 235
+
+    (29) parametros -> MODOREFERENCIA tipo ID COMA parametros .
+
+    PC              reduce using rule 29 (parametros -> MODOREFERENCIA tipo ID COMA parametros .)
+
+
+state 236
+
+    (3) bloqueFuncion -> BEGIN bloqueContenido retorno END .
+
+    RECORD          reduce using rule 3 (bloqueFuncion -> BEGIN bloqueContenido retorno END .)
+    FUNCTION        reduce using rule 3 (bloqueFuncion -> BEGIN bloqueContenido retorno END .)
+    PROCEDURE       reduce using rule 3 (bloqueFuncion -> BEGIN bloqueContenido retorno END .)
+    BEGIN           reduce using rule 3 (bloqueFuncion -> BEGIN bloqueContenido retorno END .)
+
+
+state 237
+
+    (4) retorno -> RETURN valor . PUNTOCOMA
+
+    PUNTOCOMA       shift and go to state 238
+
+
+state 238
+
+    (4) retorno -> RETURN valor PUNTOCOMA .
+
+    END             reduce using rule 4 (retorno -> RETURN valor PUNTOCOMA .)
+

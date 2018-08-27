@@ -1,0 +1,20 @@
+@startuml
+loop
+User -> Application: Crear Codigo
+User -> Application: Crear BreakPoints
+User -> Application: Ejecutar Codigo
+Application --> Application : Analisis Lexico y Sintactico
+loop
+User -> Application : Avanzar Linea
+Application --> Application : Ejecutar Linea
+Application --> User : Mostrar Variables
+Application --> User : Mostrar Arbol
+User -> Application : BreackPoints
+Application --> User : Mostrar Estado BreakPoints
+end
+Application --> User : Tiempo de ejecucion
+User -> Application : Grafica de Ejecuciones
+Application --> User : Mostrar Grafica
+end
+
+@enduml

@@ -1,0 +1,34 @@
+VAR 
+    a : INTEGER;
+    b : INTEGER;
+    c : STRING;
+    d : STRING;
+
+BEGIN
+    a <-- 2;
+    WRITELN(STR(a));
+    b <-- 4;
+    WRITELN(STR(b));
+    IF(a = 2)THEN
+    BEGIN
+	WRITELN("ES IGUAL");
+    END
+    
+    WHILE(a < 6)DO
+    BEGIN
+	a <-- a  + 1;
+    END
+    c <-- "Hola";
+    d <-- "Mundo";
+    
+    FOR b <-- 2 TO 5 DO
+    BEGIN
+	a <-- a - b;
+    END
+    a <-- 0;
+    REPEAT
+	a <-- a +1;
+    UNTIL(a < 10)
+    
+    WRITELN(c+d);
+END

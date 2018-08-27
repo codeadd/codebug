@@ -1,0 +1,88 @@
+VAR
+        i : INTEGER;
+        y : INTEGER;
+        z : INTEGER;
+        sum : INTEGER;
+        sumatoriaRes : INTEGER;
+        sumpar : INTEGER;
+        cola : QUEUE;
+        pila : STACK;
+        lista : LIST;
+        grafo: GRAPH;
+        arreglo : INTEGER [10];
+        tempTamanoCola : INTEGER;
+
+
+        FUNCTION sumar(E INTEGER n1,E INTEGER n2, ES INTEGER n3)
+        BEGIN
+            n3 <-- n1 + n2;
+            IF(n1 < n2) THEN
+            BEGIN
+                n3 <-- 5;
+            END
+
+            WHILE(n1 < n3) DO
+            BEGIN
+                n1 <-- n1 +1;
+            END
+
+            RETURN n3;
+        END
+        PROCEDURE sumatoria(E INTEGER numero1, E INTEGER numero2, ES INTEGER resultado)
+        BEGIN
+            FOR numero1 <-- 0 TO numero2 DO
+            BEGIN
+                resultado <-- resultado + numero1;
+            END
+        END
+
+    BEGIN
+        i <-- 6;
+        i <-- CALL FUNCTION sumar(1,2,sumpar);
+        arreglo[3] <-- 3;
+        #i <-- CALL FUNCTION GET_P(sumpar);
+        CALL PROCEDURE sumatoria(1,10,sumatoriaRes);
+        WRITELN("El resultado de la sumatoria es " + STR(sumatoriaRes));
+
+        CALL PROCEDURE ENQUEUE(cola ,10 );
+        CALL PROCEDURE ENQUEUE(cola ,i );
+        CALL PROCEDURE ENQUEUE(cola ,sumatoriaRes);
+
+
+        CALL PROCEDURE PUSH(pila, 5);
+        CALL PROCEDURE PUSH(pila, 20);
+
+        CALL PROCEDURE ADD(lista, 7);
+        CALL PROCEDURE ADD(lista, 8);
+        CALL PROCEDURE ADD(lista, 3);
+        CALL PROCEDURE ADD(lista, 2);
+        CALL PROCEDURE ADD(lista, 1);
+
+        CALL PROCEDURE SORT(lista);
+        CALL PROCEDURE REMOVE(lista, 8);
+
+        CALL PROCEDURE ADD_NODE(grafo, 5); #Tambien funciona con strings
+        CALL PROCEDURE ADD_NODE(grafo, 2);
+        CALL PROCEDURE ADD_EDGE(grafo, 5,2 ,7.0);
+
+        tempTamanoCola <-- CALL FUNCTION SIZE_QUEUE(cola);
+        WRITELN("El tamaño de la cola es " + STR(tempTamanoCola));
+
+        tempTamanoCola <-- CALL FUNCTION SIZE_STACK(pila);
+        WRITELN("El tamaño de la pila es " + STR(tempTamanoCola));
+
+        tempTamanoCola <-- CALL FUNCTION SIZE(lista);
+        WRITELN("El tamaño de la lista es " + STR(tempTamanoCola));
+
+        tempTamanoCola <-- CALL FUNCTION SIZE(arreglo); # la funcion size tambien nos sirve para los arreglos
+        WRITELN("El tamaño del arreglo es " + STR(tempTamanoCola));
+
+
+
+        sum <-- CALL FUNCTION GET_Q(cola);
+        i <-- CALL FUNCTION DEQUEUE(cola);
+        y <-- CALL FUNCTION GET_P(pila);
+
+        z <-- CALL FUNCTION POP(pila);
+        sumpar <-- CALL FUNCTION GET(lista,2);
+    END

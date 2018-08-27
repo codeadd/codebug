@@ -1,0 +1,29 @@
+VAR
+        i : INTEGER;
+        sum : INTEGER;
+        sumpar : INTEGER;
+
+        string : STRING;
+        string2: STRING;
+
+
+        FUNCTION sumar(E INTEGER n1,E INTEGER n2, ES INTEGER n3)
+        BEGIN
+            n3 <-- n1 + n2;
+            IF(n1 > n2) THEN
+            BEGIN
+                n3 <-- 5;
+            END
+
+            RETURN n3;
+        END
+	
+BEGIN 
+    i <-- 6;
+    sum <-- CALL FUNCTION sumar(1,2,sumpar);
+    #i <-- CALL FUNCTION GET_P(sumpar);
+    string <-- "Prueba ... ";
+    string2 <-- " , .... DIOS LO BENDIGA MR BRAYAN, 5 * 5 ES IGUAL A ";
+    WRITELN(string + string2 + STR(5*10));
+
+END

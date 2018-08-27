@@ -1,0 +1,41 @@
+<RCC>
+  <qresource prefix="Add">
+    <file>Add.png</file>
+  </qresource>
+  <qresource prefix="Lexer">
+    <file>Lightning.png</file>
+  </qresource>
+  <qresource prefix="Info">
+    <file>Info.png</file>
+  </qresource>
+  <qresource prefix="Application">
+    <file>Application.png</file>
+  </qresource>
+  <qresource prefix="Close">
+    <file>Cancel.png</file>
+  </qresource>
+  <qresource prefix="Run">
+    <file>FlagGreen.png</file>
+  </qresource>
+  <qresource prefix="Stop">
+    <file>FlagYellow.png</file>
+  </qresource>
+  <qresource prefix="Continue">
+    <file>FlagBlue.png</file>
+  </qresource>
+  <qresource prefix="Cancel">
+    <file>FlagRed.png</file>
+  </qresource>
+  <qresource prefix="Clear">
+    <file>Bin.png</file>
+  </qresource>
+  <qresource prefix="Open">
+    <file>Enter.png</file>
+  </qresource>
+  <qresource prefix="Save">
+    <file>Download.png</file>
+  </qresource>
+  <qresource prefix="Line">
+    <file>Pin.png</file>
+  </qresource>
+</RCC>
