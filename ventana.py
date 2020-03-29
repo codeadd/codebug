@@ -1,7 +1,8 @@
 import sys
-from PyQt4.QtGui import QApplication,QMainWindow,QFileDialog,QMessageBox,QAction,QIcon
-from PyQt4.QtCore import *
-from PyQt4 import uic
+from PyQt5.QtWidgets import QApplication, QMainWindow, QFileDialog, QMessageBox, QAction
+from PyQt5.QtGui import QIcon
+# from PyQt5.QtCore import *
+from PyQt5 import uic
 import Vista.widget as widg
 import Vista.statusbar as st
 from Modelo.lexclass import *
@@ -10,6 +11,7 @@ from Modelo.colores import *
 from Vista.grafiquita import *
 
 import threading
+import os
 
 #CLASE DE LA VENTANA
 #VISTA PRINCIPAL
@@ -30,7 +32,8 @@ class ventana(QMainWindow):
         
         #SE CARGA LA INTERFAZ GRAFICA .UI
         #REALIZADA EN QTDESIGNER
-        uic.loadUi("ventanita.ui",self)
+        self.ui_path = os.path.dirname(os.path.abspath(__file__))
+        uic.loadUi(os.path.join(self.ui_path, "ventanita.ui"), self)
         
         #TITULO DE LA VENTANA
         self.setWindowTitle("EDITOR V.0")
@@ -76,22 +79,22 @@ class ventana(QMainWindow):
     #       asigna imagenes a las acciones
     #-------------------------------------------------------------------------------------------------
     def __icons_actions(self):
-        self.actionN.setIcon(QIcon('Imagenes/Add.png'))
-        self.actionOpen.setIcon(QIcon('Imagenes/Enter.png'))
-        self.actionSave.setIcon(QIcon('Imagenes/Download.png'))
-        self.actionLine.setIcon(QIcon('Imagenes/Pin.png'))
-        self.actionClearTerm.setIcon(QIcon('Imagenes/Bin.png'))
+        self.actionN.setIcon(QIcon(os.path.join(self.ui_path, 'Imagenes/Add.png')))
+        self.actionOpen.setIcon(QIcon(os.path.join(self.ui_path, 'Imagenes/Enter.png')))
+        self.actionSave.setIcon(QIcon(os.path.join(self.ui_path,'Imagenes/Download.png')))
+        self.actionLine.setIcon(QIcon(os.path.join(self.ui_path,'Imagenes/Pin.png')))
+        self.actionClearTerm.setIcon(QIcon(os.path.join(self.ui_path, 'Imagenes/Bin.png')))
         #self.actionClearEst.setIcon(QIcon('Imagenes/Bin.png'))
-        self.actionContinue.setIcon(QIcon('Imagenes/next.png'))
-        self.actionStop.setIcon(QIcon('Imagenes/pause.png'))
-        self.actionRun.setIcon(QIcon('Imagenes/FlagGreen.png'))
-        self.actionCancel.setIcon(QIcon('Imagenes/FlagRed.png'))
-        self.actionExit.setIcon(QIcon('Imagenes/Cancel.png'))
-        self.actionLexer.setIcon(QIcon('Imagenes/Lightning.png'))
-        self.actionInfo.setIcon(QIcon('Imagenes/Info.png'))
-        self.actionBreakpoints.setIcon(QIcon('Imagenes/location.png'))
-        self.actionTree.setIcon(QIcon('Imagenes/brush.png'))
-        self.actionTimes.setIcon(QIcon('Imagenes/graph.png'))
+        self.actionContinue.setIcon(QIcon(os.path.join(self.ui_path, 'Imagenes/next.png')))
+        self.actionStop.setIcon(QIcon(os.path.join(self.ui_path, 'Imagenes/pause.png')))
+        self.actionRun.setIcon(QIcon(os.path.join(self.ui_path, 'Imagenes/FlagGreen.png')))
+        self.actionCancel.setIcon(QIcon(os.path.join(self.ui_path, 'Imagenes/FlagRed.png')))
+        self.actionExit.setIcon(QIcon(os.path.join(self.ui_path, 'Imagenes/Cancel.png')))
+        self.actionLexer.setIcon(QIcon(os.path.join(self.ui_path, 'Imagenes/Lightning.png')))
+        self.actionInfo.setIcon(QIcon(os.path.join(self.ui_path, 'Imagenes/Info.png')))
+        self.actionBreakpoints.setIcon(QIcon(os.path.join(self.ui_path, 'Imagenes/location.png')))
+        self.actionTree.setIcon(QIcon(os.path.join(self.ui_path, 'Imagenes/brush.png')))
+        self.actionTimes.setIcon(QIcon(os.path.join(self.ui_path, 'Imagenes/graph.png')))
 
 
     #--------------------------------------------------------------------------------------------
@@ -189,7 +192,7 @@ class ventana(QMainWindow):
     def __open_file(self):
         try:
             filename = QFileDialog.getOpenFileName(self,'Open File')
-            f = open(filename,'r')
+            f = open(filename[0],'r')
             filedata = f.read()
             self.principal.editor.setText(filedata)
             f.close()
@@ -391,7 +394,7 @@ if __name__ == "__main__":
     #SE MUESTRA LA VENTANA
     _ventana.show()
 
-    app.setWindowIcon(QIcon('Imagenes/Application.png'))
+    app.setWindowIcon(QIcon(os.path.join(_ventana.ui_path, 'Imagenes/Application.png')))
     #SE EJECUTA LA APP
     app.exec_()
         

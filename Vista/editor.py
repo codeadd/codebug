@@ -1,7 +1,6 @@
 import sys
-from PyQt4.QtCore import *
-from PyQt4.QtGui import *
-from PyQt4.Qsci import QsciScintilla,QsciAPIs,QsciLexerPascal
+from PyQt5.QtGui import QFont, QFontMetrics, QColor
+from PyQt5.Qsci import QsciScintilla, QsciAPIs, QsciLexerPascal
 from Modelo.lexclass import *
 
 #CLASE DEL EDITOR
@@ -27,7 +26,7 @@ class editor(QsciScintilla):
         
         #DEFINICION DE LA FUENTE Y SUS PROPIEDADES
         font = QFont()
-        font.setFamily('Courier')
+        #font.setFamily('Courier')
         font.setFixedPitch(True)
         font.setPointSize(10)
         self.setFont(font)
@@ -47,9 +46,8 @@ class editor(QsciScintilla):
         self.setMarginSensitivity(1,True)
         
         #CREAMOS LA SEÑA PARA AGREGAR LINEA MARCADA
-        self.connect(self,
-            SIGNAL('marginClicked(int, int, Qt::KeyboardModifiers)'),
-            self.on_margin_clicked)
+        self.marginClicked.connect(self.on_margin_clicked)
+
         #SE DEFINE EL ICONO A MOSTRAR EN LA LINEA MARCADA
         self.markerDefine(QsciScintilla.Circle ,
             self.ARROW_MARKER_NUM)
@@ -120,7 +118,7 @@ class editor(QsciScintilla):
     # -------------------------------------------------------------------------------------------------
     def cambiarColores(self):
         self.lexer.setColor(QColor('#F44336'), QsciLexerPascal.Number)
-        self.lexer.setColor(QColor('#34495e'),QsciLexerPascal.Keyword)
+        self.lexer.setColor(QColor('#34495e'), QsciLexerPascal.Keyword)
         self.lexer.setColor(QColor('#42A5F5'), QsciLexerPascal.SingleQuotedString)
         self.lexer.setColor(QColor('#F06292'), QsciLexerPascal.Operator)
         self.lexer.setColor(QColor('#3498db'), QsciLexerPascal.Character)

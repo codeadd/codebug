@@ -1,5 +1,5 @@
 import matplotlib
-matplotlib.use("Qt4Agg")
+matplotlib.use("QT5Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 

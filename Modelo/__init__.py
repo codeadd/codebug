@@ -36,6 +36,6 @@ https://docs.python.org/3/tutorial/datastructures.html
 
 
 '''
-#print(eval(''' "TE AMO DIOS" + "hola mundo" +  5*5  '''))
+#print(eval(''' "CAD" + "hola mundo" +  5*5  '''))
 #print(eval(''' 5  '''))
 

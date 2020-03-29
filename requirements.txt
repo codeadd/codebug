@@ -1,0 +1,13 @@
+cycler==0.10.0
+decorator==4.4.2
+kiwisolver==1.2.0
+matplotlib==3.2.1
+networkx==2.4
+numpy==1.18.4
+ply==3.11
+pyparsing==2.4.7
+PyQt5==5.14.2
+PyQt5-sip==12.7.2
+python-dateutil==2.8.1
+QScintilla==2.11.4
+six==1.15.0

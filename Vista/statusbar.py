@@ -1,5 +1,4 @@
-from PyQt4.QtGui import (QStatusBar,QLabel)
-
+from PyQt5.QtWidgets import QStatusBar, QLabel
 
 # -------------------------------------------------------------------------------------------------
 #   clase StatusBar : -> hereda de QStatusBar

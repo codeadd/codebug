@@ -1,4 +1,4 @@
-from PyQt4.QtCore import QRectF,QRect
+from PyQt5.QtCore import QRect
 
 
 # -------------------------------------------------------------------------------------------------

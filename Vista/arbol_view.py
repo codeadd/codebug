@@ -1,8 +1,8 @@
 import sys
-from PyQt4.QtGui import *
-from PyQt4.QtCore import *
+from PyQt5.QtWidgets import QGraphicsScene, QGraphicsView, QMessageBox, QGraphicsTextItem
+from PyQt5.QtGui import QPen
+from PyQt5.QtCore import QRect, Qt, QPointF
 from Modelo.n_ary_tree import *
-
 
 # -------------------------------------------------------------------------------------------------
 #       clase panel: -> hereda de QGraphicsView
@@ -105,8 +105,7 @@ class panel(QGraphicsView):
             self.escena.addEllipse(nodo.x,nodo.y,nodo.tam,nodo.tam,pen)
 
         #texto del nodo
-        text = QGraphicsTextItem(None, self.escena)
-        text.setPlainText(str(nodo.data))
+        text = self.escena.addText(str(nodo.data))
         text.setPos(QPointF(nodo.x + 2, nodo.y - 3))
 
         x += 50

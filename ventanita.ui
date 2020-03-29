@@ -14,39 +14,11 @@
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">/*QToolButton{
-		background-color: #44c767;
-		border-radius: 4px;
-		color: #ffffff;
-		font-family: 'Roboto';
-		margin-left:0.5em;
-		font-size: 17px;
-	}
-QToolButton:hover{
-			background-color:#8fe860;
-	}
-
-QToolBar{
-	border-color:#8fe860;
-}*/
-/*QTextEdit{
-		border-radius: 3px;
-		border: 2px solid #00796b;
-	}
-QToolButton{
-		background-color:#44c767;
-		color:#ffffff;
-		border-radius: 16px;
-		margin-left : 1em;
-		font-family:Arial;
-		font-size:15px;
-}
-	
-QToolButton:hover{
-			background-color:#8fe860;
-	}
-*/
-</string>
+   <string notr="true">
+    * {
+      color: #0000;
+    }
+   </string>
   </property>
   <widget class="QWidget" name="centralwidget"/>
   <widget class="QMenuBar" name="menubar">

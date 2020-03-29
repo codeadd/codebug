@@ -107,3 +107,13 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# Virtualenv
+bin/
+lib/
+include/
+share/
+
+# PLY files
+parser.out
+parsetab.py

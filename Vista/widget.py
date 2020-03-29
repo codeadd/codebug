@@ -1,6 +1,8 @@
 from Modelo.colores import *
 import Vista.editor as ed
 from Vista.arbol_view import *
+from PyQt5.QtWidgets import QWidget, QTextEdit, QHBoxLayout, QVBoxLayout
+from PyQt5.QtGui import QFont 
 
 #CLASE QUE CONTIENE UN WIDGET
 #CON EL EDITOR Y UN TEXEDIT PARA SIMULAR UNA TERMINAL
@@ -29,7 +31,7 @@ class widget(QWidget):
         self.terminal.append(spanh+"Terminal v0.1 >>>"+spanb)
         self.estado.setReadOnly(True)   #hacemos el area de estado en modo solo lectura
         self.estado.append(spanh+'Estado Variables >>>'+spanb)
-        font = QFont('Arial')           #fuente que se utilizara para el area de estado y la terminal
+        font = QFont()           #fuente que se utilizara para el area de estado y la terminal
         font.setPointSize(8)
         font.setBold(True)
         self.estado.setFont(font)
@@ -41,7 +43,7 @@ class widget(QWidget):
 
         layoutG = QHBoxLayout()         #layout general de tipo horizontal
         
-        layouth =QVBoxLayout()          #layout para los elementos del lado derecho del aplicativo (area de estado y area de dibujo)
+        layouth = QVBoxLayout()          #layout para los elementos del lado derecho del aplicativo (area de estado y area de dibujo)
                                         # de tipo vertical
         layouth.addWidget(self.estado)
         layouth.addWidget(self.grafico)

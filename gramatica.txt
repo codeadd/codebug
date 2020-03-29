@@ -149,7 +149,7 @@ negacion -> NOT | €
 
 bloqueP -> declaracionPrincipal bloque
 bloque -> BEGIN bloqueContenido  END
-bloqueFuncion -> BEGIN bloqueContenido retorno END  *** SOLO VA UN RETORNO DEBEMOS MIRAR ESO SI DIOS QUIERE***
+bloqueFuncion -> BEGIN bloqueContenido retorno END  *** SOLO VA UN RETORNO DEBEMOS MIRAR ESO***
 retorno -> RETURN valor | €
 bloqueContenido ->  si bloqueContenido| para bloqueContenido | mientras bloqueContenido | repeat bloqueContenido | asignar bloqueContenido | escribir bloqueContenido |€ 
 

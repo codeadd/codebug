@@ -224,5 +224,3 @@ class Lexico:
 
     lexico.build()
     lexico.test(data2)'''
-
-    # GRACIAS A DIOS FUNCIONO MR BRAYAN !!! DIOS LO BENDIGA Y LO GUARDE
