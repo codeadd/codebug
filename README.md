@@ -19,7 +19,7 @@ To build this project we use:
 - Matplotlib http://matplotlib.org 
 
 
-> :info: This project was testes on Linux (Manjaro, Fedora, Ubuntu y OpenSuse specifically), but it has an acceptable performance in Windows 10.
+> :information_source: This project was testes on Linux (Manjaro, Fedora, Ubuntu y OpenSuse specifically), but it has an acceptable performance in Windows 10.
 
 ### Preview
 
@@ -35,7 +35,8 @@ Execution times graphic.
 
 ![tiempos](preview/tiempos.png)
 
-## Virtualenv
+## Run project
+### Virtualenv
 ```bash
 # Creating environment
 virtualenv .
@@ -45,14 +46,14 @@ pip install -r requirements.txt
 python main.py
 ```
 
-## Docker
-### Build image (Experimental)
+### Docker
+#### Build image (Experimental)
 
 ```
 docker build -t project/pyqt5 .
 ```
 
-### Run image (Experimental)
+#### Run image (Experimental)
 **Nota:** This command only works on Unix operating systems or those that use X11.
 
 Execute in the host OS
